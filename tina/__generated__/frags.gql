@@ -1,0 +1,37 @@
+fragment HomeParts on Home {
+  __typename
+  hero_titulo
+  hero_subtitulo
+  diferenciais_titulo
+  cta_titulo
+  cta_descricao
+}
+
+fragment EmpreendimentosParts on Empreendimentos {
+  __typename
+  nome
+  tipo
+  status
+  caixa
+  imagem
+  descricao
+  destaques
+}
+
+fragment SobreParts on Sobre {
+  __typename
+  historia_titulo
+  historia_texto1
+  historia_texto2
+  fundador_bio1
+  fundador_bio2
+  fundador_quote
+}
+
+fragment ContatoParts on Contato {
+  __typename
+  endereco
+  telefone
+  horario
+  whatsapp
+}

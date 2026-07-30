@@ -1,0 +1,9 @@
+{
+  "nome": "Upper Nest",
+  "tipo": "Residencial",
+  "status": "Lançamento",
+  "caixa": true,
+  "imagem": "/images/upper-nest/fachada-01.png",
+  "descricao": "Viver acima do comum. Fachada com linhas orgânicas e curvas que marcam a paisagem de Porto União. Apartamentos de 55m² e 75m² com acabamentos de alto padrão e vista privilegiada.",
+  "destaques": ["Fachada icônica", "Vista panorâmica", "55m² e 75m²", "Acabamento premium"]
+}

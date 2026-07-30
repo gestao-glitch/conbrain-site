@@ -1,0 +1,9 @@
+{
+  "nome": "Residencial Ágave",
+  "tipo": "Residencial",
+  "status": "Entregue",
+  "caixa": false,
+  "imagem": "/images/agave/fachada-01.png",
+  "descricao": "Resistência e elegância inspiradas na natureza. Projeto consolidado no portfólio Conbrain, com todas as unidades entregues e moradores satisfeitos.",
+  "destaques": ["100% vendido", "Entregue no prazo", "Portfólio consolidado"]
+}

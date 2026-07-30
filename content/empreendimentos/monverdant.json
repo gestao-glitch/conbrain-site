@@ -1,0 +1,9 @@
+{
+  "nome": "Mon'Verdant",
+  "tipo": "Residencial",
+  "status": "Em obras",
+  "caixa": true,
+  "imagem": "/images/monverdant/fachada-01.png",
+  "descricao": "A natureza como vizinha. Empreendimento que integra verde e arquitetura em harmonia, com jardim vertical na fachada e áreas de lazer que privilegiam o contato com a natureza.",
+  "destaques": ["Jardim vertical", "Integração com natureza", "Lazer completo"]
+}

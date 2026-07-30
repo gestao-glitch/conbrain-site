@@ -1,0 +1,9 @@
+{
+  "nome": "Pier 225",
+  "tipo": "Residencial",
+  "status": "Pré-lançamento",
+  "caixa": false,
+  "imagem": "/images/pier225/logo.png",
+  "descricao": "O mais novo projeto da Conbrain está chegando. Pier 225 traz uma proposta única com paleta que combina verde musgo, grafite e cobre — sofisticação e natureza em equilíbrio. Em breve, mais detalhes.",
+  "destaques": ["Em breve", "Novo conceito", "Pré-lançamento"]
+}

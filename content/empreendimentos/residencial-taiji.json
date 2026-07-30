@@ -1,0 +1,9 @@
+{
+  "nome": "Residencial Taiji",
+  "tipo": "Residencial",
+  "status": "Entregue",
+  "caixa": false,
+  "imagem": "/images/taiji/fachada-01.png",
+  "descricao": "O empreendimento que inaugurou a trajetória da Conbrain. Equilíbrio entre funcionalidade e design, entregue com excelência e dentro do prazo. Todas as unidades comercializadas.",
+  "destaques": ["100% vendido", "Entregue no prazo", "Primeiro empreendimento"]
+}

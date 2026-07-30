@@ -1,0 +1,9 @@
+{
+  "nome": "Mastro",
+  "tipo": "Residencial",
+  "status": "Em obras",
+  "caixa": true,
+  "imagem": "/images/mastro/obra-drone.jpg",
+  "descricao": "Empreendimento que traz um conceito náutico sofisticado para Porto União. Com obra em andamento e financiamento pela Caixa, o Mastro combina design diferenciado com acessibilidade.",
+  "destaques": ["Conceito náutico", "Em construção", "Financiamento Caixa"]
+}

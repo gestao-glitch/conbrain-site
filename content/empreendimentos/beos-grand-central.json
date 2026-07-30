@@ -1,0 +1,9 @@
+{
+  "nome": "Bëos Grand Central",
+  "tipo": "Residencial de alto padrão",
+  "status": "Em obras",
+  "caixa": true,
+  "imagem": "/images/beos/fachada-01.png",
+  "descricao": "O mais ambicioso projeto da Conbrain. Fachada contemporânea com design orgânico, acabamentos premium e conceito Smart Living integrado. Apartamentos de 1 e 2 dormitórios pensados para quem valoriza sofisticação e praticidade.",
+  "destaques": ["Smart Living", "Fachada autoral", "Rooftop", "1 e 2 dormitórios"]
+}
