@@ -5,14 +5,20 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
+    "build:docker": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@tinacms/cli": "^2.5.6",
+    "fs-extra": "^11.4.0",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "slate": "^0.126.0",
+    "slate-dom": "^0.126.0",
+    "slate-hyperscript": "^0.125.0",
+    "slate-react": "^0.126.0",
     "tinacms": "^3.11.0"
   },
   "devDependencies": {
