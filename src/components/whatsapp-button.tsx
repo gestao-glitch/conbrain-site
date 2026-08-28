@@ -1,9 +1,13 @@
 "use client";
 
+import { contato } from "@/content";
+
+const MENSAGEM = "Olá, tenho interesse em conhecer os empreendimentos da Conbrain.";
+
 export function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/5542998756915?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20conhecer%20os%20empreendimentos%20da%20Conbrain."
+      href={`https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(MENSAGEM)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"

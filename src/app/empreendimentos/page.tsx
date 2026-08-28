@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
+import { contato } from "@/content";
 
 const empreendimentos = [
   {
@@ -222,7 +223,7 @@ export default function Empreendimentos() {
 
                       {emp.status !== "Entregue" && (
                         <a
-                          href={`https://wa.me/5542998756915?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20${encodeURIComponent(emp.nome)}.`}
+                          href={`https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(`Olá, tenho interesse no ${emp.nome}.`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mt-8 inline-block rounded-sm bg-verde px-8 py-3 text-xs font-medium tracking-[0.15em] text-chumbo uppercase transition-colors hover:bg-verde-dark"
@@ -249,7 +250,7 @@ export default function Empreendimentos() {
             Fale com nossa equipe comercial
           </h2>
           <a
-            href="https://wa.me/5542998756915"
+            href={`https://wa.me/${contato.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-block rounded-sm bg-verde px-10 py-3.5 text-xs font-medium tracking-[0.2em] text-chumbo uppercase transition-colors hover:bg-verde-dark"

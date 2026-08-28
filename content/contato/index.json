@@ -1,6 +1,8 @@
 {
-  "endereco": "R. Visc. Guarapuava, 110, Centro, Porto União - SC",
+  "endereco_linha1": "Rua Visconde de Guarapuava, 110",
+  "endereco_linha2": "Centro, Porto União - SC",
   "telefone": "(42) 99875-6915",
-  "horario": "Seg–Sex 08:30–12:00 / 13:30–18:00",
-  "whatsapp": "5542998756915"
+  "horario": "Segunda a Sexta: 08:30 - 12:00 / 13:30 - 18:00",
+  "whatsapp": "5542998756915",
+  "instagram": "sigaconbrain"
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { contato } from "@/content";
 
 export default function Contato() {
   const [enviado, setEnviado] = useState(false);
@@ -136,9 +137,9 @@ export default function Contato() {
                 Endereço
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-chumbo/60">
-                Rua Visconde de Guarapuava, 110
+                {contato.endereco_linha1}
                 <br />
-                Centro, Porto União - SC
+                {contato.endereco_linha2}
               </p>
             </div>
             <div>
@@ -146,26 +147,24 @@ export default function Contato() {
                 Telefone
               </h3>
               <a
-                href="tel:+5542998756915"
+                href={`tel:+${contato.whatsapp}`}
                 className="mt-3 block text-sm text-chumbo/60 transition-colors hover:text-verde"
               >
-                (42) 99875-6915
+                {contato.telefone}
               </a>
             </div>
             <div>
               <h3 className="text-xs tracking-[0.2em] text-verde uppercase">
                 Horário
               </h3>
-              <p className="mt-3 text-sm text-chumbo/60">
-                Segunda a Sexta: 08:30 - 12:00 / 13:30 - 18:00
-              </p>
+              <p className="mt-3 text-sm text-chumbo/60">{contato.horario}</p>
             </div>
             <div>
               <h3 className="text-xs tracking-[0.2em] text-verde uppercase">
                 WhatsApp
               </h3>
               <a
-                href="https://wa.me/5542998756915"
+                href={`https://wa.me/${contato.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 inline-block rounded-sm border border-verde/30 px-6 py-3 text-xs tracking-widest text-verde uppercase transition-colors hover:bg-verde hover:text-chumbo"

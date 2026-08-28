@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contato } from "@/content";
 
 export function Footer() {
   return (
@@ -36,16 +37,16 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-xs tracking-[0.2em] text-verde uppercase">Contato</h4>
             <div className="flex flex-col gap-3 text-sm text-white/40">
-              <p>R. Visc. Guarapuava, 110</p>
-              <p>Centro, Porto União - SC</p>
-              <p>(42) 99875-6915</p>
+              <p>{contato.endereco_linha1}</p>
+              <p>{contato.endereco_linha2}</p>
+              <p>{contato.telefone}</p>
               <a
-                href="https://instagram.com/sigaconbrain"
+                href={`https://instagram.com/${contato.instagram}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-colors hover:text-verde"
               >
-                @sigaconbrain
+                @{contato.instagram}
               </a>
             </div>
           </div>
@@ -57,7 +58,7 @@ export function Footer() {
           </span>
           <div className="flex gap-6">
             <a
-              href="https://instagram.com/sigaconbrain"
+              href={`https://instagram.com/${contato.instagram}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs tracking-widest text-white/25 uppercase transition-colors hover:text-verde"

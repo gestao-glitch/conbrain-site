@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
+import { home, contato } from "@/content";
 
 const empreendimentos = [
   { slug: "beos-grand-central", nome: "Bëos Grand Central", tipo: "Residencial de alto padrão", status: "Em obras", caixa: true, featured: true, imagem: "/images/beos/fachada-01.png" },
@@ -53,13 +54,12 @@ export default function Home() {
           <p className="mb-6 text-xs tracking-[0.4em] text-verde uppercase">
             Incorporadora &bull; Construtora
           </p>
-          <h1 className="text-3xl font-light tracking-[0.3em] text-white uppercase sm:text-4xl lg:text-5xl lg:tracking-[0.4em]">
-            Edificamos cidades
-            <br />
-            que transformam vidas
+          {/* whitespace-pre-line: respeita as quebras de linha (\n) do JSON */}
+          <h1 className="text-3xl font-light tracking-[0.3em] whitespace-pre-line text-white uppercase sm:text-4xl lg:text-5xl lg:tracking-[0.4em]">
+            {home.hero_titulo}
           </h1>
           <p className="mt-6 text-sm tracking-widest text-white/50">
-            Inteligência construtiva e design urbano em Porto União, SC
+            {home.hero_subtitulo}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
@@ -69,7 +69,7 @@ export default function Home() {
               Conheça nossos empreendimentos
             </Link>
             <a
-              href="https://wa.me/5542998756915"
+              href={`https://wa.me/${contato.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-sm border border-white/15 px-8 py-3.5 text-xs tracking-[0.15em] text-white/60 uppercase transition-colors hover:border-verde hover:text-verde"
@@ -95,7 +95,7 @@ export default function Home() {
                 Por que Conbrain
               </p>
               <h2 className="text-2xl font-light leading-relaxed text-chumbo lg:text-3xl">
-                Mais do que imóveis — criamos experiências de morar
+                {home.diferenciais_titulo}
               </h2>
             </div>
           </AnimateOnScroll>
@@ -299,15 +299,12 @@ export default function Home() {
               Realize seu investimento
             </p>
             <h2 className="text-xl font-light tracking-wide text-chumbo lg:text-2xl">
-              Encontre o empreendimento ideal para você
+              {home.cta_titulo}
             </h2>
-            <p className="mt-4 text-sm text-chumbo/50">
-              Financiamento facilitado pela Caixa Econômica Federal. Condições
-              especiais para as primeiras unidades.
-            </p>
+            <p className="mt-4 text-sm text-chumbo/50">{home.cta_descricao}</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="https://wa.me/5542998756915?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20conhecer%20os%20empreendimentos%20da%20Conbrain."
+                href={`https://wa.me/${contato.whatsapp}?text=${encodeURIComponent("Olá, tenho interesse em conhecer os empreendimentos da Conbrain.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-sm bg-verde px-10 py-3.5 text-xs font-medium tracking-[0.2em] text-chumbo uppercase transition-colors hover:bg-verde-dark"

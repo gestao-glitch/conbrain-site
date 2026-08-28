@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { contato } from "@/content";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,7 +51,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            href="https://wa.me/5542998756915"
+            href={`https://wa.me/${contato.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-sm bg-verde px-5 py-2 text-[10px] font-medium tracking-[0.15em] text-chumbo uppercase transition-colors hover:bg-verde-dark"
@@ -92,7 +93,7 @@ export function Header() {
               </Link>
             ))}
             <a
-              href="https://wa.me/5542998756915"
+              href={`https://wa.me/${contato.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-block self-start rounded-sm bg-verde px-6 py-2.5 text-xs font-medium tracking-[0.15em] text-chumbo uppercase"

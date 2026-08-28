@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { sobre } from "@/content";
 
 export default function Sobre() {
   return (
@@ -27,21 +28,14 @@ export default function Sobre() {
               Nossa história
             </p>
             <h2 className="text-2xl font-light text-chumbo">
-              Do primeiro projeto à transformação urbana
+              {sobre.historia_titulo}
             </h2>
             <div className="mt-2 h-[3px] w-8 rounded-sm bg-verde" />
             <p className="mt-6 text-sm leading-loose text-chumbo/60">
-              A Conbrain nasceu em Porto União com uma visão clara: elevar o
-              padrão construtivo da região. O que começou com o Residencial
-              Taiji — nosso primeiro empreendimento — rapidamente se expandiu
-              para um portfólio de 5 projetos que estão redefinindo a paisagem
-              urbana da cidade.
+              {sobre.historia_texto1}
             </p>
             <p className="mt-4 text-sm leading-loose text-chumbo/60">
-              Hoje, com mais de 15 mil m² em desenvolvimento e obras financiadas
-              pela Caixa Econômica Federal, a Conbrain se consolidou como
-              referência em incorporação imobiliária no sul do Paraná e norte de
-              Santa Catarina.
+              {sobre.historia_texto2}
             </p>
           </div>
 
@@ -77,20 +71,13 @@ export default function Sobre() {
                 Fundador &bull; CEO
               </p>
               <p className="mt-6 text-sm leading-loose text-chumbo/60">
-                Engenheiro civil com visão empreendedora, Bruno fundou a
-                Conbrain com o propósito de trazer para Porto União um novo
-                conceito de morar. Sua experiência em gestão de obras e
-                incorporação se traduz em projetos que equilibram inovação
-                construtiva, viabilidade financeira e qualidade de entrega.
+                {sobre.fundador_bio1}
               </p>
               <p className="mt-4 text-sm leading-loose text-chumbo/60">
-                À frente de uma equipe multidisciplinar, lidera desde a
-                prospecção de terrenos até o pós-entrega, garantindo que cada
-                empreendimento carregue a assinatura Conbrain de excelência.
+                {sobre.fundador_bio2}
               </p>
               <blockquote className="mt-8 border-l-2 border-verde pl-4 text-sm leading-relaxed text-chumbo/70 italic">
-                &ldquo;Nosso compromisso não é apenas construir — é transformar a
-                forma como as pessoas vivem a cidade.&rdquo;
+                &ldquo;{sobre.fundador_quote}&rdquo;
               </blockquote>
             </div>
           </div>
