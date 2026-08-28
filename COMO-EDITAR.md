@@ -53,7 +53,29 @@ Faça login com **sua** conta Claude. Pronto — pode conversar.
 
 ---
 
-## Parte 2 — Editando
+## Parte 2 — A primeira mensagem
+
+Com o Claude Code aberto, copie e cole exatamente isto:
+
+```
+Oi! Sou da equipe de marketing da Conbrain e não sou programadora.
+
+Leia os arquivos AGENTS.md e COMO-EDITAR.md deste projeto para entender
+como ele funciona. Depois me explique, em linguagem simples:
+
+1. Quais textos do site eu consigo alterar
+2. Como eu te peço uma alteração
+3. Como eu vejo o resultado antes de publicar
+
+Não altere nada ainda — só me explique.
+```
+
+Ele vai ler o projeto e te responder com o mapa do que dá para fazer. A partir daí é
+só conversar normalmente.
+
+---
+
+## Parte 3 — Editando
 
 Estando dentro da pasta do projeto, é só pedir em português. Exemplos reais:
 
