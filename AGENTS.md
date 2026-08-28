@@ -25,6 +25,19 @@ o próximo passo concreto.
   `better-sqlite3` (dependência nativa do Tina). Não remova.
 - Nunca commite tokens ou `.env*`.
 
+## Trabalhando com a equipe de marketing
+
+Quem mais usa este repositório é a equipe de publicidade, via Claude Code, pedindo
+alterações em português. Com eles:
+
+- Os textos ficam em `content/*.json`. Para pedidos de conteúdo, edite o JSON — nunca
+  escreva texto direto no `.tsx`.
+- Depois de alterar, ofereça mostrar o resultado (`npm run dev`) antes de publicar.
+- Publicar = commit + push para `main`. O deploy em si é acionado no EasyPanel.
+- Rode `npm run build:docker` antes de publicar: se o build quebrar localmente, o
+  deploy também quebraria.
+- Explique o que foi feito em linguagem simples, sem jargão.
+
 ## Estado atual
 
 - Deploy no EasyPanel (VPS Hostinger) a partir da branch `main`, via Dockerfile.

@@ -1,104 +1,131 @@
 # Como editar o site
 
-Guia para a equipe de marketing. **Não é preciso instalar nada** — tudo pelo navegador.
+Guia para a equipe de marketing. Você conversa com o Claude Code em português e ele
+faz a alteração — não é preciso saber programar.
 
 ---
 
-## Antes de começar
+## Parte 1 — Instalação (uma vez só)
 
-Você precisa de uma conta no GitHub e de acesso ao repositório. Peça ao Bruno.
+### 1. Conta Claude
 
-Endereço do projeto:
-https://github.com/gestao-glitch/conbrain-site
+Você precisa da sua **própria conta**, com login individual. O Bruno envia o convite;
+você recebe por e-mail e cria sua senha.
 
----
+### 2. Conta GitHub
 
-## Trocar um texto
+Crie em https://github.com/signup e mande seu nome de usuário para o Bruno, que
+libera seu acesso ao projeto.
 
-**1.** Abra a pasta `content` no GitHub:
-https://github.com/gestao-glitch/conbrain-site/tree/main/content
+### 3. Programas
 
-**2.** Escolha o arquivo da página que quer mudar:
-
-| Quero mudar | Abra este arquivo |
+| Programa | Onde baixar |
 |---|---|
-| Textos da página inicial | `home/index.json` |
-| História da empresa / bio do Bruno | `sobre/index.json` |
-| Endereço, telefone, horário, WhatsApp | `contato/index.json` |
-| Um empreendimento | `empreendimentos/<nome>.json` |
+| Node.js (versão LTS) | https://nodejs.org |
+| Git | https://git-scm.com/downloads |
+| Claude Code | https://claude.com/claude-code |
 
-**3.** Clique no ícone de **lápis** (✏️), no canto superior direito do arquivo.
+Instale os três com as opções padrão — pode ir clicando em "Avançar".
 
-**4.** Altere **apenas o texto entre aspas**. Por exemplo:
+### 4. Baixar o site
 
+Abra o Terminal (no Mac: `Cmd + Espaço`, escreva "Terminal") e cole:
+
+```bash
+git clone https://github.com/gestao-glitch/conbrain-site.git
 ```
-"hero_subtitulo": "Inteligência construtiva e design urbano em Porto União, SC"
-                   └──────────── só esta parte ────────────────────────────┘
+
+Depois:
+
+```bash
+cd conbrain-site && npm install --legacy-peer-deps
 ```
 
-**5.** Role até o fim, escreva uma descrição curta do que mudou e clique em
-**Commit changes**.
+A instalação demora alguns minutos na primeira vez. É normal.
 
-**6.** Avise quem publica (ou use o link de publicação que o Bruno passou). Em poucos
-minutos a mudança está no ar.
+### 5. Abrir o Claude Code
+
+```bash
+claude
+```
+
+Faça login com **sua** conta Claude. Pronto — pode conversar.
 
 ---
 
-## As 4 regras
+## Parte 2 — Editando
 
-Elas evitam 99% dos problemas:
+Estando dentro da pasta do projeto, é só pedir em português. Exemplos reais:
 
-1. **Nunca apague as aspas** `"` — o texto vai sempre entre elas.
-2. **Nunca apague a vírgula** no fim da linha.
-3. **Não mude o nome do campo** (a parte antes dos dois-pontos, como `hero_titulo`).
-4. **Aspas dentro do texto** precisam de uma barra antes: `\"assim\"`.
+> Troque o subtítulo da página inicial para "Construindo o futuro de Porto União"
 
-### `\n` quebra a linha
+> Atualize o telefone de contato para (42) 3522-1234
 
-No título da página inicial existe um `\n`:
+> No texto da página Sobre, mude "5 projetos" para "7 projetos"
 
+> Abra o site para eu ver como ficou
+
+> Publique as alterações
+
+O Claude Code já conhece este projeto: sabe onde ficam os textos, quais regras seguir
+e o que não pode quebrar. Isso está escrito no arquivo `AGENTS.md`, que ele lê sozinho.
+
+### Ver antes de publicar
+
+Peça **"abra o site para eu ver"**. Ele sobe uma versão de teste no seu computador,
+que só você enxerga. O site no ar não muda até você mandar publicar.
+
+### Publicar
+
+Peça **"publique as alterações"**. Ele salva no GitHub com seu nome. Em seguida,
+alguém com acesso ao EasyPanel coloca no ar — ou você usa o link de publicação que o
+Bruno passou.
+
+---
+
+## O que dá e o que não dá
+
+**Dá para pedir:**
+- Trocar qualquer texto do site
+- Trocar telefone, endereço, horário, WhatsApp, Instagram
+- Trocar ou adicionar fotos
+- Ver como ficou antes de publicar
+
+**Peça ajuda a um desenvolvedor para:**
+- Mudar cores, fontes ou layout
+- Criar páginas novas
+- Mexer no menu
+
+---
+
+## Dúvidas comuns
+
+**Posso quebrar o site?**
+Praticamente não. Se algo sair errado, a publicação falha e o site continua no ar com
+a versão anterior. E todas as alterações ficam registradas — dá para voltar atrás.
+
+**Errei alguma coisa. E agora?**
+Peça: *"desfaça a última alteração"*. Se já publicou, peça ao Bruno para reverter.
+
+**O Claude Code pediu permissão para rodar um comando.**
+Os comandos do dia a dia já vêm liberados. Se ele pedir algo diferente e você não
+souber, pergunte antes de aceitar.
+
+**Preciso deixar o Terminal aberto?**
+Só enquanto estiver trabalhando. Ao voltar, abra o Terminal e digite:
+
+```bash
+cd conbrain-site && claude
 ```
-"hero_titulo": "Edificamos cidades\nque transformam vidas"
-```
-
-O `\n` faz o texto quebrar em duas linhas na tela. Mantenha se quiser a quebra,
-apague se quiser tudo em uma linha só.
 
 ---
 
-## Trocar uma foto
+## Alternativa sem instalar nada
 
-**1.** Entre na pasta da imagem:
-https://github.com/gestao-glitch/conbrain-site/tree/main/public/images
+Para uma correção rápida, dá para editar direto no navegador pelo GitHub:
 
-**2.** Abra a subpasta do empreendimento (`beos`, `mastro`, `taiji`...).
+1. Abra https://github.com/gestao-glitch/conbrain-site/tree/main/content
+2. Escolha o arquivo (`home`, `sobre`, `contato` ou `empreendimentos`)
+3. Clique no lápis ✏️, altere **só o texto entre aspas**, e clique em **Commit changes**
 
-**3.** Clique em **Add file → Upload files** e arraste a foto nova.
-
-**4.** Em **Commit changes**, descreva o que subiu.
-
-**5.** Se o nome do arquivo novo for **diferente** do antigo, é preciso apontar o novo
-nome no código — nesse caso, peça ajuda.
-
-> **Dica:** deixe as fotos com no máximo ~1200px de largura antes de subir.
-> Fotos muito grandes deixam o site lento.
-
----
-
-## Se algo quebrar
-
-O site continua no ar com a versão anterior até uma nova publicação dar certo — não
-existe risco de derrubar tudo com um erro de digitação.
-
-Se a mudança não aparecer, quase sempre é uma vírgula ou aspas faltando. Avise o
-Bruno com o link do que você editou.
-
----
-
-## O que **não** dá para mudar por aqui
-
-Estes itens ainda estão no código e precisam de um desenvolvedor:
-
-- Textos da página de Empreendimentos (cards e descrições)
-- Os 4 blocos de "Por que Conbrain" na página inicial
-- Menu, cores e layout
+Cuidado para não apagar as aspas `"` nem as vírgulas — é isso que quebra o arquivo.
