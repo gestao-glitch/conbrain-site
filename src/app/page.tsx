@@ -2,16 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { home, contato } from "@/content";
-
-const empreendimentos = [
-  { slug: "beos-grand-central", nome: "Bëos Grand Central", tipo: "Residencial de alto padrão", status: "Em obras", caixa: true, featured: true, imagem: "/images/beos/fachada-01.png" },
-  { slug: "upper-nest", nome: "Upper Nest", tipo: "Residencial", status: "Lançamento", caixa: true, imagem: "/images/upper-nest/fachada-01.png" },
-  { slug: "monverdant", nome: "Mon'Verdant", tipo: "Residencial", status: "Em obras", caixa: true, imagem: "/images/monverdant/fachada-01.png" },
-  { slug: "residencial-taiji", nome: "Residencial Taiji", tipo: "Residencial", status: "Entregue", caixa: false, imagem: "/images/taiji/fachada-01.png" },
-  { slug: "residencial-agave", nome: "Residencial Ágave", tipo: "Residencial", status: "Entregue", caixa: false, imagem: "/images/agave/fachada-01.png" },
-  { slug: "mastro", nome: "Mastro", tipo: "Residencial", status: "Em obras", caixa: true, imagem: "/images/mastro/obra-drone.jpg" },
-  { slug: "pier-225", nome: "Pier 225", tipo: "Residencial", status: "Pré-lançamento", caixa: false, imagem: "/images/pier225/logo.png" },
-];
+import { empreendimentos } from "@/data/empreendimentos";
 
 const diferenciais = [
   {
@@ -144,7 +135,7 @@ export default function Home() {
             {empreendimentos.map((emp, i) => (
               <AnimateOnScroll key={emp.slug} delay={i * 80}>
                 <Link
-                  href={`/empreendimentos#${emp.slug}`}
+                  href={`/empreendimentos/${emp.slug}`}
                   className={`group relative flex min-h-[240px] flex-col justify-end overflow-hidden rounded p-6 transition-transform hover:scale-[1.01] ${
                     emp.featured ? "sm:col-span-2 sm:min-h-[320px]" : ""
                   }`}
