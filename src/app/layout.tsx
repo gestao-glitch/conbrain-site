@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { WhatsAppButton } from "@/components/whatsapp-button";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const jost = Lato({
+  variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "700"],
+  style: ["normal", "italic"],
+});
+
+const sourceSans = Lato({
+  variable: "--font-source-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://conbrain.com.br"),
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Conbrain",
+  },
   title: "Conbrain | Incorporadora e Construtora",
   description:
     "Edificamos cidades que transformam vidas. Incorporadora e construtora em Porto União, Santa Catarina.",
@@ -31,13 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${plusJakarta.variable} antialiased`}>
-      <body className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-      </body>
+    <html
+      lang="pt-BR"
+      className={`${jost.variable} ${sourceSans.variable} antialiased`}
+    >
+      <body className="flex min-h-screen flex-col">{children}</body>
     </html>
   );
 }

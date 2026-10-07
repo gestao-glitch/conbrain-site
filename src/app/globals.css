@@ -6,15 +6,184 @@
   --color-chumbo: #3b3b3b;
   --color-chumbo-light: #4a4a4a;
   --color-chumbo-dark: #2e2e2e;
-  --font-sans: var(--font-plus-jakarta-sans);
+  --font-sans: var(--font-source-sans);
+  --font-heading: var(--font-jost);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes heroScroll {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(260%);
+  }
+}
+
+.hero-in {
+  animation: heroIn 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-scroll {
+  animation: heroScroll 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in,
+  .hero-scroll {
+    animation: none;
+  }
+}
+
+
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   color: var(--color-chumbo);
   background: #fff;
+}
+
+/* esconde a barra de rolagem dos carrosséis horizontais */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Mapa dos empreendimentos (página inicial) ---------- */
+.cb-mapa-tiles {
+  filter: grayscale(1) invert(1) brightness(0.92) contrast(0.82);
+}
+.leaflet-container {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background: #2b2a2e;
+}
+.leaflet-control-attribution {
+  background: rgba(31, 29, 34, 0.7) !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 10px;
+}
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.leaflet-bar a {
+  background: #1f1d22;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.leaflet-bar a:hover {
+  background: #333136;
+  color: #a3c859;
+}
+.cb-pino {
+  display: block;
+  border-radius: 9999px;
+  background: var(--cor);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--cor) 35%, transparent),
+    0 6px 16px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease;
+}
+.cb-pino-ativo {
+  animation: cbPulso 1.6s ease-out infinite;
+}
+@keyframes cbPulso {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--cor) 70%, transparent),
+      0 6px 16px rgba(0, 0, 0, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 18px transparent, 0 6px 16px rgba(0, 0, 0, 0.45);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-pino-ativo {
+    animation: none;
+  }
+}
+.cb-popup-casca .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.cb-popup-casca .leaflet-popup-content {
+  margin: 0;
+  width: 260px !important;
+}
+.cb-popup {
+  display: block;
+  color: #1f1d22 !important;
+  text-decoration: none;
+}
+.cb-popup-foto {
+  position: relative;
+  display: block;
+  height: 140px;
+  overflow: hidden;
+  background: #e9e7e3;
+}
+.cb-popup-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.cb-popup:hover .cb-popup-foto img {
+  transform: scale(1.05);
+}
+.cb-popup-foto img.cb-popup-blur {
+  filter: blur(8px);
+  transform: scale(1.15);
+}
+.cb-popup-selo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.cb-popup-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px 16px;
+}
+.cb-popup-fase {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.cb-popup-nome {
+  font-size: 18px;
+  font-weight: 700;
+}
+.cb-popup-local {
+  font-size: 13px;
+  color: #5f5c64;
+}
+.cb-popup-link {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
 }

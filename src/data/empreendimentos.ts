@@ -11,7 +11,6 @@ export type Empreendimento = {
   tipo: string;
   status: "Pré-lançamento" | "Lançamento" | "Em obras" | "Entregue";
   caixa: boolean;
-  featured?: boolean;
   imagem: string;
   galeria: { src: string; alt: string }[];
   descricao: string;
@@ -24,8 +23,7 @@ export const empreendimentos: Empreendimento[] = [
     nome: "Bëos Grand Central",
     tipo: "Residencial de alto padrão",
     status: "Em obras",
-    caixa: true,
-    featured: true,
+    caixa: false,
     imagem: "/images/beos/fachada-01.png",
     galeria: [
       { src: "/images/beos/fachada-02.png", alt: "Entrada Bëos" },
@@ -55,8 +53,8 @@ export const empreendimentos: Empreendimento[] = [
     nome: "Mon'Verdant",
     tipo: "Residencial",
     status: "Em obras",
-    caixa: true,
-    imagem: "/images/monverdant/fachada-01.png",
+    caixa: false,
+    imagem: "/images/monverdant/fachada-02.webp",
     galeria: [],
     descricao:
       "A natureza como vizinha. Empreendimento que integra verde e arquitetura em harmonia, com jardim vertical na fachada e áreas de lazer que privilegiam o contato com a natureza.",
@@ -68,7 +66,7 @@ export const empreendimentos: Empreendimento[] = [
     tipo: "Residencial",
     status: "Entregue",
     caixa: false,
-    imagem: "/images/taiji/fachada-01.png",
+    imagem: "/images/taiji/hero-vista-aerea.jpg",
     galeria: [],
     descricao:
       "O empreendimento que inaugurou a trajetória da Conbrain. Equilíbrio entre funcionalidade e design, entregue com excelência e dentro do prazo. Todas as unidades comercializadas.",
@@ -80,7 +78,7 @@ export const empreendimentos: Empreendimento[] = [
     tipo: "Residencial",
     status: "Entregue",
     caixa: false,
-    imagem: "/images/agave/fachada-01.png",
+    imagem: "/images/agave/hero-fachada-noturna.jpg",
     galeria: [],
     descricao:
       "Resistência e elegância inspiradas na natureza. Projeto consolidado no portfólio Conbrain, com todas as unidades entregues e moradores satisfeitos.",
@@ -90,25 +88,25 @@ export const empreendimentos: Empreendimento[] = [
     slug: "mastro",
     nome: "Mastro",
     tipo: "Residencial",
-    status: "Em obras",
-    caixa: true,
-    imagem: "/images/mastro/obra-drone.jpg",
+    status: "Pré-lançamento",
+    caixa: false,
+    imagem: "/images/mastro/hero-perspectiva.jpg",
     galeria: [],
     descricao:
-      "Empreendimento que traz um conceito náutico sofisticado para Porto União. Com obra em andamento e financiamento pela Caixa, o Mastro combina design diferenciado com acessibilidade.",
-    destaques: ["Conceito náutico", "Em construção", "Financiamento Caixa"],
+      "Onde a cidade encontra o rio. Um novo ponto de referência chegando a União da Vitória, com 30 pavimentos e vista definitiva para o Rio Iguaçu.",
+    destaques: ["Em breve", "União da Vitória", "Pré-lançamento"],
   },
   {
     slug: "pier-225",
     nome: "Pier 225",
-    tipo: "Residencial",
+    tipo: "Comercial",
     status: "Pré-lançamento",
     caixa: false,
-    imagem: "/images/pier225/logo.png",
+    imagem: "/images/pier225/hero-fachada.jpg",
     galeria: [],
     descricao:
-      "O mais novo projeto da Conbrain está chegando. Pier 225 traz uma proposta única com paleta que combina verde musgo, grafite e cobre — sofisticação e natureza em equilíbrio. Em breve, mais detalhes.",
-    destaques: ["Em breve", "Novo conceito", "Pré-lançamento"],
+      "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 21 pavimentos no centro da cidade.",
+    destaques: ["Em breve", "Hub corporativo", "Pré-lançamento"],
   },
 ];
 

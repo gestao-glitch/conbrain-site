@@ -1,8 +1,12 @@
 {
   "endereco_linha1": "Rua Visconde de Guarapuava, 110",
   "endereco_linha2": "Centro, Porto União - SC",
+  "stand_endereco": "Av. Getúlio Vargas, 418",
+  "stand_complemento": "Cidade Nova · Porto União (SC) · 89400-000",
   "telefone": "(42) 99875-6915",
   "horario": "Segunda a Sexta: 08:30 - 12:00 / 13:30 - 18:00",
+  "horario_dias": "Segunda a sexta",
+  "horario_horas": "8h30 às 12h e 13h30 às 18h",
   "whatsapp": "5542998756915",
   "instagram": "sigaconbrain"
 }

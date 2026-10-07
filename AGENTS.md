@@ -47,6 +47,23 @@ alterações em português. Com eles:
 - Tina CMS bloqueado: o TinaCloud não indexa a branch `main`, então `/admin` dá 404 em
   produção. Alternativa a avaliar: Decap CMS (git-based, sem serviço externo).
 
+## Canal de Denúncias (`/canal-de-denuncias`)
+
+Exigido pela Lei 14.457/22 e apurado pela CIPA. O formulário é **anônimo** e por
+isso **não** usa WhatsApp como os outros: envia por e-mail pelo servidor
+(`src/app/api/denuncia/route.ts`). Sem as variáveis abaixo o canal responde
+"temporariamente indisponível" — configure no EasyPanel (aba Environment do
+serviço) antes de publicar:
+
+- `DENUNCIA_EMAIL_DESTINO` — quem recebe os relatos (vírgula para mais de um)
+- `DENUNCIA_SMTP_USUARIO` — conta Google Workspace que envia
+- `DENUNCIA_SMTP_SENHA` — "senha de app" dessa conta (Conta Google → Segurança →
+  Verificação em duas etapas → Senhas de app). Nunca commitar.
+
+No computador, `DENUNCIA_MODO_TESTE=1` no `.env.local` monta o e-mail sem enviar.
+Endereços antigos do Wix (`/canaldedenuncias`, `/formulario`, `/taiji`…) são
+redirecionados em `next.config.ts`.
+
 ## Pendências
 
 1. Ligar as páginas aos JSONs de `content/` (pré-requisito para qualquer CMS).
