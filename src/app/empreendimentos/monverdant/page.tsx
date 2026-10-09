@@ -179,7 +179,7 @@ export default function MonVerdantLanding() {
             alt="Mon'Verdant — Casas Suspensas"
             width={602}
             height={321}
-            className="mb-10 hidden h-32 w-auto self-start md:block"
+            className="mb-8 h-24 w-auto self-start md:mb-10 md:h-32"
           />
           <span className="mb-6 inline-flex w-fit items-center gap-2.5 rounded-full border border-[#5B6B49]/40 bg-white/60 px-4 py-2 text-xs font-bold tracking-[0.14em] whitespace-nowrap text-[#4A5A3A] uppercase sm:tracking-[0.18em]">
             <span className="h-2 w-2 shrink-0 rounded-full bg-[#7A8F5C]" />
