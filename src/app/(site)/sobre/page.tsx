@@ -7,6 +7,7 @@ import { sobre } from "@/content";
 import { HistoryTimeline } from "./history-timeline";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/sobre" },
   title: "Sobre a Conbrain | Incorporadora em Porto União (SC)",
   description:
     "Conheça a história da Conbrain, o fundador Bruno Sucharski e os valores da incorporadora que nasceu em Porto União e cresce com o Vale do Iguaçu.",
@@ -36,7 +37,9 @@ export default function Sobre() {
           alt="Vista aérea da ponte sobre o rio Iguaçu, que une Porto União e União da Vitória"
           fill
           priority
-          sizes="100vw"
+          // No celular a abertura é alta e estreita e a foto é panorâmica:
+          // precisa de uma versão bem mais larga que a tela.
+          sizes="(max-width: 768px) 380vw, 100vw"
           quality={90}
           className="object-cover"
         />
@@ -51,7 +54,7 @@ export default function Sobre() {
         <div className="relative z-10 w-full px-6 pb-16 sm:px-10 lg:px-[120px] lg:pb-24">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center text-white lg:gap-7">
             <p
-              className="hero-in text-[10px] tracking-[0.28em] text-white/90 uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)] sm:text-xs sm:tracking-[0.4em]"
+              className="hero-in text-xs tracking-[0.22em] text-white/90 uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)] sm:text-xs sm:tracking-[0.4em]"
               style={{ animationDelay: "0.2s" }}
             >
               Sobre a Conbrain

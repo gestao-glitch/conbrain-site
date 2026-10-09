@@ -76,17 +76,21 @@ export function Carousel({
         &rsaquo;
       </button>
 
-      <div className="mt-4 flex justify-center gap-2">
+      <div className="mt-2 flex justify-center">
         {slides.map((slide, i) => (
           <button
             key={slide.src}
             type="button"
             onClick={() => goTo(i)}
             aria-label={`Ir para slide ${i + 1}`}
-            className={`h-2 w-2 rounded-full transition-all ${
-              i === index ? "scale-125 bg-[#AE5D32]" : "bg-white/30"
-            }`}
-          />
+            className="flex h-6 w-6 items-center justify-center"
+          >
+            <span
+              className={`block h-2 w-2 rounded-full transition-all ${
+                i === index ? "scale-125 bg-[#AE5D32]" : "bg-white/30"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

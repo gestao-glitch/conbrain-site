@@ -9,7 +9,8 @@ export function ClosingCta() {
         src="/images/home/fechamento-noturno.jpg"
         alt=""
         fill
-        sizes="100vw"
+        sizes="(max-width: 768px) 140vw, 100vw"
+        quality={90}
         className="object-cover"
       />
       <div aria-hidden="true" className="absolute inset-0 bg-black/50" />

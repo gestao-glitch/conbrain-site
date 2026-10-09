@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { contato } from "@/content";
+
+export const metadata: Metadata = {
+  title: "Página não encontrada | Conbrain",
+  description: "O endereço que você procurou não existe ou mudou de lugar.",
+};
 
 export default function NaoEncontrada() {
   return (

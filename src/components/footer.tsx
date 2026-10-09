@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { contato } from "@/content";
+import { BotaoPreferenciasCookies } from "./medicao-e-cookies";
 
 export function Footer() {
   return (
     <footer className="bg-chumbo-dark">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-12">
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-24 sm:pb-12 lg:px-12">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <Link href="/" className="block w-fit">
@@ -24,7 +25,7 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs tracking-[0.2em] text-verde uppercase">Navegação</h4>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-1">
               {[
                 { href: "/sobre", label: "Sobre" },
                 { href: "/#empreendimentos", label: "Empreendimentos" },
@@ -34,30 +35,42 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="w-fit text-sm text-white/70 transition-colors hover:text-white"
+                  className="flex min-h-8 w-fit items-center text-sm text-white/70 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>
               ))}
+              <BotaoPreferenciasCookies className="flex min-h-8 w-fit items-center text-sm text-white/70 transition-colors hover:text-white" />
             </div>
           </div>
 
           <div>
             <h4 className="mb-4 text-xs tracking-[0.2em] text-verde uppercase">Contato</h4>
-            <div className="flex flex-col gap-3 text-sm text-white/70">
-              <p>{contato.endereco_linha1}</p>
-              <p>{contato.endereco_linha2}</p>
+            <div className="flex flex-col gap-1 text-sm text-white/70">
+              <p>
+                <span className="text-white/90">Sede:</span> {contato.endereco_linha1}
+                <br />
+                {contato.endereco_linha2}
+              </p>
+              <p className="mt-2">
+                <span className="text-white/90">Stand comercial:</span> {contato.stand_endereco}
+                <br />
+                {contato.stand_complemento}
+              </p>
+              <p className="mt-2 mb-1">
+                {contato.horario_dias}, {contato.horario_horas}
+              </p>
               <a
                 href={`https://wa.me/${contato.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit transition-colors hover:text-verde"
+                className="flex min-h-8 w-fit items-center transition-colors hover:text-verde"
               >
                 {contato.telefone}
               </a>
               <a
                 href="mailto:comercial@conbrain.com.br"
-                className="w-fit transition-colors hover:text-verde"
+                className="flex min-h-8 w-fit items-center transition-colors hover:text-verde"
               >
                 comercial@conbrain.com.br
               </a>
@@ -65,7 +78,7 @@ export function Footer() {
                 href={`https://instagram.com/${contato.instagram}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit transition-colors hover:text-verde"
+                className="flex min-h-8 w-fit items-center transition-colors hover:text-verde"
               >
                 @{contato.instagram}
               </a>
@@ -82,7 +95,7 @@ export function Footer() {
             href={`https://instagram.com/${contato.instagram}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest text-white/55 uppercase transition-colors hover:text-verde"
+            className="flex min-h-8 items-center text-xs tracking-widest text-white/55 uppercase transition-colors hover:text-verde"
           >
             Instagram
           </a>

@@ -3,8 +3,8 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { WhatsAppButton } from "@/components/whatsapp-button";
-import { contato } from "@/content";
 import { GalleryCarousel } from "./gallery-carousel";
 import { VipForm } from "./vip-form";
 
@@ -22,6 +22,7 @@ const manrope = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/mastro" },
   title: "Mastro | Conbrain",
   description:
     "Um novo conceito náutico sofisticado chegando a União da Vitória. Cadastre-se e seja o primeiro a conhecer o Mastro.",
@@ -66,7 +67,7 @@ export default function MastroLanding() {
               30
             </span>
             <span className="w-px flex-1 bg-gradient-to-b from-[#C2A36B] via-[#C2A36B]/50 to-transparent" />
-            <span className="mt-4 text-[10px] tracking-[0.3em] text-[#C2A36B]/70 uppercase [writing-mode:vertical-rl]">
+            <span className="mt-4 text-xs tracking-[0.3em] text-[#C2A36B]/70 uppercase [writing-mode:vertical-rl]">
               pavimentos
             </span>
           </div>
@@ -133,7 +134,7 @@ export default function MastroLanding() {
             style={{ objectPosition: "50% 40%" }}
             priority
           />
-          <span className="absolute bottom-4 left-4 rounded-sm bg-[#041E37]/70 px-2.5 py-1 text-[11px] text-[#B9C3CF]">
+          <span className="absolute bottom-4 left-4 rounded-sm bg-[#041E37]/70 px-2.5 py-1 text-xs text-[#B9C3CF]">
             Imagem ilustrativa.
           </span>
         </div>
@@ -315,7 +316,7 @@ export default function MastroLanding() {
               },
               {
                 slug: "beos-grand-central",
-                nome: "Bëos Grand Central",
+                nome: "BËOS Grand Central",
                 status: "Em obras · Últimas unidades",
                 foto: "/images/beos/fachada-noturna-hd.jpg",
               },
@@ -354,47 +355,16 @@ export default function MastroLanding() {
       </section>
 
       {/* Rodapé */}
-      <footer
-        id="privacidade"
-        className="flex flex-col justify-between gap-10 bg-[#031629] px-8 py-14 text-[#B9C3CF] lg:px-[88px]"
-      >
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex flex-col gap-4">
-            <Image
-              src="/images/mastro/logo-white.png"
-              alt="Mastro"
-              width={900}
-              height={240}
-              className="h-11 w-auto self-start"
-            />
-            <Link
-              href="/"
-              className="text-xs tracking-widest text-[#8A94A3] uppercase transition-colors hover:text-white"
-            >
-              &larr; Voltar para a Conbrain
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2 text-sm sm:text-right">
-            <span className="font-bold text-white">
-              Uma realização Conbrain
-            </span>
-            <span>
-              Incorporadora Conbrain LTDA · CNPJ: 36.325.713/0001-72
-            </span>
-            <span>Telefone: {contato.telefone}</span>
-            <a href="/politica-de-privacidade" className="font-bold text-white">
-              Política de Privacidade
-            </a>
-          </div>
-        </div>
-        <div className="border-t border-[#1E3550] pt-6 text-xs leading-relaxed text-[#8A94A3]">
-          Empreendimento em fase de elaboração preliminar, sujeito a
-          alterações de projeto. Imagens meramente ilustrativas, com o
-          objetivo de representar a proposta do empreendimento. Esta página
-          não constitui oferta de venda.
-        </div>
-      </footer>
-      <WhatsAppButton />
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/mastro/logo-white.png" alt="Mastro" width={900} height={240} className="h-11 w-auto self-start" />
+        }
+        frase={"Onde a cidade encontra o rio."}
+        tema={{ fundo: "#031629", texto: "#B9C3CF", forte: "#FFFFFF", destaque: "#C2A36B", borda: "#1E3550" }}
+        mensagemWhatsApp={"Olá! Tenho interesse no Mastro."}
+        aviso={"Empreendimento em fase de elaboração preliminar, sujeito a alterações de projeto. Imagens meramente ilustrativas, com o objetivo de representar a proposta do empreendimento. Esta página não constitui oferta de venda. A comercialização terá início somente após o registro da incorporação no Cartório de Registro de Imóveis, nos termos da Lei nº 4.591/64."}
+      />
+      <WhatsAppButton mensagem="Olá! Tenho interesse no Mastro." />
     </div>
   );
 }

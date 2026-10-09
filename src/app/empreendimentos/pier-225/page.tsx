@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
 import { VipForm } from "./vip-form";
@@ -20,6 +21,7 @@ const sourceSans = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/pier-225" },
   title: "Pier 225 | Conbrain",
   description:
     "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 20 pavimentos no centro da cidade.",
@@ -32,7 +34,7 @@ const NUMEROS = [
   { valor: "20", label: "pavimentos" },
   { valor: "124", label: "vagas rotativas e privativas" },
   { valor: "3", label: "elevadores" },
-  { valor: "40 m²", label: "salas a partir de, integráveis" },
+  { valor: "40 m²", label: "área mínima das salas, que podem ser integradas" },
 ];
 
 const PUBLICOS = [
@@ -49,7 +51,7 @@ const PUBLICOS = [
   },
   {
     titulo: "Empresas e escritórios",
-    desc: "Salas a partir de 40 m² que podem ser integradas para uma operação sob medida.",
+    desc: "Salas a partir de 40 m² que podem ser integradas para uma operação sob medida.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9A5A2E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="7" width="18" height="13" rx="1" />
@@ -97,31 +99,39 @@ export default function Pier225Landing() {
             sizes="(max-width: 768px) 200vw, 110vw"
             quality={90}
             // No celular o recorte vai para a direita, mostrando o pôr do sol e o rio.
-            className="object-cover object-[78%_40%] md:object-[center_40%]"
+            className="object-cover object-[78%_40%] md:object-[center_12%]"
             priority
           />
           <div className="absolute inset-0 bg-[#18120E]/62" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-2/5 bg-gradient-to-t from-[#18120E]/80 to-transparent md:block" />
         </div>
-        <header className="relative flex items-center justify-between gap-3 px-5 py-8 sm:px-8 lg:px-24">
-          <div className="flex items-center gap-2 font-[family-name:var(--font-jost)] sm:gap-3.5">
-            <div className="flex flex-col gap-0.5">
-              <span className="text-xl leading-none font-light tracking-wide sm:text-3xl">
-                PIER
-              </span>
-              <span className="text-[6px] tracking-[1px] sm:text-[9px] sm:tracking-[2px]">
-                BUSINESS &amp; CARE
+        <header className="relative flex items-center justify-between gap-3 px-5 py-6 sm:px-8 sm:py-8 lg:px-24">
+          {/* Celular: versão em texto do logo, com "BUSINESS & CARE" embaixo
+              do logo inteiro, em tamanho legível (no arquivo oficial ficaria
+              com 6 px). Computador: arquivo oficial do logo. */}
+          <div className="flex shrink-0 flex-col gap-1.5 font-[family-name:var(--font-jost)] sm:hidden">
+            <div className="flex items-center gap-2">
+              <span className="text-lg leading-none font-light tracking-wide">PIER</span>
+              <span className="h-5 w-px bg-[#F5F2EE]/60" />
+              <span className="border border-[#F5F2EE]/70 px-1.5 py-0.5 text-lg leading-none font-light">
+                225
               </span>
             </div>
-            <span className="h-7 w-px bg-[#F5F2EE]/60 sm:h-10" />
-            <span className="border border-[#F5F2EE]/70 px-1.5 py-1 text-xl leading-none font-light sm:px-2.5 sm:text-3xl">
-              225
-            </span>
+            <span className="text-[9px] leading-none tracking-[1.5px]">BUSINESS &amp; CARE</span>
           </div>
+          <Image
+            src="/images/pier225/logo-pier-branco.png"
+            alt="Pier 225 Business & Care"
+            width={1400}
+            height={457}
+            priority
+            className="hidden h-16 w-auto sm:block"
+          />
           <ProjectNav atual="pier-225" tema={{ texto: "#F5F2EE", botaoFundo: "#9A5A2E", botaoTexto: "#FFFFFF", painelFundo: "#221A15", painelTexto: "#F5F2EE", painelBorda: "rgba(255,255,255,0.15)" }} ctaHref="#cadastro" ctaRadius="0px" />
         </header>
         <div className="relative flex flex-grow flex-col justify-center gap-8 px-8 py-16 sm:max-w-xl lg:max-w-3xl lg:px-24 lg:py-24">
-          <div className="flex items-center gap-3.5 font-[family-name:var(--font-jost)] text-sm tracking-[3px] text-[#C5824B]">
-            <span className="h-px w-12 bg-[#C5824B]" />
+          <div className="flex items-center gap-3 font-[family-name:var(--font-jost)] text-xs tracking-[2px] whitespace-nowrap text-[#C5824B] sm:gap-3.5 sm:text-sm sm:tracking-[3px]">
+            <span className="h-px w-8 shrink-0 bg-[#C5824B] sm:w-12" />
             <span>PRÉ-LANÇAMENTO · EM BREVE</span>
           </div>
           <h1 className="font-[family-name:var(--font-jost)] text-4xl leading-[1.05] font-normal tracking-tight lg:text-[76px]">
@@ -340,9 +350,9 @@ export default function Pier225Landing() {
             No coração de Porto União.
           </h2>
           <p className="text-lg leading-relaxed text-[#4F463F]">
-            Entre a Avenida João Pessoa, a Rua Coronel Amazonas e a Rua
-            Prudente de Morais, perto de escolas e com hospitais a menos de
-            5 minutos.
+            Em uma região central e bem conectada, perto de escolas e com
+            hospitais a menos de 5 minutos. O endereço será revelado no
+            lançamento.
           </p>
           <div className="flex gap-10 border-t border-[#C9BFB6] pt-3">
             <div className="flex flex-col gap-1">
@@ -419,7 +429,7 @@ export default function Pier225Landing() {
               },
               {
                 slug: "beos-grand-central",
-                nome: "Bëos Grand Central",
+                nome: "BËOS Grand Central",
                 status: "Em obras · Últimas unidades",
                 foto: "/images/beos/fachada-noturna-hd.jpg",
               },
@@ -457,74 +467,23 @@ export default function Pier225Landing() {
         </div>
       </section>
 
-      {/* Conbrain + rodapé */}
-      <footer className="flex flex-col gap-10 px-8 pt-18 pb-12 lg:px-24">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-3">
-          <div className="flex flex-col gap-3.5">
-            <span className="font-[family-name:var(--font-jost)] text-[13px] tracking-[3px] text-[#5E544C]">
-              REALIZAÇÃO
-            </span>
-            <Image
-              src="/images/logo/conbrain-logo-2025.png"
-              alt="Conbrain Incorporadora e Construtora"
-              width={1600}
-              height={674}
-              className="h-14 w-auto self-start"
-            />
-            <p className="text-base leading-relaxed text-[#4F463F]">
-              Empreendimentos guiados por relevância contextual, curadoria
-              de produto e viabilidade estratégica.
-            </p>
-            <p className="text-sm leading-relaxed text-[#5E544C]">
-              Incorporadora Conbrain LTDA · CNPJ 36.325.713/0001-72
-            </p>
-          </div>
-          <div className="flex flex-col gap-3.5">
-            <span className="font-[family-name:var(--font-jost)] text-[13px] tracking-[3px] text-[#5E544C]">
-              CONTATO
-            </span>
-            <a
-              href={waHref("Olá! Tenho interesse no Pier 225.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg"
-            >
-              WhatsApp {contato.telefone}
-            </a>
-            <a
-              href={`https://instagram.com/${contato.instagram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg"
-            >
-              Instagram @{contato.instagram}
-            </a>
-          </div>
-          <div className="flex flex-col gap-3.5">
-            <span className="font-[family-name:var(--font-jost)] text-[13px] tracking-[3px] text-[#5E544C]">
-              INFORMAÇÕES
-            </span>
-            <a href="/politica-de-privacidade" className="text-lg">
-              Política de Privacidade
-            </a>
-            <Link
-              href="/"
-              className="text-sm tracking-widest text-[#5E544C] uppercase hover:text-[#221A15]"
-            >
-              &larr; Voltar para a Conbrain
-            </Link>
-          </div>
-        </div>
-        <p className="border-t border-[#C9BFB6] pt-6 text-[13px] leading-relaxed text-[#5E544C]">
-          Empreendimento em fase de elaboração preliminar, sujeito a
-          alterações de projeto. Imagens meramente ilustrativas. Este
-          material tem caráter informativo e não constitui oferta de venda.
-          A comercialização terá início somente após o registro da
-          incorporação no Cartório de Registro de Imóveis, nos termos da
-          Lei nº 4.591/64.
-        </p>
-      </footer>
-      <WhatsAppButton />
+      {/* Rodapé */}
+      <RodapeEmpreendimento
+        marca={
+          <Image
+            src="/images/pier225/logo-pier-preto.png"
+            alt="Pier 225 Business & Care"
+            width={1400}
+            height={457}
+            className="h-16 w-auto self-start"
+          />
+        }
+        frase={"Onde negócios e pessoas se conectam."}
+        tema={{ fundo: "#E4DDD6", texto: "#4F463F", forte: "#221A15", destaque: "#9A5A2E", borda: "#C9BFB6", claro: true }}
+        mensagemWhatsApp={"Olá! Tenho interesse no Pier 225."}
+        aviso={"Empreendimento em fase de elaboração preliminar, sujeito a alterações de projeto. Imagens meramente ilustrativas. Este material tem caráter informativo e não constitui oferta de venda. A comercialização terá início somente após o registro da incorporação no Cartório de Registro de Imóveis, nos termos da Lei nº 4.591/64."}
+      />
+      <WhatsAppButton mensagem="Olá! Tenho interesse no Pier 225." />
     </div>
   );
 }

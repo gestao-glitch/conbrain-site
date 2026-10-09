@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
 import { AndamentoObra } from "./andamento-obra";
@@ -22,7 +23,8 @@ const dmSans = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Bëos Grand Central | Conbrain",
+  alternates: { canonical: "/empreendimentos/beos-grand-central" },
+  title: "BËOS Grand Central | Conbrain",
   description:
     "Studios, lofts e apartamentos de 1 a 3 dormitórios no centro de Porto União, para morar ou investir.",
 };
@@ -59,7 +61,7 @@ export default function BeosGrandCentralLanding() {
         <Link href="/" className="min-w-0 shrink">
           <Image
             src="/images/beos/logo.png"
-            alt="Bëos Grand Central — Conbrain"
+            alt="BËOS Grand Central — Conbrain"
             width={900}
             height={220}
             className="h-8 w-auto sm:h-11"
@@ -87,7 +89,7 @@ export default function BeosGrandCentralLanding() {
             </p>
             <div className="mt-2 flex flex-wrap gap-3.5">
               <a
-                href={waHref("Olá! Tenho interesse no Bëos Grand Central.")}
+                href={waHref("Olá! Tenho interesse no BËOS Grand Central.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full bg-[#7A9956] px-7.5 text-base font-bold text-[#1F201D]"
@@ -127,54 +129,55 @@ export default function BeosGrandCentralLanding() {
       </section>
 
       {/* Dois caminhos */}
-      <section className="flex flex-col gap-10 bg-[#EAE5E1] px-8 py-22 lg:px-[72px]">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <h2 className="max-w-xl font-[family-name:var(--font-outfit)] text-3xl leading-tight font-normal text-[#2A2B28] lg:text-[42px]">
+      <section className="flex flex-col gap-6 bg-[#EAE5E1] px-8 py-14 sm:gap-10 sm:py-22 lg:px-[72px]">
+        <div className="flex flex-col gap-4 sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <h2 className="max-w-xl font-[family-name:var(--font-outfit)] text-[26px] leading-tight font-normal text-[#2A2B28] sm:text-3xl lg:text-[42px]">
             Um empreendimento, dois motivos para escolher.
           </h2>
-          <p className="max-w-[460px] text-lg leading-relaxed text-[#55564F]">
+          <p className="max-w-[460px] text-base leading-relaxed text-[#55564F] sm:text-lg">
             O BËOS Grand Central atende tanto quem busca morar com
             inteligência quanto quem enxerga valor em investir com
             segurança.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6">
           <a
             href="#contato"
-            className="flex flex-col gap-4.5 rounded-[20px] bg-[#4E4F4A] p-11 text-[#EAE5E1]"
+            className="flex flex-col justify-between gap-3 rounded-2xl bg-[#4E4F4A] p-5 text-[#EAE5E1] sm:justify-start sm:gap-4.5 sm:rounded-[20px] sm:p-11"
           >
-            <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-[#B5CF95]/16 text-[#B5CF95]">
+            <div className="hidden h-13 w-13 items-center justify-center rounded-2xl bg-[#B5CF95]/16 text-[#B5CF95] sm:flex">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 17l6-6 4 4 8-8" />
                 <path d="M15 7h6v6" />
               </svg>
             </div>
-            <div className="font-[family-name:var(--font-outfit)] text-3xl font-normal">Quero investir</div>
-            <p className="max-w-[480px] text-lg leading-relaxed text-[#D9D4CF]">
+            <div className="font-[family-name:var(--font-outfit)] text-xl font-normal sm:text-3xl">Quero investir</div>
+            <p className="hidden max-w-[480px] text-lg leading-relaxed text-[#D9D4CF] sm:block">
               Studios e lofts compactos no centro de Porto União, perto de
               tudo o que o morador procura.
             </p>
-            <div className="mt-1.5 text-base font-bold text-[#B5CF95]">
-              Falar com um consultor &rarr;
+            <div className="text-sm font-bold text-[#B5CF95] sm:mt-1.5 sm:text-base">
+              <span className="sm:hidden">Falar com consultor &rarr;</span>
+              <span className="hidden sm:inline">Falar com um consultor &rarr;</span>
             </div>
           </a>
           <a
             href="#morar"
-            className="flex flex-col gap-4.5 rounded-[20px] bg-white p-11 text-[#2A2B28]"
+            className="flex flex-col justify-between gap-3 rounded-2xl bg-white p-5 text-[#2A2B28] sm:justify-start sm:gap-4.5 sm:rounded-[20px] sm:p-11"
           >
-            <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-[#EAE5E1] text-[#4F6B34]">
+            <div className="hidden h-13 w-13 items-center justify-center rounded-2xl bg-[#EAE5E1] text-[#4F6B34] sm:flex">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 11l9-7 9 7" />
                 <path d="M5 10v10h14V10" />
                 <path d="M10 20v-6h4v6" />
               </svg>
             </div>
-            <div className="font-[family-name:var(--font-outfit)] text-3xl font-normal">Quero morar</div>
-            <p className="max-w-[480px] text-lg leading-relaxed text-[#55564F]">
+            <div className="font-[family-name:var(--font-outfit)] text-xl font-normal sm:text-3xl">Quero morar</div>
+            <p className="hidden max-w-[480px] text-lg leading-relaxed text-[#55564F] sm:block">
               Um prédio que funciona como extensão da sua casa, no centro
               de Porto União. Mais praticidade e mais tempo para você.
             </p>
-            <div className="mt-1.5 text-base font-bold text-[#4F6B34]">
+            <div className="text-sm font-bold text-[#4F6B34] sm:mt-1.5 sm:text-base">
               Ver as áreas sociais &rarr;
             </div>
           </a>
@@ -182,8 +185,8 @@ export default function BeosGrandCentralLanding() {
       </section>
 
       {/* Conceito */}
-      <section className="flex flex-col items-center gap-14 bg-[#F5F2EF] px-8 py-24 lg:flex-row lg:px-[72px]">
-        <div className="h-[320px] w-full shrink-0 overflow-hidden rounded-[20px] lg:h-[440px] lg:w-[620px]">
+      <section className="flex flex-col items-center gap-8 bg-[#F5F2EF] px-8 py-14 sm:gap-14 sm:py-24 lg:flex-row lg:px-[72px]">
+        <div className="h-[220px] w-full shrink-0 overflow-hidden rounded-[20px] sm:h-[320px] lg:h-[440px] lg:w-[620px]">
           <Image
             src="/images/beos/studio-sala.jpg"
             alt="Sala de estar e cozinha de um studio decorado do BËOS"
@@ -194,7 +197,7 @@ export default function BeosGrandCentralLanding() {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-5 sm:gap-7">
           <div className="text-[13px] font-bold tracking-[0.22em] text-[#4F6B34] uppercase">
             O conceito
           </div>
@@ -202,11 +205,11 @@ export default function BeosGrandCentralLanding() {
             Viver melhor significa ter o{" "}
             <span className="font-bold">espaço certo, no lugar certo.</span>
           </h2>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:gap-x-8 sm:gap-y-6">
             {CONCEITO_ITENS.map((item) => (
-              <div key={item.titulo} className="flex flex-col gap-1.5 border-t border-[#CFC9C3] pt-4">
+              <div key={item.titulo} className="flex flex-col gap-1 border-t border-[#CFC9C3] pt-3 sm:gap-1.5 sm:pt-4">
                 <div className="text-base font-bold">{item.titulo}</div>
-                <div className="text-[15px] leading-relaxed text-[#55564F]">{item.desc}</div>
+                <div className="text-sm leading-relaxed text-[#55564F] sm:text-[15px]">{item.desc}</div>
               </div>
             ))}
           </div>
@@ -214,7 +217,7 @@ export default function BeosGrandCentralLanding() {
       </section>
 
       {/* Áreas sociais */}
-      <section id="morar" className="flex flex-col gap-12 bg-[#2A2B28] px-8 py-26 text-[#EAE5E1] lg:px-[72px]">
+      <section id="morar" className="flex flex-col gap-8 bg-[#2A2B28] px-8 py-14 text-[#EAE5E1] sm:gap-12 sm:py-26 lg:px-[72px]">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex flex-col gap-4">
             <div className="text-[13px] font-normal tracking-[0.22em] text-[#B5CF95] uppercase">
@@ -260,7 +263,7 @@ export default function BeosGrandCentralLanding() {
       </section>
 
       {/* Localização */}
-      <section id="localizacao" className="flex flex-col gap-12 bg-[#F5F2EF] px-8 py-26 lg:flex-row lg:items-center lg:px-[72px]">
+      <section id="localizacao" className="flex flex-col gap-8 bg-[#F5F2EF] px-8 py-14 sm:gap-12 sm:py-26 lg:flex-row lg:items-center lg:px-[72px]">
         <div className="flex flex-col gap-6 lg:w-[480px] lg:shrink-0">
           <div className="text-[13px] font-bold tracking-[0.22em] text-[#4F6B34] uppercase">
             Localização
@@ -288,7 +291,7 @@ export default function BeosGrandCentralLanding() {
             Abrir no Google Maps &rarr;
           </a>
         </div>
-        <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-[#C8C8BF] lg:ml-auto lg:h-[579px] lg:w-[600px] lg:shrink-0">
+        <div className="relative h-[260px] w-full overflow-hidden rounded-3xl bg-[#C8C8BF] sm:h-[380px] lg:ml-auto lg:h-[579px] lg:w-[600px] lg:shrink-0">
           <iframe
             title={`Mapa — ${ENDERECO}`}
             src={`https://www.google.com/maps?q=${encodeURIComponent(ENDERECO)}&output=embed`}
@@ -304,12 +307,12 @@ export default function BeosGrandCentralLanding() {
       <AndamentoObra />
 
       {/* Contato */}
-      <section id="contato" className="flex flex-col gap-14 bg-[#EAE5E1] px-8 py-26 lg:flex-row lg:px-[72px]">
-        <div className="flex flex-col gap-6 pt-4 lg:w-[560px] lg:shrink-0">
+      <section id="contato" className="flex flex-col gap-8 bg-[#EAE5E1] px-8 py-14 sm:gap-14 sm:py-26 lg:flex-row lg:px-[72px]">
+        <div className="flex flex-col gap-4 sm:gap-6 sm:pt-4 lg:w-[560px] lg:shrink-0">
           <div className="text-[13px] font-bold tracking-[0.22em] text-[#4F6B34] uppercase">
             Fale com a gente
           </div>
-          <h2 className="font-[family-name:var(--font-outfit)] text-4xl leading-tight font-normal lg:text-5xl">
+          <h2 className="font-[family-name:var(--font-outfit)] text-3xl leading-tight font-normal sm:text-4xl lg:text-5xl">
             Conheça mais detalhes do empreendimento.
           </h2>
           <p className="text-lg leading-relaxed text-[#55564F]">
@@ -317,7 +320,7 @@ export default function BeosGrandCentralLanding() {
             disponíveis e tirar suas dúvidas.
           </p>
           <a
-            href={waHref("Olá! Tenho interesse no Bëos Grand Central.")}
+            href={waHref("Olá! Tenho interesse no BËOS Grand Central.")}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 inline-flex h-14 w-fit items-center gap-2.5 rounded-full bg-[#2A2B28] px-7 text-base font-bold text-[#EAE5E1]"
@@ -328,14 +331,14 @@ export default function BeosGrandCentralLanding() {
             Prefiro falar pelo WhatsApp
           </a>
         </div>
-        <div className="flex-1 rounded-3xl bg-white p-11">
+        <div className="flex-1 rounded-3xl bg-white p-6 sm:p-11">
           <ContactForm />
         </div>
       </section>
 
       {/* Conheça também */}
-      <section className="bg-[#F5F2EF] px-8 py-20 lg:px-[72px]">
-        <div className="flex flex-col gap-10">
+      <section className="bg-[#F5F2EF] px-8 py-14 sm:py-20 lg:px-[72px]">
+        <div className="flex flex-col gap-8 sm:gap-10">
           <div className="flex flex-col gap-4">
             <div className="text-[13px] font-bold tracking-[0.22em] text-[#4F6B34] uppercase">
               Conheça também
@@ -344,7 +347,11 @@ export default function BeosGrandCentralLanding() {
               Outros empreendimentos da Conbrain.
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <CarrosselCelular
+            classeGrade="sm:grid sm:gap-6 md:grid-cols-2"
+            rotuloPontos="Ir para o empreendimento"
+            margem="-mx-8 px-8 scroll-px-8"
+          >
             {[
               {
                 slug: "upper-nest",
@@ -364,7 +371,7 @@ export default function BeosGrandCentralLanding() {
                 href={`/empreendimentos/${p.slug}`}
                 className="group flex flex-col overflow-hidden rounded-3xl bg-white transition-transform duration-300 hover:-translate-y-1"
               >
-                <div className="relative h-[240px] overflow-hidden">
+                <div className="relative h-[180px] overflow-hidden sm:h-[240px]">
                   <Image
                     src={p.foto}
                     alt={`Fachada do ${p.nome}`}
@@ -373,9 +380,9 @@ export default function BeosGrandCentralLanding() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex items-center justify-between gap-4 px-7 py-5">
+                <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-7 sm:py-5">
                   <div className="flex flex-col gap-1">
-                    <span className="font-[family-name:var(--font-outfit)] text-2xl font-bold">
+                    <span className="font-[family-name:var(--font-outfit)] text-xl font-bold sm:text-2xl">
                       {p.nome}
                     </span>
                     <span className="text-xs tracking-[0.12em] text-[#4F6B34] uppercase">
@@ -388,119 +395,21 @@ export default function BeosGrandCentralLanding() {
                 </div>
               </Link>
             ))}
-          </div>
+          </CarrosselCelular>
         </div>
       </section>
 
       {/* Rodapé */}
-      <footer className="bg-[#2E2F2B] text-[#D9D4CF]">
-        <div className="flex flex-col gap-10 px-8 pt-14 pb-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16 lg:px-[72px]">
-          <div className="flex flex-col gap-5">
-            <Image
-              src="/images/beos/logo.png"
-              alt="Bëos Grand Central — Conbrain"
-              width={900}
-              height={220}
-              className="h-11 w-auto self-start"
-            />
-            <p className="max-w-[300px] font-[family-name:var(--font-outfit)] text-lg leading-snug font-normal text-[#EAE5E1]">
-              Uma maneira mais inteligente de viver e investir no centro de
-              Porto União.
-            </p>
-            <div className="flex gap-2.5">
-              <a
-                href={`https://instagram.com/${contato.instagram}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-[#EAE5E1] transition-colors hover:border-[#B5CF95] hover:text-[#B5CF95]"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.6" />
-                </svg>
-              </a>
-              <a
-                href={waHref("Olá! Tenho interesse no Bëos Grand Central.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-[#EAE5E1] transition-colors hover:border-[#B5CF95] hover:text-[#B5CF95]"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.5A8.4 8.4 0 1 1 21 11.5z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div className="grid gap-8 text-[15px] leading-snug sm:grid-cols-2 sm:gap-14">
-            <div className="flex flex-col gap-3">
-              <div className="mb-1 text-xs font-bold tracking-[0.2em] text-[#B5CF95] uppercase">
-                Atendimento
-              </div>
-              <a
-                href={waHref("Olá! Tenho interesse no Bëos Grand Central.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-fit transition-colors hover:text-[#B5CF95]"
-              >
-                WhatsApp {contato.telefone}
-              </a>
-              <a
-                href="mailto:comercial@conbrain.com.br"
-                className="w-fit transition-colors hover:text-[#B5CF95]"
-              >
-                comercial@conbrain.com.br
-              </a>
-            </div>
-            <div className="flex flex-col gap-3">
-              <div className="mb-1 text-xs font-bold tracking-[0.2em] text-[#B5CF95] uppercase">
-                Plantão de vendas
-              </div>
-              <span>
-                {contato.stand_endereco}
-                <br />
-                {contato.stand_complemento}
-              </span>
-              <span>
-                {contato.horario_dias}, {contato.horario_horas}
-              </span>
-              <Link
-                href="/contato#visita"
-                className="mt-1 inline-flex h-10 w-fit items-center rounded-full bg-[#7A9956] px-5 text-sm font-bold text-[#1F201D] transition-colors hover:bg-[#B5CF95]"
-              >
-                Agendar visita
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5 border-t border-white/[0.14] bg-[#262724] px-8 py-6 text-[13px] leading-relaxed text-[#BDB8B2] lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-[72px]">
-          <p className="max-w-3xl">
-            &copy; {new Date().getFullYear()} Incorporadora Conbrain LTDA · CNPJ
-            36.325.713/0001-72. Imagens meramente ilustrativas, sujeitas a
-            alterações. Móveis e objetos de decoração não fazem parte do
-            imóvel.
-          </p>
-          <div className="flex shrink-0 flex-wrap items-center gap-x-6 gap-y-2 font-bold text-[#EAE5E1]">
-            <Link href="/politica-de-privacidade" className="hover:text-[#B5CF95]">
-              Privacidade
-            </Link>
-            <Link href="/" className="hover:text-[#B5CF95]">
-              &larr; Voltar para a Conbrain
-            </Link>
-            <a href="#topo" className="inline-flex items-center gap-1.5 hover:text-[#B5CF95]">
-              Topo
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 19V5M6 11l6-6 6 6" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </footer>
-      <WhatsAppButton />
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/beos/logo.png" alt="BËOS Grand Central" width={900} height={220} className="h-11 w-auto self-start" />
+        }
+        frase={"Uma maneira mais inteligente de viver e investir em Porto União."}
+        tema={{ fundo: "#2E2F2B", texto: "#D9D4CF", forte: "#EAE5E1", destaque: "#B5CF95", borda: "rgba(255,255,255,0.14)", faixa: "#262724" }}
+        mensagemWhatsApp={"Olá! Tenho interesse no BËOS Grand Central."}
+        aviso={"Imagens meramente ilustrativas, sujeitas a alterações. Móveis e objetos de decoração não fazem parte do imóvel."}
+      />
+      <WhatsAppButton mensagem="Olá! Tenho interesse no BËOS Grand Central." />
     </div>
   );
 }

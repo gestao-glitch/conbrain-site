@@ -105,7 +105,7 @@ export function Header() {
                         className="flex items-center justify-between gap-4 px-5 py-2.5 text-sm tracking-normal text-chumbo normal-case transition-colors hover:bg-[#f2f6e8]"
                       >
                         <span className="font-bold">{emp.nome}</span>
-                        <span className="text-[11px] tracking-wider text-chumbo/50 uppercase">
+                        <span className="text-xs tracking-wider text-chumbo/60 uppercase">
                           {emp.status}
                         </span>
                       </Link>
@@ -125,7 +125,7 @@ export function Header() {
             href={`https://wa.me/${contato.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center rounded-full bg-verde px-6 text-[11px] font-bold tracking-[0.15em] text-chumbo uppercase transition-colors hover:bg-verde-dark"
+            className="inline-flex h-10 items-center rounded-full bg-verde px-6 text-xs font-bold tracking-[0.14em] text-chumbo uppercase transition-colors hover:bg-verde-dark"
           >
             Fale conosco
           </a>
@@ -209,7 +209,7 @@ export function Header() {
                           >
                             <span className="font-bold">{emp.nome}</span>
                             <span
-                              className={`text-[10px] tracking-wider uppercase ${themed ? "text-chumbo/50" : "text-white/50"}`}
+                              className={`text-xs tracking-wider uppercase ${themed ? "text-chumbo/60" : "text-white/60"}`}
                             >
                               {emp.status}
                             </span>

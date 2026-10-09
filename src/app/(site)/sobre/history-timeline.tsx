@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 // ou "vertical" (linha descendo, que se preenche com a rolagem).
 const MODO_CELULAR: "horizontal" | "vertical" = "horizontal";
 
-const LABELS = ["2015", "2016", "2020", "2022", "2023", "2024", "2025", "2026"];
-const YEARS = [2015, 2016, 2020, 2022, 2023, 2024, 2025, 2026];
+const LABELS = ["2015", "2016", "2020", "2022", "2023", "2024", "2025", "2026", "2026"];
+const YEARS = [2015, 2016, 2020, 2022, 2023, 2024, 2025, 2026, 2026];
 
 const MARCOS = [
   {
@@ -37,6 +37,10 @@ const MARCOS = [
   {
     ano: "2025",
     texto: "10 anos e lançamento do Upper Nest.",
+  },
+  {
+    ano: "2026",
+    texto: "Entrega do Residencial Ágave.",
   },
   {
     ano: "Hoje",
@@ -109,7 +113,7 @@ export function HistoryTimeline() {
       >
         {displayYear}
       </div>
-      <div className="relative z-10 hidden gap-x-6 gap-y-10 sm:grid sm:grid-cols-4 lg:grid-cols-8 lg:gap-x-6 lg:gap-y-0">
+      <div className="relative z-10 hidden gap-x-6 gap-y-10 sm:grid sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 xl:gap-x-5 xl:gap-y-0">
         {MARCOS.map((m, i) => (
           <div
             key={m.ano}
@@ -284,15 +288,17 @@ function LinhaHorizontalCelular() {
         </ol>
       </div>
 
-      <div className="relative z-10 mt-8 flex gap-2">
+      <div className="relative z-10 mt-6 -ml-1 flex">
         {MARCOS.map((m, i) => (
           <button
             key={m.ano}
             type="button"
             aria-label={`Ir para ${m.ano}`}
             onClick={() => irPara(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === ativo ? "w-6 bg-verde" : "w-1.5 bg-white/25"}`}
-          />
+            className="flex h-6 min-w-6 items-center justify-center px-1"
+          >
+            <span className={`block h-1.5 rounded-full transition-all duration-300 ${i === ativo ? "w-6 bg-verde" : "w-1.5 bg-white/25"}`} />
+          </button>
         ))}
       </div>
     </div>

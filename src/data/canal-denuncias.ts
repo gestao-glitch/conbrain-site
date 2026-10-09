@@ -22,7 +22,7 @@ export const TIPOS_RELATO = [
 export const LOCAIS = [
   "Escritório / Matriz",
   "Residencial Ágave",
-  "Bëos + Mon'Verdant",
+  "BËOS + Mon'Verdant",
   "Upper Nest",
   "Outro canteiro de obra",
   "Outro local ou evento promovido pela empresa",

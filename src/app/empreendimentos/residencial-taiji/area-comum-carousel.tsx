@@ -74,7 +74,7 @@ export function AreaComumCarousel({ slides }: { slides: Slide[] }) {
               opacity: i === index ? 1 : 0.6,
             }}
           >
-            <Image src={s.src} alt="" fill sizes="160px" className="object-cover" />
+            <Image src={s.src} alt={s.alt} fill sizes="160px" className="object-cover" />
           </button>
         ))}
       </div>

@@ -66,15 +66,18 @@ export function CarrosselCelular({
         ))}
       </div>
 
-      <div className="mt-6 flex gap-2 sm:hidden">
+      {/* Pontinho pequeno no visual, mas com área de toque de 24 px. */}
+      <div className="mt-4 -ml-1 flex sm:hidden">
         {itens.map((_, i) => (
           <button
             key={i}
             type="button"
             aria-label={`${rotuloPontos} ${i + 1}`}
             onClick={() => irPara(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === ativo ? "w-6 bg-verde" : `w-1.5 ${corPonto}`}`}
-          />
+            className="flex h-6 min-w-6 items-center justify-center px-1"
+          >
+            <span className={`block h-1.5 rounded-full transition-all duration-300 ${i === ativo ? "w-6 bg-verde" : `w-1.5 ${corPonto}`}`} />
+          </button>
         ))}
       </div>
     </div>

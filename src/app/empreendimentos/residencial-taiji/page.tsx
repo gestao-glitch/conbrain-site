@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { contato } from "@/content";
 import { AreaComumCarousel, type Slide } from "./area-comum-carousel";
 
@@ -19,6 +20,7 @@ const dmSans = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/residencial-taiji" },
   title: "Residencial Taiji | Conbrain",
   description:
     "O equilíbrio entre a calma e o movimento. Oito apartamentos de 170 m², um por andar, no Centro de Porto União (SC) — 100% vendido e entregue.",
@@ -70,7 +72,7 @@ const PROXIMOS = [
   },
   {
     slug: "beos-grand-central",
-    nome: "Bëos Grand Central",
+    nome: "BËOS Grand Central",
     status: "Em obras · Últimas unidades",
     foto: "/images/beos/fachada-noturna-hd.jpg",
   },
@@ -94,14 +96,14 @@ export default function ResidencialTaijiLanding() {
             src="/images/taiji/hero-vista-aerea.jpg"
             alt="Vista aérea do Residencial Taiji com o Rio Iguaçu ao fundo"
             fill
-            sizes="100vw"
+            // Abertura alta no celular: a imagem é cortada nas laterais.
+            sizes="(max-width: 768px) 300vw, 100vw"
             className="object-cover"
             style={{ objectPosition: "60% 50%" }}
             priority
           />
           <video
             className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-            src="/videos/hero-home.mp4"
             poster="/videos/hero-home-poster.jpg"
             autoPlay
             muted
@@ -109,7 +111,11 @@ export default function ResidencialTaijiLanding() {
             playsInline
             preload="auto"
             aria-hidden="true"
-          />
+          >
+            {/* No celular, versão recortada na vertical (mesma nitidez, 3 MB em vez de 4,9 MB). */}
+            <source src="/videos/hero-home-celular-hd.mp4" type="video/mp4" media="(max-width: 767px)" />
+            <source src="/videos/hero-home.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-[#141311]/62 via-[#141311]/12 to-[#141311]/86" />
           <header className="relative z-10 flex flex-wrap items-center justify-between gap-4 px-6 py-8 lg:px-[120px]">
             <Image
@@ -122,15 +128,15 @@ export default function ResidencialTaijiLanding() {
             <ProjectNav atual="residencial-taiji" tema={{ texto: "#F4F1EB", botaoFundo: "#D8952B", botaoTexto: "#1F1E1C", painelFundo: "#2E2C29", painelTexto: "#F4F1EB", painelBorda: "rgba(255,255,255,0.15)" }} ctaHref={waHref("Olá! Vi o Residencial Taiji e gostaria de conhecer os próximos empreendimentos da Conbrain.")} />
           </header>
           <div className="absolute right-6 bottom-8 left-6 flex max-w-3xl flex-col items-start gap-4 lg:right-auto lg:bottom-[110px] lg:left-[120px] lg:gap-7">
-            <div className="flex items-center gap-3 rounded-full border border-[#D8952B] bg-[#141311]/55 px-5 py-2.5 text-sm font-normal tracking-[0.18em] text-[#F4F1EB] uppercase">
-              <span className="h-2 w-2 rounded-full bg-[#D8952B]" />
+            <div className="flex w-fit items-center gap-2.5 rounded-full border border-[#D8952B] bg-[#141311]/55 px-4 py-2 text-xs font-normal tracking-[0.1em] whitespace-nowrap text-[#F4F1EB] uppercase sm:gap-3 sm:px-5 sm:py-2.5 sm:text-sm sm:tracking-[0.18em]">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-[#D8952B]" />
               <span>Entregue em 2024 · 100% vendido</span>
             </div>
             <h1 className="font-[family-name:var(--font-jost)] text-3xl leading-[1.08] font-normal tracking-tight text-white lg:text-[76px] lg:leading-[1.05]">
               O equilíbrio entre a calma e o movimento.
             </h1>
             <p className="max-w-[680px] text-base leading-relaxed text-[#E9E4DA] lg:text-xl">
-              Residencial Taiji: oito apartamentos de 170 m², um por andar,
+              Residencial Taiji: oito apartamentos de 170&nbsp;m², um por andar,
               no Centro de Porto União (SC).
             </p>
           </div>
@@ -153,9 +159,9 @@ export default function ResidencialTaijiLanding() {
             pela tecnologia. O Taiji foi pensado para que esses dois lados
             convivam no dia a dia.
           </p>
-          <div className="font-[family-name:var(--font-jost)] flex items-center gap-5 text-lg font-bold tracking-[0.28em] uppercase">
+          <div className="font-[family-name:var(--font-jost)] flex items-center gap-3 text-[15px] font-bold tracking-[0.2em] whitespace-nowrap uppercase sm:gap-5 sm:text-lg sm:tracking-[0.28em]">
             <span>Modernidade</span>
-            <span className="h-px w-10 bg-[#D8952B]" />
+            <span className="h-px w-8 shrink-0 bg-[#D8952B] sm:w-10" />
             <span>Bem-estar</span>
           </div>
         </div>
@@ -234,7 +240,7 @@ export default function ResidencialTaijiLanding() {
               A tipologia
             </span>
             <h2 className="font-[family-name:var(--font-jost)] max-w-2xl text-3xl leading-[1.12] font-normal lg:text-[48px]">
-              170 m² com ambientes amplos e layout flexível.
+              170&nbsp;m² com ambientes amplos e layout flexível.
             </h2>
           </div>
           <div className="font-[family-name:var(--font-jost)] shrink-0 text-base font-bold tracking-[0.2em] uppercase lg:text-right">
@@ -372,24 +378,14 @@ export default function ResidencialTaijiLanding() {
       </section>
 
       {/* Rodapé */}
-      <footer className="flex flex-col items-center gap-6 bg-[#1F1E1C] px-6 py-12 text-center sm:flex-row sm:justify-between sm:text-right lg:px-[120px]">
-        <Image
-          src="/images/taiji/logo-white.png"
-          alt="Taiji Residencial"
-          width={800}
-          height={280}
-          className="h-11 w-auto self-center sm:self-auto"
-        />
-        <div className="flex flex-col gap-1.5 text-[15px] leading-relaxed text-[#CFC9BE]">
-          <span className="text-[#F4F1EB]">
-            Residencial Taiji é um empreendimento Conbrain.
-          </span>
-          <span>
-            {contato.endereco_linha1} · {contato.endereco_linha2}
-          </span>
-          <span>&copy; {new Date().getFullYear()} Conbrain</span>
-        </div>
-      </footer>
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/taiji/logo-white.png" alt="Residencial Taiji" width={800} height={280} className="h-14 w-auto self-start" />
+        }
+        frase={"O equilíbrio entre a calma e o movimento."}
+        tema={{ fundo: "#1F1E1C", texto: "#CFC9BE", forte: "#F4F1EB", destaque: "#E3A443", borda: "rgba(255,255,255,0.12)" }}
+        mensagemWhatsApp={"Olá! Vi o Residencial Taiji e gostaria de conhecer os próximos empreendimentos da Conbrain."}
+      />
     </div>
   );
 }

@@ -158,8 +158,8 @@ body {
   border-radius: 9999px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .cb-popup-corpo {
@@ -169,7 +169,7 @@ body {
   padding: 14px 16px 16px;
 }
 .cb-popup-fase {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;

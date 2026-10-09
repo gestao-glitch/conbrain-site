@@ -3,6 +3,8 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { LeadForm } from "./lead-form";
 import { contato } from "@/content";
 import { Carousel } from "./carousel";
@@ -22,6 +24,7 @@ const sourceSerif = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/upper-nest" },
   title: "Upper Nest — Seu novo lar em Porto União | Conbrain",
   description:
     "Apartamentos de 1 ou 2 dormitórios + home office, em região privilegiada, com financiamento facilitado pela Caixa.",
@@ -201,7 +204,7 @@ export default function UpperNestLanding() {
 
         <div className="mx-auto -mt-10 w-full max-w-6xl px-6 pb-12 lg:mt-0 lg:py-24 lg:px-7">
           <div className="flex max-w-[540px] flex-col gap-4 text-[#EFEAdc] sm:gap-5 lg:gap-6">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-bold tracking-[0.18em] text-[#F5F2E9] uppercase backdrop-blur-sm">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-[#F5F2E9] uppercase backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-[#AE5D32]" />
               Em obras · Porto União
             </span>
@@ -219,7 +222,7 @@ export default function UpperNestLanding() {
             </h1>
             <p className="max-w-[46ch] text-base leading-relaxed text-[#D8D3C4] lg:text-[1.06rem]">
               Apartamentos em região privilegiada, com financiamento facilitado
-              pela Caixa, a poucos minutos da Havan de Porto União e da UNC.
+              pela Caixa, ao lado da Havan de Porto União e perto da UNC.
             </p>
             <ul className="flex flex-wrap gap-2">
               {[
@@ -295,7 +298,7 @@ export default function UpperNestLanding() {
             },
             {
               titulo: "Região privilegiada",
-              desc: "Próximo à Havan de Porto União e à UNC, perto de tudo o que importa no dia a dia.",
+              desc: "Ao lado da Havan de Porto União e perto da UNC, com tudo o que importa no dia a dia.",
               icon: (
                 <>
                   <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z" />
@@ -549,7 +552,7 @@ export default function UpperNestLanding() {
             </h2>
             <p className="mb-5.5 max-w-[48ch] text-[#CFC9B9]">
               Preencha seus dados e um consultor entra em contato para
-              simular seu financiamento e agendar uma visita ao decorado.
+              simular seu financiamento e agendar uma visita à obra.
             </p>
             <p className="text-[13px] text-[#B7B1A0]">
               <strong className="text-[#F5F2E9]">Financiável até 90%</strong>{" "}
@@ -590,7 +593,7 @@ export default function UpperNestLanding() {
             {[
               {
                 slug: "beos-grand-central",
-                nome: "Bëos Grand Central",
+                nome: "BËOS Grand Central",
                 status: "Em obras · Últimas unidades",
                 foto: "/images/beos/fachada-noturna-hd.jpg",
               },
@@ -635,54 +638,17 @@ export default function UpperNestLanding() {
       </section>
 
       {/* Rodapé */}
-      <footer className="bg-[#4E4C48] px-6 pt-11 pb-8 text-[#B7B1A0] lg:px-7">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-5 border-b border-white/10 pb-6.5">
-            <Image
-              src="/images/upper-nest/logo/logo-light-completo-transparente.png"
-              alt="Upper Nest by BËOS — Conbrain"
-              width={1651}
-              height={785}
-              className="h-14 w-auto self-start"
-            />
-            <a
-              href="#lead-form"
-              className="inline-flex items-center gap-2 font-[family-name:var(--font-manrope)] text-[13.5px] font-bold text-[#EFEAdc]"
-            >
-              Falar com um consultor &rarr;
-            </a>
-          </div>
-          <div className="mb-3.5 flex flex-wrap gap-x-4.5 gap-y-1.5 font-[family-name:var(--font-manrope)] text-[13px] text-[#D8D3C4]">
-            <span>
-              {contato.endereco_linha1} — {contato.endereco_linha2}
-            </span>
-            <span>{contato.telefone}</span>
-            <span>comercial@conbrain.com.br</span>
-          </div>
-          <p className="font-[family-name:var(--font-manrope)] text-xs leading-relaxed">
-            Upper Nest é um empreendimento Conbrain. Imagens meramente
-            ilustrativas, sujeitas a alterações. Condições de financiamento
-            sujeitas à análise e aprovação da instituição financeira.
-            Consulte um consultor de vendas para mais informações.
-          </p>
-          <p className="mt-2 font-[family-name:var(--font-manrope)] text-xs">
-            Incorporadora Conbrain LTDA · CNPJ 36.325.713/0001-72
-          </p>
-        </div>
-      </footer>
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/upper-nest/logo/logo-light-completo-transparente.png" alt="Upper Nest by BËOS" width={1651} height={785} className="h-14 w-auto self-start" />
+        }
+        frase={"Simplifique. Conecte-se. Viva."}
+        tema={{ fundo: "#4E4C48", texto: "#D8D3C4", forte: "#F5F2E9", destaque: "#E39A6B", borda: "rgba(255,255,255,0.12)", faixa: "#45433F" }}
+        mensagemWhatsApp={"Olá! Tenho interesse no Upper Nest."}
+        aviso={"Imagens meramente ilustrativas, sujeitas a alterações. Condições de financiamento sujeitas à análise e aprovação da instituição financeira."}
+      />
 
-      {/* WhatsApp flutuante */}
-      <a
-        href={waHref("Olá! Tenho interesse no Upper Nest.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Falar no WhatsApp"
-        className="fixed right-5 bottom-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#AE5D32] text-white shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor" className="h-6.5 w-6.5">
-          <path d="M20.5 3.5A10.6 10.6 0 0 0 12.1 0C6 0 1 5 1 11.2c0 2 .5 3.9 1.5 5.6L1 24l7.4-1.9a11 11 0 0 0 3.8.7c6.1 0 11-5 11-11.2 0-3-1.2-5.8-3.3-7.9ZM12.1 20.5c-1.2 0-2.5-.3-3.5-.9l-.3-.1-3.7 1 1-3.6-.2-.3a9.3 9.3 0 0 1-1.4-4.9c0-5.1 4.2-9.3 9.4-9.3a9.3 9.3 0 0 1 6.6 2.8 9.1 9.1 0 0 1 2.7 6.5c0 5.1-4.2 9.3-9.3 9.3Zm5.1-6.9c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z" />
-        </svg>
-      </a>
+      <WhatsAppButton mensagem="Olá! Tenho interesse no Upper Nest." cor="#AE5D32" />
     </div>
   );
 }

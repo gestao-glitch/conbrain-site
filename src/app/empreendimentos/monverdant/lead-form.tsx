@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { registrarContato } from "@/lib/registrar-contato";
 import { contato } from "@/content";
 
 const OPCOES = ["Casa suspensa", "Penthouse"] as const;
@@ -9,7 +10,7 @@ const CAMPO =
   "w-full rounded-md border border-[#1E2B17]/15 px-3 py-2.5 text-sm text-[#1E2B17] placeholder:text-[#9a9a8f] focus:border-[#4A5A3A] focus:outline-none";
 
 const ROTULO =
-  "mb-1 block text-[10px] tracking-[0.2em] text-[#5c5c50] uppercase";
+  "mb-1 block text-xs tracking-[0.16em] text-[#5c5c50] uppercase";
 
 export function LeadForm() {
   const [interesse, setInteresse] = useState<(typeof OPCOES)[number]>("Casa suspensa");
@@ -26,6 +27,8 @@ export function LeadForm() {
       campo("telefone") ? `Meu WhatsApp: ${campo("telefone")}` : "",
       campo("email") ? `Meu e-mail: ${campo("email")}` : "",
     ].filter(Boolean);
+
+    registrarContato("Mon'Verdant — visita", { Nome: campo("nome"), WhatsApp: campo("telefone"), "E-mail": campo("email"), Interesse: interesse }, linhas.join("\n"));
 
     window.open(
       `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(linhas.join("\n"))}`,

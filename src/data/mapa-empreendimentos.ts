@@ -5,7 +5,7 @@
 // terreno e clique na primeira linha (os dois números são copiados).
 //
 // Posições tiradas do Google Maps a partir do endereço de cada empreendimento.
-// O Bëos e o Mon'Verdant têm o mesmo endereço (Av. Getúlio Vargas, 418): o
+// O BËOS e o Mon'Verdant têm o mesmo endereço (Av. Getúlio Vargas, 418): o
 // pino do Mon'Verdant está ~30 m ao lado para os dois poderem ser clicados.
 //
 // Mastro e Pier 225 ficam fora do mapa até o endereço ser divulgado. Não
@@ -53,7 +53,7 @@ export const PINOS_EMPREENDIMENTOS: PinoEmpreendimento[] = [
   },
   {
     slug: "beos-grand-central",
-    nome: "Bëos Grand Central",
+    nome: "BËOS Grand Central",
     fase: "Em obras",
     status: "Últimas unidades",
     local: "Cidade Nova · Porto União",

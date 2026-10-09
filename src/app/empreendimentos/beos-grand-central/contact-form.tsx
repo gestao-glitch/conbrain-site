@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { registrarContato } from "@/lib/registrar-contato";
 import { contato } from "@/content";
 
 const OPCOES = [
@@ -24,10 +25,12 @@ export function ContactForm() {
 
     const linhas = [
       `Olá! Meu nome é ${campo("nome")}.`,
-      `Tenho interesse no Bëos Grand Central para: ${opcao}.`,
+      `Tenho interesse no BËOS Grand Central para: ${opcao}.`,
       campo("telefone") ? `Meu WhatsApp: ${campo("telefone")}` : "",
       campo("email") ? `Meu e-mail: ${campo("email")}` : "",
     ].filter(Boolean);
+
+    registrarContato("BËOS Grand Central", { Nome: campo("nome"), WhatsApp: campo("telefone"), "E-mail": campo("email"), Interesse: OPCOES.find((o) => o.id === interesse)?.label ?? "" }, linhas.join("\n"));
 
     window.open(
       `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(linhas.join("\n"))}`,
@@ -70,7 +73,7 @@ export function ContactForm() {
           className={CAMPO}
         />
       </label>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-5 sm:grid-cols-2 sm:gap-4">
         <label className="flex flex-col gap-2 font-[family-name:var(--font-dm-sans)] text-sm font-bold text-[#2A2B28]">
           WhatsApp
           <input
@@ -94,13 +97,13 @@ export function ContactForm() {
         <div className="font-[family-name:var(--font-dm-sans)] text-sm font-bold text-[#2A2B28]">
           Seu interesse
         </div>
-        <div className="flex gap-2.5">
+        <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-2.5">
           {OPCOES.map((opt) => (
             <button
               key={opt.id}
               type="button"
               onClick={() => setInteresse(opt.id)}
-              className={`h-12 rounded-full px-5.5 font-[family-name:var(--font-dm-sans)] text-[15px] font-bold transition-colors ${
+              className={`h-12 rounded-full px-3 font-[family-name:var(--font-dm-sans)] text-sm font-bold whitespace-nowrap sm:px-5.5 sm:text-[15px] transition-colors ${
                 interesse === opt.id
                   ? "border border-[#2A2B28] bg-[#2A2B28] text-[#EAE5E1]"
                   : "border border-[#CFC9C3] bg-transparent text-[#2A2B28]"
@@ -127,7 +130,7 @@ export function ContactForm() {
       </label>
       <button
         type="submit"
-        className="h-14.5 rounded-full border-none bg-[#7A9956] font-[family-name:var(--font-dm-sans)] text-[17px] font-bold text-[#1F201D] transition-colors hover:bg-[#8DAE68]"
+        className="min-h-14 rounded-full border-none bg-[#7A9956] px-4 py-3 font-[family-name:var(--font-dm-sans)] text-base sm:min-h-14.5 sm:text-[17px] font-bold text-[#1F201D] transition-colors hover:bg-[#8DAE68]"
       >
         Quero conhecer o empreendimento
       </button>

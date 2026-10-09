@@ -114,7 +114,7 @@ export function InterioresCarousel({
               boxShadow: i === index ? "0 0 0 2px #C4A574" : "none",
             }}
           >
-            <Image src={s.src} alt="" fill sizes="140px" className="object-cover" />
+            <Image src={s.src} alt={s.alt} fill sizes="140px" className="object-cover" />
           </button>
         ))}
       </div>
@@ -150,7 +150,7 @@ export function AreaSocialCarousel({
             {titulo}
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-x-8">
+        <div className="grid grid-cols-2 gap-x-6 sm:grid-cols-3 sm:gap-x-8">
           {destaques.map((d) => (
             <div
               key={d}
@@ -194,7 +194,7 @@ export function AreaSocialCarousel({
                 boxShadow: i === index ? "0 0 0 2px #C4A574" : "none",
               }}
             >
-              <Image src={s.src} alt="" fill sizes="140px" className="object-cover" />
+              <Image src={s.src} alt={s.alt} fill sizes="140px" className="object-cover" />
             </button>
           ))}
         </div>

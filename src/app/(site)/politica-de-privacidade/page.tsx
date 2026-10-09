@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { contato } from "@/content";
+import { PIXEL_ID } from "@/lib/medicao-ids";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/politica-de-privacidade" },
   title: "Política de Privacidade | Conbrain",
   description:
     "Como a Conbrain trata os dados pessoais enviados pelo site, conforme a Lei Geral de Proteção de Dados (LGPD).",
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
 
 const ATUALIZACAO = "outubro de 2026";
 
-const SECOES = [
+const SECOES: { id?: string; titulo: string; texto: string[] }[] = [
   {
     titulo: "1. Quem somos",
     texto: [
@@ -26,7 +28,8 @@ const SECOES = [
   {
     titulo: "3. Como os dados são enviados",
     texto: [
-      "Ao enviar um formulário, o site abre o WhatsApp com uma mensagem pronta contendo os dados preenchidos. A mensagem só chega até nós se você confirmar o envio no próprio WhatsApp. O uso do WhatsApp está sujeito também à política de privacidade da Meta, empresa responsável pelo aplicativo.",
+      "Ao enviar um formulário, os dados preenchidos são encaminhados por e-mail à nossa equipe comercial, para que possamos responder mesmo que a conversa não continue pelo WhatsApp. Junto com eles, registramos a página do site em que o formulário foi enviado e, quando houver, a campanha ou o site pelo qual você chegou até nós, para entendermos quais canais funcionam melhor.",
+      "Em seguida, o site abre o WhatsApp com uma mensagem pronta contendo os mesmos dados. O uso do WhatsApp está sujeito também à política de privacidade da Meta, empresa responsável pelo aplicativo.",
     ],
   },
   {
@@ -43,9 +46,15 @@ const SECOES = [
     ],
   },
   {
-    titulo: "6. Cookies e serviços de terceiros",
+    id: "cookies",
+    titulo: "6. Cookies e medição de audiência",
     texto: [
-      "Algumas páginas exibem conteúdos de terceiros, como mapas do Google e o tour virtual de empreendimentos, que podem usar cookies próprios. Caso passemos a usar ferramentas de medição de audiência, esta política será atualizada para informar quais são e como desativá-las.",
+      PIXEL_ID
+        ? "Com a sua autorização, usamos o Google Analytics (Google) e o Meta Pixel (Meta, empresa do Facebook e do Instagram) para entender como o site é usado: quantas pessoas visitam, quais páginas acessam, de onde vieram e quantas entram em contato pelos formulários ou pelo WhatsApp. O Meta Pixel também nos ajuda a medir e direcionar os nossos anúncios no Facebook e no Instagram."
+        : "Com a sua autorização, usamos o Google Analytics (Google) para entender como o site é usado: quantas pessoas visitam, quais páginas acessam, de onde vieram e quantas entram em contato pelos formulários ou pelo WhatsApp.",
+      "Essas ferramentas usam cookies e identificadores do seu navegador e não recebem o seu nome, telefone ou e-mail. Elas só são ativadas se você clicar em “Aceitar” no aviso de cookies. Se recusar, o site funciona normalmente, sem nenhuma medição. Você pode mudar a sua escolha a qualquer momento pelo link “Preferências de cookies”, no rodapé de todas as páginas.",
+      "O Canal de Denúncias não tem nenhuma medição, para preservar o anonimato de quem o utiliza.",
+      "Algumas páginas também exibem conteúdos de terceiros, como mapas do Google e o tour virtual de empreendimentos, que podem usar cookies próprios conforme as políticas dessas empresas.",
     ],
   },
   {
@@ -72,7 +81,7 @@ const SECOES = [
       `Para dúvidas sobre esta política ou sobre os seus dados, escreva para comercial@conbrain.com.br ou chame no WhatsApp ${contato.telefone}.`,
     ],
   },
-] as const;
+];
 
 export default function PoliticaDePrivacidade() {
   return (
@@ -96,7 +105,7 @@ export default function PoliticaDePrivacidade() {
       <section className="bg-[#f7f7f5] px-6 py-16 sm:px-10 lg:px-[120px] lg:py-24">
         <div className="mx-auto flex max-w-3xl flex-col gap-10">
           {SECOES.map((secao) => (
-            <div key={secao.titulo} className="flex flex-col gap-3">
+            <div key={secao.titulo} id={secao.id} className="flex scroll-mt-28 flex-col gap-3">
               <h2 className="text-xl font-bold text-[#1f1d22]">
                 {secao.titulo}
               </h2>

@@ -47,20 +47,54 @@ alterações em português. Com eles:
 - Tina CMS bloqueado: o TinaCloud não indexa a branch `main`, então `/admin` dá 404 em
   produção. Alternativa a avaliar: Decap CMS (git-based, sem serviço externo).
 
+## E-mail do site (formulários e Canal de Denúncias)
+
+Todos os formulários de contato, além de abrir o WhatsApp, enviam o contato por
+e-mail em segundo plano (`src/app/api/contato/route.ts`), para nenhum contato se
+perder. O e-mail traz os campos, um link para chamar no WhatsApp, a página e por
+onde a pessoa chegou ao site (UTM/Instagram/Google). A configuração de envio é
+uma só para o site todo (`src/lib/email.ts`), no EasyPanel (aba Environment):
+
+- `SMTP_USUARIO` — conta Google Workspace que envia (ex.: site@conbrain.com.br)
+- `SMTP_SENHA` — "senha de app" dessa conta (Conta Google → Segurança →
+  Verificação em duas etapas → Senhas de app). Nunca commitar.
+- `CONTATO_EMAIL_DESTINO` — opcional; quem recebe os contatos (padrão
+  comercial@conbrain.com.br, vírgula para mais de um)
+
+Sem `SMTP_*`, o WhatsApp continua funcionando, mas os contatos não chegam por
+e-mail. No computador, `DENUNCIA_MODO_TESTE=1` (ou `EMAIL_MODO_TESTE=1`) no
+`.env.local` monta os e-mails e mostra no terminal sem enviar.
+
+## Medição de resultados (Google Analytics e Meta Pixel)
+
+Os códigos ficam em `src/lib/medicao-ids.ts` (`GA_ID`, `PIXEL_ID`; não são
+senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
+`src/components/medicao-e-cookies.tsx`, ligado no layout principal.
+
+- Só liga no domínio oficial (`conbrain.com.br` e `www.`): no computador e no
+  endereço provisório do servidor nada é medido (os eventos aparecem no console).
+- Só liga depois que a pessoa clica em "Aceitar" no aviso de cookies (LGPD). A
+  escolha pode ser mudada em "Preferências de cookies", nos rodapés.
+- O Canal de Denúncias nunca é medido e não mostra o aviso.
+- Conversões: `generate_lead` (formulário enviado, via `registrarContato`),
+  `contato_whatsapp` e `contato_email` (cliques em links wa.me/mailto). No Pixel:
+  `Lead` e `Contact`.
+- Usa as contas que a Conbrain já tinha (Analytics da conta "Conbrain" e o
+  "Pixel Conbrain CA1"), para manter o histórico. A Política de Privacidade cita o
+  Meta Pixel sozinha enquanto `PIXEL_ID` estiver preenchido (seção 6, `#cookies`).
+- A Meta ignora navegadores automáticos: para testar o Pixel com puppeteer, use
+  `--disable-blink-features=AutomationControlled`.
+
 ## Canal de Denúncias (`/canal-de-denuncias`)
 
 Exigido pela Lei 14.457/22 e apurado pela CIPA. O formulário é **anônimo** e por
 isso **não** usa WhatsApp como os outros: envia por e-mail pelo servidor
-(`src/app/api/denuncia/route.ts`). Sem as variáveis abaixo o canal responde
-"temporariamente indisponível" — configure no EasyPanel (aba Environment do
-serviço) antes de publicar:
+(`src/app/api/denuncia/route.ts`), com a mesma conta de envio acima (`SMTP_*`).
+Sem ela, ou sem a variável abaixo, o canal responde "temporariamente
+indisponível" — configure no EasyPanel antes de publicar:
 
 - `DENUNCIA_EMAIL_DESTINO` — quem recebe os relatos (vírgula para mais de um)
-- `DENUNCIA_SMTP_USUARIO` — conta Google Workspace que envia
-- `DENUNCIA_SMTP_SENHA` — "senha de app" dessa conta (Conta Google → Segurança →
-  Verificação em duas etapas → Senhas de app). Nunca commitar.
 
-No computador, `DENUNCIA_MODO_TESTE=1` no `.env.local` monta o e-mail sem enviar.
 Endereços antigos do Wix (`/canaldedenuncias`, `/formulario`, `/taiji`…) são
 redirecionados em `next.config.ts`.
 
@@ -72,4 +106,5 @@ O acesso é só pelo link direto, divulgado internamente.
 1. Ligar as páginas aos JSONs de `content/` (pré-requisito para qualquer CMS).
 2. Resolver o CMS para a equipe de marketing (provavelmente migrar para Decap).
 3. Apontar o domínio `conbrain.com.br` para `187.127.5.127`.
-4. Backend do formulário de contato (e-mail ou WhatsApp).
+4. Configurar `SMTP_*` no EasyPanel para os contatos chegarem por e-mail.
+5. Depois do domínio apontado: verificar `conbrain.com.br` no Gerenciador de Negócios da Meta.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contato" },
   title: "Contato | Conbrain",
   description:
     "Fale com a Conbrain pelo WhatsApp, e-mail ou visite o nosso stand comercial em Porto União (SC).",

@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
 import { LeadForm } from "./lead-form";
@@ -24,6 +25,7 @@ const workSans = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/monverdant" },
   title: "Mon'Verdant — Casas Suspensas | Conbrain",
   description:
     "O conforto de uma casa. A liberdade de um apartamento. Vista de 300° das paisagens das Gêmeas do Iguaçu, no centro de Porto União.",
@@ -108,9 +110,8 @@ const AMENIDADES = [
   "Espaço Fitness",
   "Pool Bar",
   "Praça Privativa",
-  "Brinquedoteca",
-  "Espaço Pet",
   "Sala de Jogos",
+  "Lounge",
 ];
 
 const AREA_SOCIAL_GALERIA = [
@@ -124,27 +125,6 @@ const AREA_SOCIAL_GALERIA = [
   { label: "Lounge", src: "/images/monverdant/area-social/lounge.jpg" },
 ];
 
-const FAQ = [
-  {
-    pergunta: "O que significa “Casas Suspensas”?",
-    resposta:
-      "É o conceito por trás dos apartamentos do Mon'Verdant: unidades pensadas para entregar o conforto e a tranquilidade de uma casa, com a segurança e a praticidade de um apartamento.",
-  },
-  {
-    pergunta: "Quantas unidades tem por andar?",
-    resposta:
-      "Apenas 2 unidades por andar, o que reforça a privacidade e a exclusividade de quem mora no Mon'Verdant.",
-  },
-  {
-    pergunta: "Existe vaga de garagem?",
-    resposta: "Sim, as unidades contam com até 3 vagas de garagem.",
-  },
-  {
-    pergunta: "Como funcionam as condições de pagamento?",
-    resposta:
-      "Consulte condições exclusivas de pagamento diretamente com o nosso time comercial.",
-  },
-];
 
 const enderecoMaps = encodeURIComponent(
   `${contato.stand_endereco}, ${contato.stand_complemento}`
@@ -201,6 +181,10 @@ export default function MonVerdantLanding() {
             height={321}
             className="mb-10 hidden h-32 w-auto self-start md:block"
           />
+          <span className="mb-6 inline-flex w-fit items-center gap-2.5 rounded-full border border-[#5B6B49]/40 bg-white/60 px-4 py-2 text-xs font-bold tracking-[0.14em] whitespace-nowrap text-[#4A5A3A] uppercase sm:tracking-[0.18em]">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#7A8F5C]" />
+            Em obras · Últimas unidades
+          </span>
           <h1 className="max-w-lg font-[family-name:var(--font-fraunces)] text-[36px] leading-[1.1] font-normal text-[#1E2B17] sm:text-[40px] lg:text-[56px]">
             {/* Cada frase em seu bloco, com quebras equilibradas */}
             <span className="block [text-wrap:balance]">O conforto de uma casa.</span>
@@ -477,7 +461,7 @@ export default function MonVerdantLanding() {
                   quality={90}
                   className="object-cover"
                 />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1E2B17]/70 to-transparent px-3 pt-6 pb-3 text-center text-xs tracking-widest text-white uppercase sm:pt-2 sm:pb-2 sm:text-[10px]">
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1E2B17]/70 to-transparent px-3 pt-6 pb-3 text-center text-xs tracking-widest text-white uppercase sm:pt-2 sm:pb-2">
                   {foto.label}
                 </span>
               </div>
@@ -486,40 +470,22 @@ export default function MonVerdantLanding() {
         </div>
       </section>
 
-      {/* Dúvidas + visita */}
-      <section id="duvidas" className="scroll-mt-20 bg-[#F2EFE1] px-6 py-20 lg:px-12 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_480px] lg:gap-20">
+      {/* Visita */}
+      <section id="visita" className="scroll-mt-20 bg-[#F2EFE1] px-6 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_480px] lg:items-center lg:gap-20">
           <div>
             <p className="mb-4 text-xs font-bold tracking-[0.25em] text-[#5B6B49] uppercase">
-              Dúvidas frequentes
+              Agende sua visita
             </p>
-            <h2 className="mb-10 font-[family-name:var(--font-fraunces)] text-[30px] leading-[1.12] font-normal text-[#1E2B17] lg:text-[44px]">
-              Perguntas sobre o Mon&apos;Verdant
-            </h2>
-            <div className="flex flex-col divide-y divide-[#1E2B17]/10 border-t border-b border-[#1E2B17]/10">
-              {FAQ.map((item) => (
-                <details key={item.pergunta} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between text-base font-bold text-[#1E2B17]">
-                    {item.pergunta}
-                    <span className="ml-4 text-[#5B6B49] transition-transform group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <p className="mt-3 text-base leading-relaxed text-[#4A4A3D]">
-                    {item.resposta}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-          <div id="visita" className="scroll-mt-24">
-            <h2 className="mb-3 font-[family-name:var(--font-fraunces)] text-[26px] leading-[1.15] font-normal text-[#1E2B17] lg:text-[32px]">
+            <h2 className="mb-6 max-w-xl font-[family-name:var(--font-fraunces)] text-[30px] leading-[1.12] font-normal text-[#1E2B17] lg:text-[44px]">
               Visite a obra e conheça cada detalhe
             </h2>
-            <p className="mb-6 text-base leading-relaxed text-[#4A4A3D]">
+            <p className="max-w-lg text-base leading-relaxed text-[#4A4A3D] lg:text-lg">
               Preencha seus dados e o nosso time comercial entra em contato
-              para agendar a sua visita.
+              para agendar a sua visita e apresentar as condições de pagamento.
             </p>
+          </div>
+          <div>
             <LeadForm />
           </div>
         </div>
@@ -546,7 +512,7 @@ export default function MonVerdantLanding() {
               },
               {
                 slug: "beos-grand-central",
-                nome: "Bëos Grand Central",
+                nome: "BËOS Grand Central",
                 status: "Em obras · Últimas unidades",
                 foto: "/images/beos/fachada-noturna-hd.jpg",
               },
@@ -585,28 +551,17 @@ export default function MonVerdantLanding() {
       </section>
 
       {/* Footer própria da landing */}
-      <footer className="bg-[#4A5A3A] px-6 py-10 text-center lg:px-12">
-        <Image
-          src="/images/monverdant/logo-white-recortado.png"
-          alt="Mon'Verdant"
-          width={587}
-          height={127}
-          className="mx-auto h-12 w-auto"
-        />
-        <Link
-          href="/"
-          className="mt-4 inline-block text-xs tracking-widest text-white/80 uppercase transition-colors hover:text-white"
-        >
-          &larr; Voltar para a Conbrain
-        </Link>
-        <p className="mt-6 text-xs text-white/65">
-          Uma realização Conbrain Incorporadora
-        </p>
-        <p className="mt-2 text-xs text-white/65">
-          Incorporadora Conbrain LTDA · CNPJ 36.325.713/0001-72
-        </p>
-      </footer>
-      <WhatsAppButton />
+      {/* Rodapé */}
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/monverdant/logo-white-recortado.png" alt="Mon'Verdant" width={587} height={127} className="h-10 w-auto self-start" />
+        }
+        frase={"O conforto de uma casa. A liberdade de um apartamento."}
+        tema={{ fundo: "#4A5A3A", texto: "rgba(255,255,255,0.8)", forte: "#FFFFFF", destaque: "#C7D1B3", borda: "rgba(255,255,255,0.15)", faixa: "#3F4E31" }}
+        mensagemWhatsApp={"Olá! Tenho interesse no Mon'Verdant."}
+        aviso={"Imagens meramente ilustrativas, sujeitas a alterações."}
+      />
+      <WhatsAppButton mensagem="Olá! Tenho interesse no Mon'Verdant." />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { contato } from "@/content";
+import { registrarContato } from "@/lib/registrar-contato";
 
 type Perfil = "morar" | "investir" | "visita" | "terreno" | "parceiro";
 
@@ -77,7 +78,7 @@ const PERFIS: {
 
 const EMPREENDIMENTOS_MORAR = [
   "Ainda não sei",
-  "Bëos Grand Central",
+  "BËOS Grand Central",
   "Mon'Verdant",
   "Upper Nest",
   "Mastro (lançamento)",
@@ -85,9 +86,11 @@ const EMPREENDIMENTOS_MORAR = [
 const EMPREENDIMENTOS_INVESTIR = [...EMPREENDIMENTOS_MORAR, "Pier 225 (lançamento)"];
 const LOCAIS_VISITA = [
   "Stand comercial (Av. Getúlio Vargas, 418)",
-  "Obra ou decorado de um empreendimento",
+  "Obra de um empreendimento",
 ];
-const HORARIOS = ["9h", "10h", "11h", "14h", "15h", "16h", "17h"];
+// Mesmos horários do atendimento (8h30 às 12h e 13h30 às 18h), com a última
+// visita de cada turno começando 1 hora antes do fechamento.
+const HORARIOS = ["8h30", "9h30", "10h30", "11h", "13h30", "14h30", "15h30", "16h30", "17h"];
 const DIAS_SEMANA = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
 
 /** Próximos dias úteis (seg a sex), a partir de amanhã. */
@@ -214,6 +217,29 @@ export function Atendimento({ canais }: { canais: ReactNode }) {
     if (campo("telefone")) linhas.push(`Meu WhatsApp: ${campo("telefone")}`);
     if (campo("email")) linhas.push(`Meu e-mail: ${campo("email")}`);
 
+    const extras: Record<string, string> =
+      perfil === "investir"
+        ? { Objetivo: objetivo }
+        : perfil === "visita"
+          ? { "Local da visita": local, "Dia e horário": `${dia}, às ${horario}` }
+          : perfil === "terreno"
+            ? { "Localização do terreno": campo("localizacao"), "Área (m²)": campo("area"), "Interesse no terreno": situacao }
+            : perfil === "parceiro"
+              ? { "Tipo de parceria": tipoParceiro, Empresa: campo("empresa") }
+              : {};
+    registrarContato(
+      `Contato — ${atual.titulo}`,
+      {
+        Nome: campo("nome"),
+        WhatsApp: campo("telefone"),
+        "E-mail": campo("email"),
+        Empreendimento: campo("empreendimento"),
+        ...extras,
+        Mensagem: campo("mensagem"),
+      },
+      linhas.join("\n")
+    );
+
     window.open(
       `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(linhas.join("\n"))}`,
       "_blank",
@@ -272,13 +298,13 @@ export function Atendimento({ canais }: { canais: ReactNode }) {
       </div>
 
       <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
-        <div className="order-2 flex flex-1 flex-col lg:order-1">{canais}</div>
+        <div className="order-2 flex min-w-0 flex-1 flex-col lg:order-1">{canais}</div>
 
         {/* Formulário */}
         <div
           id="formulario"
           role="tabpanel"
-          className="order-1 w-full shrink-0 scroll-mt-24 rounded-[20px] bg-[#333136] p-8 text-white lg:order-2 lg:w-[480px] lg:p-11"
+          className="order-1 w-full min-w-0 shrink-0 scroll-mt-24 rounded-[20px] bg-[#333136] p-8 text-white lg:order-2 lg:w-[480px] lg:p-11"
         >
           {enviado ? (
             <div className="flex flex-col items-start gap-4 py-6">
@@ -388,13 +414,13 @@ export function Atendimento({ canais }: { canais: ReactNode }) {
                                 : "border-white/25 hover:border-white/60"
                             }`}
                           >
-                            <span className="text-[11px] tracking-wider uppercase opacity-75">
+                            <span className="text-xs tracking-wide uppercase opacity-75">
                               {DIAS_SEMANA[d.getDay()]}
                             </span>
                             <span className="font-heading text-xl font-bold">
                               {String(d.getDate()).padStart(2, "0")}
                             </span>
-                            <span className="text-[11px] opacity-75">
+                            <span className="text-xs opacity-75">
                               {String(d.getMonth() + 1).padStart(2, "0")}
                             </span>
                           </button>

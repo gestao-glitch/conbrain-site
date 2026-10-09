@@ -20,13 +20,13 @@ export type Empreendimento = {
 export const empreendimentos: Empreendimento[] = [
   {
     slug: "beos-grand-central",
-    nome: "Bëos Grand Central",
+    nome: "BËOS Grand Central",
     tipo: "Residencial de alto padrão",
     status: "Em obras",
     caixa: false,
     imagem: "/images/beos/fachada-01.png",
     galeria: [
-      { src: "/images/beos/fachada-02.png", alt: "Entrada Bëos" },
+      { src: "/images/beos/fachada-02.png", alt: "Entrada BËOS" },
       { src: "/images/interiores/beos-sala.png", alt: "Sala Studio" },
       { src: "/images/interiores/beos-cozinha.png", alt: "Cozinha Studio" },
     ],

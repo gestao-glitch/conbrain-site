@@ -49,7 +49,8 @@ export default function Contato() {
           alt="Equipe da Conbrain durante a concretagem de uma laje do Upper Nest, com a cidade ao fundo"
           fill
           priority
-          sizes="100vw"
+          // No celular a abertura é alta e estreita: precisa de uma versão mais larga que a tela.
+          sizes="(max-width: 768px) 210vw, 100vw"
           quality={90}
           className="object-cover"
           style={{ objectPosition: "65% 55%" }}

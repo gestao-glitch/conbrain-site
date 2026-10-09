@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
+import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { contato } from "@/content";
 import { AreaSocialCarousel, InterioresCarousel } from "./photo-carousel";
 
@@ -20,6 +21,7 @@ const text = Lato({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empreendimentos/residencial-agave" },
   title: "Residencial Ágave | Conbrain",
   description:
     "Inspirado em um farol, feito para ser referência. Apartamentos de 84 a 126 m² na Av. João Pessoa, em Porto União — 100% vendido e entregue.",
@@ -49,13 +51,10 @@ const AREA_SOCIAL = [
 
 const AREA_SOCIAL_ITENS = [
   "Salão gourmet",
-  "Lounge",
   "Academia",
   "Brinquedoteca",
   "Playground",
   "Praça privativa",
-  "Bicicletário",
-  "Espaço pet",
 ];
 
 const LOCALIZACAO = [
@@ -74,7 +73,7 @@ const PROXIMOS = [
   },
   {
     slug: "beos-grand-central",
-    nome: "Bëos Grand Central",
+    nome: "BËOS Grand Central",
     status: "Em obras · Últimas unidades",
     foto: "/images/beos/fachada-noturna-hd.jpg",
   },
@@ -116,7 +115,7 @@ export default function ResidencialAgaveLanding() {
               </span>
             </h1>
             <p className="max-w-[430px] text-lg leading-relaxed font-normal text-[#C9BFAE]">
-              Apartamentos de 84 a 126 m² na Av. João Pessoa, com área social
+              Apartamentos de 84 a 126&nbsp;m² na Av. João Pessoa, com área social
               completa e 1 ou 2 vagas de garagem. Um projeto entregue e 100%
               vendido, que hoje é o lar de quem escolheu viver no centro.
             </p>
@@ -342,15 +341,6 @@ export default function ResidencialAgaveLanding() {
                 Ver todos os empreendimentos
               </Link>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-base text-[#E6DDCD]">
-              <span>WhatsApp {contato.telefone}</span>
-              <a href="https://www.conbrain.com.br" target="_blank" rel="noopener noreferrer">
-                www.conbrain.com.br
-              </a>
-              <a href={`https://instagram.com/${contato.instagram}`} target="_blank" rel="noopener noreferrer">
-                @{contato.instagram}
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -392,20 +382,14 @@ export default function ResidencialAgaveLanding() {
       </section>
 
       {/* Rodapé */}
-      <footer className="flex flex-col gap-8 bg-[#15130F] px-8 py-16 lg:px-20">
-        <div className="flex flex-wrap items-center justify-between gap-6">
-          <Image
-            src="/images/agave/logo-gold.png"
-            alt="Residencial Ágave"
-            width={1200}
-            height={340}
-            className="h-[62px] w-auto self-start"
-          />
-          <span className="text-sm tracking-[0.24em] text-[#A79D8D] uppercase">
-            Uma realização Conbrain Incorporadora
-          </span>
-        </div>
-      </footer>
+      <RodapeEmpreendimento
+        marca={
+          <Image src="/images/agave/logo-gold.png" alt="Residencial Ágave" width={1200} height={340} className="h-[52px] w-auto self-start" />
+        }
+        frase={"Inspirado em um farol. Feito para ser referência."}
+        tema={{ fundo: "#15130F", texto: "#A79D8D", forte: "#E6DDCD", destaque: "#C4A574", borda: "#332E27" }}
+        mensagemWhatsApp={"Olá! Vi o Residencial Ágave e gostaria de conhecer os próximos empreendimentos da Conbrain."}
+      />
     </div>
   );
 }

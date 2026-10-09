@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { registrarContato } from "@/lib/registrar-contato";
 import { contato } from "@/content";
 
 const CAMPO =
@@ -20,6 +21,8 @@ export function VipForm() {
       campo("telefone") ? `Meu WhatsApp: ${campo("telefone")}` : "",
       campo("email") ? `Meu e-mail: ${campo("email")}` : "",
     ].filter(Boolean);
+
+    registrarContato("Mastro — lista de interesse", { Nome: campo("nome"), WhatsApp: campo("telefone"), "E-mail": campo("email") }, linhas.join("\n"));
 
     window.open(
       `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(linhas.join("\n"))}`,

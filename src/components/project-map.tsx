@@ -22,7 +22,7 @@ function htmlPopup(p: PinoEmpreendimento) {
   return `
     <a class="cb-popup" href="/empreendimentos/${p.slug}">
       <span class="cb-popup-foto">
-        <img src="${fotoOtimizada(p.foto)}" alt="" class="${p.emBreve ? "cb-popup-blur" : ""}" />
+        <img src="${fotoOtimizada(p.foto)}" alt="${p.emBreve ? `Prévia desfocada do ${p.nome}` : `Fachada do ${p.nome}`}" class="${p.emBreve ? "cb-popup-blur" : ""}" />
         <span class="cb-popup-selo">${p.status}</span>
       </span>
       <span class="cb-popup-corpo">

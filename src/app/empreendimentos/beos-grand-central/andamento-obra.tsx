@@ -34,9 +34,9 @@ export function AndamentoObra() {
   return (
     <section
       id="obra"
-      className="flex flex-col gap-12 bg-[#4E4F4A] px-8 py-26 text-[#EAE5E1] lg:px-[72px]"
+      className="flex flex-col gap-8 bg-[#4E4F4A] px-8 py-14 text-[#EAE5E1] sm:gap-12 sm:py-26 lg:px-[72px]"
     >
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div className="flex flex-col gap-4 sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex flex-col gap-4">
           <div className="text-[13px] font-normal tracking-[0.22em] text-[#B5CF95] uppercase">
             Andamento da obra
@@ -93,7 +93,7 @@ export function AndamentoObra() {
         {temGrafico ? (
           <Grafico />
         ) : (
-          <figure className="relative m-0 min-h-[320px] overflow-hidden rounded-[20px] bg-[#2A2B28]">
+          <figure className="relative m-0 hidden min-h-[320px] overflow-hidden rounded-[20px] bg-[#2A2B28] sm:block">
             <Image
               src="/images/beos/obra/2026-10-laje-hd.jpg"
               alt="Equipe trabalhando no topo da estrutura do BËOS Grand Central"

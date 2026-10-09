@@ -113,7 +113,7 @@ export function VistaAndar() {
               </span>
             </button>
           )}
-          <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-black/55 px-3 py-1.5 text-[11px] tracking-[0.2em] text-white uppercase backdrop-blur-sm">
+          <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-black/55 px-3 py-1.5 text-xs tracking-[0.2em] text-white uppercase backdrop-blur-sm">
             {atual.metros} m de altura
           </span>
         </div>

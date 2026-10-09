@@ -5,13 +5,8 @@
 //
 // Configuração (variáveis de ambiente no EasyPanel):
 //   DENUNCIA_EMAIL_DESTINO   e-mail(s) que recebem os relatos, separados por vírgula
-//   DENUNCIA_SMTP_USUARIO    conta Google Workspace que envia (ex.: canal@conbrain.com.br)
-//   DENUNCIA_SMTP_SENHA      "senha de app" dessa conta (não é a senha normal)
-//   DENUNCIA_SMTP_HOST       opcional, padrão smtp.gmail.com
-//   DENUNCIA_SMTP_PORTA      opcional, padrão 465
-// Para testar no computador sem enviar e-mail: DENUNCIA_MODO_TESTE=1
+//   A conta que envia é a mesma dos formulários: veja src/lib/email.ts (SMTP_*).
 
-import nodemailer from "nodemailer";
 import {
   ANEXOS,
   GRAUS_CERTEZA,
@@ -20,6 +15,7 @@ import {
   SIM_NAO,
   TIPOS_RELATO,
 } from "@/data/canal-denuncias";
+import { emailModoTeste, escaparHtml, remetente, transporteEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -44,14 +40,6 @@ function gerarProtocolo() {
     (b) => alfabeto[b % alfabeto.length]
   ).join("");
   return `CD-${data}-${sufixo}`;
-}
-
-function escapar(texto: string) {
-  return texto
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 function erro(mensagem: string, status = 400) {
@@ -136,7 +124,7 @@ export async function POST(request: Request) {
 ${linhas
   .map(
     ([k, v]) =>
-      `<tr><td style="border-bottom:1px solid #ddd;vertical-align:top;width:220px;color:#555">${escapar(k)}</td><td style="border-bottom:1px solid #ddd;white-space:pre-wrap">${escapar(v)}</td></tr>`
+      `<tr><td style="border-bottom:1px solid #ddd;vertical-align:top;width:220px;color:#555">${escaparHtml(k)}</td><td style="border-bottom:1px solid #ddd;white-space:pre-wrap">${escaparHtml(v)}</td></tr>`
   )
   .join("\n")}
 </table>
@@ -144,26 +132,17 @@ ${linhas
 </div>`;
 
   const destino = process.env.DENUNCIA_EMAIL_DESTINO;
-  const usuario = process.env.DENUNCIA_SMTP_USUARIO;
-  const senha = process.env.DENUNCIA_SMTP_SENHA;
-  const modoTeste = process.env.DENUNCIA_MODO_TESTE === "1";
+  const usuario = remetente();
+  const modoTeste = emailModoTeste;
+  const transporte = transporteEmail();
 
-  if (!modoTeste && (!destino || !usuario || !senha)) {
-    console.error("[canal-denuncias] envio não configurado (variáveis DENUNCIA_* ausentes)");
+  if (!transporte || (!modoTeste && !destino)) {
+    console.error("[canal-denuncias] envio não configurado (DENUNCIA_EMAIL_DESTINO ou SMTP_* ausentes)");
     return erro(
       "O canal está temporariamente indisponível. Tente novamente mais tarde.",
       503
     );
   }
-
-  const transporte = modoTeste
-    ? nodemailer.createTransport({ jsonTransport: true })
-    : nodemailer.createTransport({
-        host: process.env.DENUNCIA_SMTP_HOST || "smtp.gmail.com",
-        port: Number(process.env.DENUNCIA_SMTP_PORTA || 465),
-        secure: Number(process.env.DENUNCIA_SMTP_PORTA || 465) === 465,
-        auth: { user: usuario, pass: senha },
-      });
 
   try {
     const resultado = await transporte.sendMail({

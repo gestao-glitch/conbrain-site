@@ -52,10 +52,10 @@ export function ProjectNav({
   return (
     <nav
       aria-label="Navegação do empreendimento"
-      className="flex shrink-0 items-center gap-2.5 text-[11px] font-bold tracking-[0.08em] whitespace-nowrap uppercase sm:gap-7 sm:text-xs sm:tracking-[0.15em]"
+      className="flex shrink-0 items-center gap-2 text-xs font-bold tracking-[0.06em] whitespace-nowrap uppercase sm:gap-7 sm:tracking-[0.15em]"
       style={{ color: tema.texto }}
     >
-      <Link href="/" className="transition-opacity hover:opacity-70">
+      <Link href="/" className="-my-3 py-3 transition-opacity hover:opacity-70 sm:my-0 sm:py-0">
         <span className="hidden sm:inline">&larr; Página inicial</span>
         <span className="sm:hidden">&larr; Início</span>
       </Link>
@@ -71,7 +71,7 @@ export function ProjectNav({
           aria-expanded={open}
           aria-label="Empreendimentos"
           onClick={() => setOpen((o) => (temHover() ? true : !o))}
-          className="flex items-center gap-2 uppercase transition-opacity hover:opacity-70"
+          className="-m-2 flex items-center gap-2 p-2 uppercase transition-opacity hover:opacity-70 sm:m-0 sm:p-0"
         >
           <span className="hidden sm:inline">Empreendimentos</span>
           <svg
@@ -125,7 +125,7 @@ export function ProjectNav({
                 <span className="font-bold">
                   {emp.nome}
                 </span>
-                <span className="text-[10px] tracking-wider opacity-60">
+                <span className="text-xs tracking-wider opacity-70">
                   {emp.slug === atual ? "Você está aqui" : emp.status}
                 </span>
               </Link>

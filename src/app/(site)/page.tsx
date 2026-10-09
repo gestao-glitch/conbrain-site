@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
@@ -5,6 +6,11 @@ import { ClosingCta } from "@/components/closing-cta";
 import { CountUp } from "@/components/count-up";
 import { ProjectMap } from "@/components/project-map";
 import { getEmpreendimento } from "@/data/empreendimentos";
+
+// Endereço oficial da página (evita o Google contar com e sem "www" como páginas diferentes).
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const PILARES = [
   {
@@ -145,13 +151,13 @@ export default function Home() {
           src="/videos/hero-home-poster.jpg"
           alt=""
           fill
-          sizes="100vw"
+          // Abertura alta no celular: a imagem é cortada nas laterais.
+          sizes="(max-width: 768px) 390vw, 100vw"
           className="object-cover"
           priority
         />
         <video
           className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-          src="/videos/hero-home.mp4"
           poster="/videos/hero-home-poster.jpg"
           autoPlay
           muted
@@ -159,7 +165,11 @@ export default function Home() {
           playsInline
           preload="auto"
           aria-hidden="true"
-        />
+        >
+          {/* No celular, versão recortada na vertical (mesma nitidez, 3 MB em vez de 4,9 MB). */}
+          <source src="/videos/hero-home-celular-hd.mp4" type="video/mp4" media="(max-width: 767px)" />
+          <source src="/videos/hero-home.mp4" type="video/mp4" />
+        </video>
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.4)_32%,rgba(0,0,0,0)_65%)]"
@@ -171,7 +181,7 @@ export default function Home() {
         <div className="relative z-10 w-full px-6 pb-28 sm:px-10 lg:pb-32">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center text-white lg:gap-8">
             <p
-              className="hero-in flex flex-col gap-1.5 text-[11px] font-bold tracking-[0.28em] text-white uppercase sm:block sm:tracking-[0.4em] [text-shadow:0_1px_14px_rgba(0,0,0,0.6)] sm:text-xs"
+              className="hero-in flex flex-col gap-1.5 text-xs font-bold tracking-[0.24em] text-white uppercase sm:block sm:tracking-[0.4em] [text-shadow:0_1px_14px_rgba(0,0,0,0.6)] sm:text-xs"
               style={{ animationDelay: "0.3s" }}
             >
               <span>Incorporadora e construtora</span>
@@ -196,7 +206,7 @@ export default function Home() {
         </div>
         <div
           aria-hidden="true"
-          className="hero-in absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] tracking-[0.3em] text-white/70 uppercase"
+          className="hero-in absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-xs tracking-[0.3em] text-white/70 uppercase"
           style={{ animationDelay: "1.4s" }}
         >
           Role
@@ -351,7 +361,7 @@ export default function Home() {
                     className="group relative flex h-[460px] flex-col overflow-hidden rounded-md text-white transition-transform duration-300 hover:-translate-y-1 lg:h-[500px]"
                     style={{ background: item.cor }}
                   >
-                    <div className="px-6 pt-7 text-[11px] tracking-[3px] whitespace-nowrap text-white/60 uppercase">
+                    <div className="px-6 pt-7 text-xs tracking-[2.5px] whitespace-nowrap text-white/70 uppercase">
                       {item.fase}
                     </div>
                     <div className="flex flex-1 items-end justify-between gap-3 px-6 pt-4 pb-6">
@@ -373,7 +383,7 @@ export default function Home() {
                     <div className="relative h-[190px] shrink-0 overflow-hidden bg-white/10 lg:h-[200px]">
                       <Image
                         src={item.foto}
-                        alt={emBreve ? "" : `Fachada do ${emp.nome}`}
+                        alt={emBreve ? `Prévia desfocada do ${emp.nome}, que será revelado no lançamento` : `Fachada do ${emp.nome}`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                         className={`object-cover transition-transform duration-700 ${
@@ -383,7 +393,7 @@ export default function Home() {
                         }`}
                       />
                       {!emBreve && (
-                        <span className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 text-[10px] tracking-[2px] whitespace-nowrap text-white uppercase backdrop-blur-sm">
+                        <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1.5 text-xs tracking-[1px] whitespace-nowrap text-white uppercase backdrop-blur-sm">
                           <span
                             className="h-[5px] w-[5px] shrink-0 rotate-45 bg-current"
                             aria-hidden="true"

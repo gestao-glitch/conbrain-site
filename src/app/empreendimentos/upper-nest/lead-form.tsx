@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { registrarContato } from "@/lib/registrar-contato";
 import { contato } from "@/content";
 
 const ROTULO =
@@ -23,6 +24,8 @@ export function LeadForm() {
       campo("telefone") ? `Meu WhatsApp: ${campo("telefone")}` : "",
       campo("email") ? `Meu e-mail: ${campo("email")}` : "",
     ].filter(Boolean);
+
+    registrarContato("Upper Nest — simulação de financiamento", { Nome: campo("nome"), WhatsApp: campo("telefone"), "E-mail": campo("email") }, linhas.join("\n"));
 
     window.open(
       `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(linhas.join("\n"))}`,

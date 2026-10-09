@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
+import { AnotarOrigem } from "@/components/anotar-origem";
+import { MedicaoECookies } from "@/components/medicao-e-cookies";
 import "./globals.css";
 
 const jost = Lato({
@@ -46,7 +48,11 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${jost.variable} ${sourceSans.variable} antialiased`}
     >
-      <body className="flex min-h-screen flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <AnotarOrigem />
+        {children}
+        <MedicaoECookies />
+      </body>
     </html>
   );
 }
