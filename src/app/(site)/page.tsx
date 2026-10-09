@@ -76,7 +76,7 @@ const EMPREENDIMENTOS_HOME = [
     cta: "Conhecer",
     cor: "#7a6242",
     detalhe: "rgba(255,255,255,0.75)",
-    foto: "/images/agave/hero-fachada-noturna.jpg",
+    foto: "/images/agave/hero-fachada-noturna-hd.jpg",
   },
   {
     slug: "beos-grand-central",
@@ -88,7 +88,7 @@ const EMPREENDIMENTOS_HOME = [
     cta: "Conhecer",
     cor: "#2a2b28",
     detalhe: "rgba(255,255,255,0.75)",
-    foto: "/images/beos/fachada-noturna.jpg",
+    foto: "/images/beos/fachada-noturna-hd.jpg",
   },
   {
     slug: "monverdant",
@@ -99,7 +99,7 @@ const EMPREENDIMENTOS_HOME = [
     cta: "Conhecer",
     cor: "#4a5a3a",
     detalhe: "rgba(255,255,255,0.75)",
-    foto: "/images/monverdant/fachada-02.webp",
+    foto: "/images/monverdant/fachada-mv.jpg",
   },
   {
     slug: "upper-nest",
@@ -237,10 +237,13 @@ export default function Home() {
           <AnimateOnScroll>
             <div className="relative h-[320px] overflow-hidden rounded-md sm:h-[420px] lg:h-[540px]">
               <Image
-                src="/images/sobre/vista-aerea-rio-iguacu.jpg"
+                src="/images/sobre/vista-aerea-rio-iguacu-hd.jpg"
                 alt="Vista aérea da ponte sobre o rio Iguaçu, que une Porto União e União da Vitória"
                 fill
-                sizes="(max-width: 1024px) 100vw, 560px"
+                // Quadro quase quadrado com foto panorâmica: a foto é cortada nas laterais,
+                // então pede uma versão bem mais larga que o quadro.
+                sizes="(max-width: 1024px) 200vw, 1200px"
+                quality={90}
                 className="object-cover object-[35%_center]"
               />
             </div>

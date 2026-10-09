@@ -32,6 +32,7 @@ export function GalleryCarousel({ slides }: { slides: Slide[] }) {
               alt={s.alt}
               fill
               sizes="100vw"
+              quality={90}
               className="object-cover"
             />
           </div>

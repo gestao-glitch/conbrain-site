@@ -52,13 +52,13 @@ const TIPOLOGIA = [
 ];
 
 const AREA_COMUM: Slide[] = [
-  { src: "/images/taiji/hall-entrada.jpg", caption: "Hall de entrada", alt: "Hall de entrada com poltronas e pé-direito duplo" },
-  { src: "/images/taiji/salao-festas.jpg", caption: "Salão de festas", alt: "Salão de festas com mesas e bar" },
-  { src: "/images/taiji/bar-churrasqueira.jpg", caption: "Bar e churrasqueira", alt: "Bar e churrasqueira do salão de festas" },
-  { src: "/images/taiji/cozinha-salao.jpg", caption: "Cozinha do salão", alt: "Cozinha do salão com marcenaria azul e bancada em granito" },
-  { src: "/images/taiji/espaco-zen.jpg", caption: "Espaço zen", alt: "Espaço zen com tapetes de yoga e jardim interno" },
-  { src: "/images/taiji/cobertura-jardim.jpg", caption: "Cobertura jardim", alt: "Cobertura jardim com cadeiras e vista para os morros" },
-  { src: "/images/taiji/vista-cobertura.jpg", caption: "Vista da cobertura", alt: "Terraço da cobertura com jardineiras e vista para o rio" },
+  { src: "/images/taiji/hall-entrada-hd.jpg", caption: "Hall de entrada", alt: "Hall de entrada com poltronas e pé-direito duplo" },
+  { src: "/images/taiji/salao-festas-hd.jpg", caption: "Salão de festas", alt: "Salão de festas com mesas e bar" },
+  { src: "/images/taiji/bar-churrasqueira-hd.jpg", caption: "Salão de festas", alt: "Bar com banquetas no salão de festas" },
+  { src: "/images/taiji/cozinha-salao-hd.jpg", caption: "Salão de festas", alt: "Cozinha do salão de festas com marcenaria azul e bancada em granito" },
+  { src: "/images/taiji/espaco-zen-hd.jpg", caption: "Espaço zen", alt: "Espaço zen com tapetes de yoga e jardim interno" },
+  { src: "/images/taiji/cobertura-jardim-hd.jpg", caption: "Cobertura jardim", alt: "Cobertura jardim com cadeiras e vista para os morros" },
+  { src: "/images/taiji/vista-cobertura-hd.jpg", caption: "Cobertura jardim", alt: "Terraço da cobertura com jardineiras e vista para o rio" },
 ];
 
 const PROXIMOS = [
@@ -72,13 +72,13 @@ const PROXIMOS = [
     slug: "beos-grand-central",
     nome: "Bëos Grand Central",
     status: "Em obras · Últimas unidades",
-    foto: "/images/beos/fachada-noturna.jpg",
+    foto: "/images/beos/fachada-noturna-hd.jpg",
   },
   {
     slug: "monverdant",
     nome: "Mon'Verdant",
     status: "Em obras · Últimas unidades",
-    foto: "/images/monverdant/fachada-02.webp",
+    foto: "/images/monverdant/fachada-mv.jpg",
   },
 ] as const;
 

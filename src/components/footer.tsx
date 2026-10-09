@@ -30,7 +30,6 @@ export function Footer() {
                 { href: "/#empreendimentos", label: "Empreendimentos" },
                 { href: "/contato", label: "Contato" },
                 { href: "/politica-de-privacidade", label: "Política de Privacidade" },
-                { href: "/canal-de-denuncias", label: "Canal de Denúncias" },
               ].map((link) => (
                 <Link
                   key={link.href}

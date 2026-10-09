@@ -58,56 +58,89 @@ export default function MastroLanding() {
       </header>
 
       {/* Hero */}
-      <section className="grid bg-[#041E37] text-white md:grid-cols-[50%_1fr]">
-        <div className="relative z-10 order-2 flex flex-col justify-between gap-10 px-8 py-14 md:order-none lg:px-[88px] lg:py-18">
-          <div className="flex flex-col gap-8">
+      <section className="grid bg-[#041E37] text-white lg:min-h-[calc(100svh-77px)] lg:grid-cols-[1fr_42%]">
+        <div className="relative order-2 flex flex-col justify-center px-6 py-10 sm:px-8 sm:py-14 lg:order-none lg:py-20 lg:pr-16 lg:pl-[150px]">
+          {/* O "mastro": linha dourada vertical com a altura do prédio */}
+          <div aria-hidden="true" className="absolute top-20 bottom-20 left-[88px] hidden flex-col items-center lg:flex">
+            <span className="mb-4 font-[family-name:var(--font-cormorant)] text-[28px] leading-none text-[#C2A36B]">
+              30
+            </span>
+            <span className="w-px flex-1 bg-gradient-to-b from-[#C2A36B] via-[#C2A36B]/50 to-transparent" />
+            <span className="mt-4 text-[10px] tracking-[0.3em] text-[#C2A36B]/70 uppercase [writing-mode:vertical-rl]">
+              pavimentos
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-6 lg:gap-8">
             <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-[#C2A36B]" />
-              <span className="text-[13px] font-normal tracking-[0.28em] text-[#C2A36B] uppercase">
+              <span className="h-px w-8 bg-[#C2A36B] lg:hidden" />
+              <span className="text-xs font-normal tracking-[0.2em] text-[#C2A36B] uppercase sm:text-[13px] sm:tracking-[0.28em]">
                 Em breve · União da Vitória
               </span>
             </div>
-            <h1 className="font-[family-name:var(--font-cormorant)] text-5xl leading-[1.05] font-normal text-white lg:text-[76px]">
+            <h1 className="font-[family-name:var(--font-cormorant)] text-[40px] leading-[1.05] font-normal text-white sm:text-5xl lg:text-[76px]">
               Onde a cidade
               <br />
               encontra o rio.
             </h1>
-            <p className="max-w-[480px] text-lg leading-relaxed text-[#B9C3CF]">
+            <p className="max-w-[480px] text-base leading-relaxed text-[#B9C3CF] sm:text-lg">
               Inspirado pela força das águas e pela verticalidade de seus 30
               pavimentos, o Mastro nasce para se tornar um novo ponto de
               referência no horizonte da cidade.
             </p>
-            <div className="flex flex-wrap items-center gap-4">
+            <dl className="grid max-w-[520px] grid-cols-3 border-y border-white/15">
+              {[
+                { valor: "30", label: "pavimentos" },
+                { valor: "2", label: "apartamentos por andar" },
+                { valor: "Vista", label: "definitiva para o Rio Iguaçu" },
+              ].map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex flex-col gap-1 py-4 ${i > 0 ? "border-l border-white/15 pl-4 sm:pl-5" : "pr-4"}`}
+                >
+                  <dt className="font-[family-name:var(--font-cormorant)] text-[28px] leading-none text-white">
+                    {item.valor}
+                  </dt>
+                  <dd className="text-xs leading-snug text-[#8A94A3]">{item.label}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href="#lista"
-                className="inline-flex h-14 items-center justify-center rounded-sm bg-[#EAE5E1] px-8 text-[15px] font-bold tracking-[0.04em] text-[#041E37]"
+                className="inline-flex h-14 items-center justify-center rounded-sm bg-[#C2A36B] px-8 text-[15px] font-bold tracking-[0.04em] text-[#041E37] transition-colors hover:bg-[#D4B880]"
               >
-                <span className="md:hidden">Quero saber mais</span>
-                <span className="hidden md:inline">
-                  Quero saber mais sobre o empreendimento
-                </span>
+                Quero entrar na lista de interesse
+              </a>
+              <a
+                href="#conceito"
+                className="text-sm font-bold tracking-[0.12em] text-[#EAE5E1] uppercase underline-offset-8 hover:underline"
+              >
+                Conhecer o conceito &darr;
               </a>
             </div>
           </div>
-          <span className="text-xs text-[#8A94A3]">
-            Imagem ilustrativa.
-          </span>
         </div>
-        <div className="relative order-1 min-h-[360px] md:order-none">
+
+        <div className="relative order-1 h-[44svh] min-h-[320px] lg:order-none lg:h-auto">
           <Image
-            src="/images/mastro/hero-perspectiva-mobile.webp"
-            alt="Perspectiva ilustrativa do edifício Mastro às margens do rio"
+            src="/images/mastro/hero-torre.jpg"
+            alt="Perspectiva ilustrativa do edifício Mastro, com o Rio Iguaçu e o morro ao fundo"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            quality={90}
             className="object-cover"
-            style={{ objectPosition: "65% 55%" }}
+            style={{ objectPosition: "50% 40%" }}
             priority
           />
+          <span className="absolute bottom-4 left-4 rounded-sm bg-[#041E37]/70 px-2.5 py-1 text-[11px] text-[#B9C3CF]">
+            Imagem ilustrativa.
+          </span>
         </div>
       </section>
 
       {/* Conceito */}
-      <section className="grid grid-cols-1 gap-12 bg-[#EAE5E1] px-8 py-16 sm:grid-cols-2 sm:items-center lg:gap-24 lg:px-[88px] lg:py-28">
+      <section id="conceito" className="scroll-mt-20 grid grid-cols-1 gap-12 bg-[#EAE5E1] px-8 py-16 sm:grid-cols-2 sm:items-center lg:gap-24 lg:px-[88px] lg:py-28">
         <div className="flex flex-col gap-7">
           <span className="text-[13px] font-bold tracking-[0.28em] text-[#6B5A3A] uppercase">
             O conceito
@@ -128,10 +161,12 @@ export default function MastroLanding() {
         </div>
         <div className="relative h-[280px] overflow-hidden rounded-sm sm:h-[380px] lg:h-[520px]">
           <Image
-            src="/images/mastro/vista-aerea-rio.jpg"
+            src="/images/mastro/vista-aerea-rio-hd.jpg"
             alt="Vista aérea do Rio Iguaçu e da cidade"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            // Quadro mais alto que a foto panorâmica: pede uma versão mais larga.
+            sizes="(max-width: 640px) 100vw, 900px"
+            quality={90}
             className="object-cover"
           />
         </div>
@@ -174,36 +209,39 @@ export default function MastroLanding() {
         </div>
         <GalleryCarousel
           slides={[
-            { src: "/images/mastro/piscina.jpg", alt: "Piscina" },
-            { src: "/images/mastro/salao-festas.jpg", alt: "Salão de festas" },
-            { src: "/images/mastro/living-apartamento.jpg", alt: "Living do apartamento" },
+            { src: "/images/mastro/piscina-hd.jpg", alt: "Piscina" },
+            { src: "/images/mastro/salao-festas-hd.jpg", alt: "Salão de festas" },
+            { src: "/images/mastro/living-apartamento-hd.jpg", alt: "Living do apartamento" },
           ]}
         />
         <div className="hidden gap-4 sm:grid sm:grid-cols-3 sm:[grid-template-rows:280px_280px]">
           <div className="relative min-h-[280px] overflow-hidden rounded-sm sm:col-span-2 sm:row-span-2">
             <Image
-              src="/images/mastro/piscina.jpg"
+              src="/images/mastro/piscina-hd.jpg"
               alt="Piscina"
               fill
-              sizes="(max-width: 768px) 100vw, 66vw"
+              sizes="(max-width: 768px) 100vw, 1000px"
+              quality={90}
               className="object-cover"
             />
           </div>
           <div className="relative min-h-[280px] overflow-hidden rounded-sm">
             <Image
-              src="/images/mastro/salao-festas.jpg"
+              src="/images/mastro/salao-festas-hd.jpg"
               alt="Salão de festas"
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
+              quality={90}
               className="object-cover"
             />
           </div>
           <div className="relative min-h-[280px] overflow-hidden rounded-sm">
             <Image
-              src="/images/mastro/living-apartamento.jpg"
+              src="/images/mastro/living-apartamento-hd.jpg"
               alt="Living do apartamento"
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
+              quality={90}
               className="object-cover"
             />
           </div>
@@ -214,10 +252,11 @@ export default function MastroLanding() {
       <section className="flex flex-col bg-white lg:flex-row">
         <div className="relative min-h-[320px] lg:w-[50%] lg:shrink-0">
           <Image
-            src="/images/mastro/fachada.jpg"
+            src="/images/mastro/fachada-hd.jpg"
             alt="Fachada do Mastro"
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 900px"
+            quality={90}
             className="object-cover"
           />
         </div>
@@ -226,7 +265,7 @@ export default function MastroLanding() {
             Um novo capítulo
           </span>
           <h2 className="font-[family-name:var(--font-cormorant)] text-4xl leading-[1.1] font-normal text-[#041E37] lg:text-[52px]">
-            A Conbrain atravessa o rio.
+            A Conbrain atravessa os trilhos.
           </h2>
           <p className="max-w-xl text-[17px] leading-relaxed text-[#4A4F57]">
             Depois de construir sua trajetória em Porto União, a Conbrain
@@ -278,7 +317,7 @@ export default function MastroLanding() {
                 slug: "beos-grand-central",
                 nome: "Bëos Grand Central",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/beos/fachada-noturna.jpg",
+                foto: "/images/beos/fachada-noturna-hd.jpg",
               },
             ].map((p) => (
               <Link

@@ -29,25 +29,25 @@ export const metadata: Metadata = {
 
 const AMBIENTES_SLIDES = [
   {
-    src: "/images/upper-nest/interiores/cozinha.jpg",
+    src: "/images/upper-nest/interiores/cozinha-hd.jpg",
     alt: "Cozinha planejada de um apartamento Upper Nest",
     titulo: "Cozinha planejada",
     legenda: "Acabamento sofisticado e integração com a área social.",
   },
   {
-    src: "/images/upper-nest/interiores/home-office.jpg",
+    src: "/images/upper-nest/interiores/home-office-hd.jpg",
     alt: "Home office integrado de um apartamento Upper Nest",
     titulo: "Home office integrado",
     legenda: "Espaço pensado para quem trabalha ou estuda em casa.",
   },
   {
-    src: "/images/upper-nest/interiores/sala-estar.jpg",
+    src: "/images/upper-nest/interiores/sala-estar-hd.jpg",
     alt: "Sala de estar decorada de um apartamento Upper Nest",
     titulo: "Sala de estar",
     legenda: "Ambiente integrado, iluminação planejada e acabamento em madeira.",
   },
   {
-    src: "/images/upper-nest/interiores/lavanderia.jpg",
+    src: "/images/upper-nest/interiores/lavanderia-hd.jpg",
     alt: "Lavanderia planejada de um apartamento Upper Nest",
     titulo: "Lavanderia planejada",
     legenda: "Espaço funcional com bancada e armários sob medida.",
@@ -56,37 +56,37 @@ const AMBIENTES_SLIDES = [
 
 const AREA_COMUM_SLIDES = [
   {
-    src: "/images/upper-nest/area-comum/academia.jpg",
+    src: "/images/upper-nest/area-comum/academia-hd.jpg",
     alt: "Academia do Upper Nest",
     titulo: "Academia",
     legenda: "Equipamentos completos para treinar sem sair de casa.",
   },
   {
-    src: "/images/upper-nest/area-comum/espaco-kids.jpg",
+    src: "/images/upper-nest/area-comum/espaco-kids-hd.jpg",
     alt: "Espaço Kids do Upper Nest",
     titulo: "Espaço Kids",
     legenda: "Um cantinho lúdico e seguro para a criançada.",
   },
   {
-    src: "/images/upper-nest/area-comum/garden-lounge.jpg",
+    src: "/images/upper-nest/area-comum/garden-lounge-hd.jpg",
     alt: "Garden Lounge do Upper Nest",
     titulo: "Living Garden Lounge",
     legenda: "Vista para a cidade, ao ar livre, para relaxar ao fim do dia.",
   },
   {
-    src: "/images/upper-nest/area-comum/mini-mercado.jpg",
+    src: "/images/upper-nest/area-comum/mini-mercado-hd.jpg",
     alt: "Mini-mercado do Upper Nest",
     titulo: "Mini-Mercado",
     legenda: "Praticidade para o dia a dia, sem sair do condomínio.",
   },
   {
-    src: "/images/upper-nest/area-comum/piscina.jpg",
+    src: "/images/upper-nest/area-comum/piscina-hd.jpg",
     alt: "Piscina do Upper Nest",
     titulo: "Piscina",
     legenda: "Área aquática coberta, para usar em qualquer estação.",
   },
   {
-    src: "/images/upper-nest/area-comum/salao-gourmet.jpg",
+    src: "/images/upper-nest/area-comum/salao-gourmet-hd.jpg",
     alt: "Salão gourmet do Upper Nest",
     titulo: "Salão Gourmet",
     legenda: "Espaço completo para reunir família e amigos.",
@@ -125,16 +125,6 @@ const AMENIDADES = [
     ),
   },
   {
-    label: "Aluguel de Bicicletas",
-    icon: (
-      <>
-        <circle cx="5.5" cy="17.5" r="3.5" />
-        <circle cx="18.5" cy="17.5" r="3.5" />
-        <path d="M5.5 17.5 9 9h4l4 4.5M9 9l2-3h3" />
-      </>
-    ),
-  },
-  {
     label: "Praça Privativa",
     icon: (
       <>
@@ -152,15 +142,6 @@ const AMENIDADES = [
         <circle cx="5.5" cy="11" r="1.4" />
         <circle cx="18.5" cy="11" r="1.4" />
         <path d="M12 22c-3 0-5-2-5-4.5S9 13 12 13s5 1.9 5 4.5S15 22 12 22Z" />
-      </>
-    ),
-  },
-  {
-    label: "Espaço Coworking",
-    icon: (
-      <>
-        <rect x="3" y="4" width="18" height="12" rx="1" />
-        <path d="M2 20h20M8 12l3-4 2 3 3-5" />
       </>
     ),
   },
@@ -200,44 +181,80 @@ export default function UpperNestLanding() {
       </header>
 
       {/* Hero */}
-      <section className="grid bg-[#4E4C48] md:grid-cols-[1.05fr_1fr]">
-        <div className="relative min-h-[340px] md:min-h-[680px]">
+      <section className="relative isolate flex flex-col overflow-hidden bg-[#141A24] lg:min-h-[calc(100svh-77px)] lg:justify-center">
+        {/* No celular a foto fica em cima, com o prédio inteiro; no computador
+            fica à direita e se funde com o azul da noite à esquerda, atrás do texto. */}
+        <div className="relative -z-10 h-[34svh] min-h-[260px] sm:h-[52svh] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[74%]">
           <Image
-            src="/images/upper-nest/fachada-01.png"
+            src="/images/upper-nest/fachada-noturna.jpg"
             alt="Render noturno da fachada do Upper Nest"
             fill
-            sizes="(max-width: 768px) 100vw, 55vw"
+            sizes="(max-width: 1024px) 100vw, 1920px"
+            quality={90}
             className="object-cover"
-            style={{ objectPosition: "50% 40%" }}
+            style={{ objectPosition: "50% 35%" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#14181e]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#141A24] via-transparent to-transparent lg:from-[#141A24]/70" />
+          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#141A24] via-[#141A24]/35 to-transparent lg:block lg:w-[55%]" />
         </div>
-        <div className="flex flex-col justify-center gap-7 px-7 py-16 text-[#EFEAdc] md:py-16 lg:px-10">
-          <Image
-            src="/images/upper-nest/logo/logo-light-completo-transparente.png"
-            alt="Upper Nest by BËOS — Conbrain"
-            width={1651}
-            height={785}
-            className="h-24 w-auto self-start lg:h-28"
-          />
-          <h1 className="font-[family-name:var(--font-manrope)] text-[40px] leading-[1.06] font-normal tracking-tight text-[#F5F2E9] lg:text-[56px]">
-            Um novo jeito de{" "}
-            <em className="font-[family-name:var(--font-manrope)] text-[1.15em] font-bold text-[#AE5D32] italic">
-              viver
-            </em>{" "}
-            em Porto União
-          </h1>
-          <p className="max-w-[46ch] text-[1.14rem] text-[#D8D3C4]">
-            Apartamentos de 1 ou 2 dormitórios + home office, em região
-            privilegiada, com financiamento facilitado pela Caixa. Vaga de
-            garagem inclusa, a poucos minutos da Havan de Porto União e da
-            UNC.
-          </p>
-          <p className="text-[13px] text-[#B7B1A0]">
-            <strong className="text-[#F5F2E9]">Financiável até 90%</strong> pela
-            Caixa Econômica Federal
-          </p>
+
+        <div className="mx-auto -mt-10 w-full max-w-6xl px-6 pb-12 lg:mt-0 lg:py-24 lg:px-7">
+          <div className="flex max-w-[540px] flex-col gap-4 text-[#EFEAdc] sm:gap-5 lg:gap-6">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-bold tracking-[0.18em] text-[#F5F2E9] uppercase backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#AE5D32]" />
+              Em obras · Porto União
+            </span>
+            <Image
+              src="/images/upper-nest/logo/logo-light-completo-transparente.png"
+              alt="Upper Nest by BËOS — Conbrain"
+              width={1651}
+              height={785}
+              className="h-20 w-auto self-start sm:h-28 lg:h-40"
+            />
+            <h1 className="font-[family-name:var(--font-manrope)] text-[24px] leading-[1.2] font-normal tracking-tight text-[#F5F2E9] [text-wrap:balance] sm:text-[26px] lg:text-[34px]">
+              Um novo jeito de{" "}
+              <em className="font-bold text-[#D9824F] italic">viver</em> em{" "}
+              <span className="whitespace-nowrap">Porto União</span>
+            </h1>
+            <p className="max-w-[46ch] text-base leading-relaxed text-[#D8D3C4] lg:text-[1.06rem]">
+              Apartamentos em região privilegiada, com financiamento facilitado
+              pela Caixa, a poucos minutos da Havan de Porto União e da UNC.
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {[
+                "1 ou 2 dormitórios + home office",
+                "Vaga de garagem inclusa",
+                "Financiável até 90% pela Caixa Econômica Federal",
+              ].map((fato) => (
+                <li
+                  key={fato}
+                  className="rounded-full bg-white/[0.08] px-3 py-1.5 text-xs text-[#EFEAdc] backdrop-blur-sm lg:px-3.5 lg:py-2 lg:text-[13px]"
+                >
+                  {fato}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="#lead-form"
+                className="inline-flex h-12 items-center justify-center gap-2.5 rounded-sm bg-[#AE5D32] px-6 font-[family-name:var(--font-manrope)] text-[15px] font-bold text-white transition-colors hover:bg-[#7C3F1E]"
+              >
+                Quero simular meu financiamento
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-[18px] w-[18px]">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a
+                href={waHref("Olá! Tenho interesse no Upper Nest.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center justify-center rounded-sm border border-white/30 px-6 font-[family-name:var(--font-manrope)] text-[15px] font-bold text-[#F5F2E9] transition-colors hover:border-white/60"
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -356,7 +373,7 @@ export default function UpperNestLanding() {
 
           <Carousel slides={AREA_COMUM_SLIDES} aspect="aspect-[4/3] lg:aspect-[16/9]" />
 
-          <div className="mt-11 grid grid-cols-2 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+          <div className="mt-11 grid grid-cols-2 gap-px border border-white/10 bg-white/10 sm:grid-cols-4">
             {AMENIDADES.map((item) => (
               <div
                 key={item.label}
@@ -398,10 +415,10 @@ export default function UpperNestLanding() {
             <ul className="mt-5.5 flex flex-col gap-3.5">
               {[
                 <>
+                  Ao lado da{" "}
                   <b className="font-[family-name:var(--font-manrope)] text-[#302E29]">
                     Havan de Porto União
-                  </b>{" "}
-                  a poucos minutos
+                  </b>
                 </>,
                 <>
                   <b className="font-[family-name:var(--font-manrope)] text-[#302E29]">
@@ -575,13 +592,13 @@ export default function UpperNestLanding() {
                 slug: "beos-grand-central",
                 nome: "Bëos Grand Central",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/beos/fachada-noturna.jpg",
+                foto: "/images/beos/fachada-noturna-hd.jpg",
               },
               {
                 slug: "monverdant",
                 nome: "Mon'Verdant",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/monverdant/fachada-02.webp",
+                foto: "/images/monverdant/fachada-mv.jpg",
               },
             ].map((p) => (
               <Link

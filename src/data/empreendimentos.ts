@@ -54,7 +54,7 @@ export const empreendimentos: Empreendimento[] = [
     tipo: "Residencial",
     status: "Em obras",
     caixa: false,
-    imagem: "/images/monverdant/fachada-02.webp",
+    imagem: "/images/monverdant/fachada-mv.jpg",
     galeria: [],
     descricao:
       "A natureza como vizinha. Empreendimento que integra verde e arquitetura em harmonia, com jardim vertical na fachada e áreas de lazer que privilegiam o contato com a natureza.",
@@ -78,10 +78,10 @@ export const empreendimentos: Empreendimento[] = [
     tipo: "Residencial",
     status: "Entregue",
     caixa: false,
-    imagem: "/images/agave/hero-fachada-noturna.jpg",
+    imagem: "/images/agave/hero-fachada-noturna-hd.jpg",
     galeria: [],
     descricao:
-      "Resistência e elegância inspiradas na natureza. Projeto consolidado no portfólio Conbrain, com todas as unidades entregues e moradores satisfeitos.",
+      "Inspirado em um farol, feito para ser referência. Projeto consolidado no portfólio Conbrain, com todas as unidades entregues e moradores satisfeitos.",
     destaques: ["100% vendido", "Entregue no prazo", "Portfólio consolidado"],
   },
   {
@@ -105,7 +105,7 @@ export const empreendimentos: Empreendimento[] = [
     imagem: "/images/pier225/hero-fachada.jpg",
     galeria: [],
     descricao:
-      "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 21 pavimentos no centro da cidade.",
+      "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 20 pavimentos no centro da cidade.",
     destaques: ["Em breve", "Hub corporativo", "Pré-lançamento"],
   },
 ];

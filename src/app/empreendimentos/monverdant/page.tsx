@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
 import { LeadForm } from "./lead-form";
 import { Carousel, CarouselSlide } from "./carousel";
+import { CarrosselCelular } from "@/components/carrossel-celular";
 import { VistaAndar } from "./vista-andar";
 
 const fraunces = Lato({
@@ -113,14 +114,14 @@ const AMENIDADES = [
 ];
 
 const AREA_SOCIAL_GALERIA = [
-  { label: "Piscina aquecida com raia", src: "/images/monverdant/area-social/piscina.webp" },
-  { label: "Espaço Fitness", src: "/images/monverdant/area-social/fitness.webp" },
-  { label: "Spa Lounge", src: "/images/monverdant/area-social/spa-lounge.webp" },
-  { label: "Sunset Grill", src: "/images/monverdant/area-social/sunset-grill.webp" },
-  { label: "Pool Bar", src: "/images/monverdant/area-social/pool-bar.webp" },
-  { label: "Praça Privativa", src: "/images/monverdant/area-social/praca-privativa.webp" },
-  { label: "Sala de Jogos", src: "/images/monverdant/area-social/sala-jogos.webp" },
-  { label: "Lounge", src: "/images/monverdant/area-social/lounge.webp" },
+  { label: "Piscina aquecida com raia", src: "/images/monverdant/area-social/piscina.jpg" },
+  { label: "Espaço Fitness", src: "/images/monverdant/area-social/fitness.jpg" },
+  { label: "Spa Lounge", src: "/images/monverdant/area-social/spa-lounge.jpg" },
+  { label: "Sunset Grill", src: "/images/monverdant/area-social/sunset-grill.jpg" },
+  { label: "Pool Bar", src: "/images/monverdant/area-social/pool-bar.jpg" },
+  { label: "Praça Privativa", src: "/images/monverdant/area-social/praca-privativa.jpg" },
+  { label: "Sala de Jogos", src: "/images/monverdant/area-social/sala-jogos.jpg" },
+  { label: "Lounge", src: "/images/monverdant/area-social/lounge.jpg" },
 ];
 
 const FAQ = [
@@ -137,10 +138,6 @@ const FAQ = [
   {
     pergunta: "Existe vaga de garagem?",
     resposta: "Sim, as unidades contam com até 3 vagas de garagem.",
-  },
-  {
-    pergunta: "Quando está prevista a entrega?",
-    resposta: "A previsão de entrega é para o final de 2027.",
   },
   {
     pergunta: "Como funcionam as condições de pagamento?",
@@ -185,10 +182,13 @@ export default function MonVerdantLanding() {
       <section className="grid md:grid-cols-2">
         <div className="relative min-h-[45vh] md:min-h-[85vh]">
           <Image
-            src="/images/monverdant/fachada-02.webp"
+            src="/images/monverdant/fachada-mv.jpg"
             alt="Fachada Mon'Verdant"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            // O quadro é mais alto que o render e corta as laterais: pede sempre a
+            // versão de 2000px, a maior que existe.
+            sizes="(max-width: 768px) 100vw, 2000px"
+            quality={90}
             className="object-cover"
             priority
           />
@@ -201,8 +201,12 @@ export default function MonVerdantLanding() {
             height={321}
             className="mb-10 hidden h-32 w-auto self-start md:block"
           />
-          <h1 className="max-w-lg font-[family-name:var(--font-fraunces)] text-[40px] leading-[1.08] font-normal text-[#1E2B17] lg:text-[56px]">
-            O conforto de uma casa. A liberdade de um apartamento.
+          <h1 className="max-w-lg font-[family-name:var(--font-fraunces)] text-[36px] leading-[1.1] font-normal text-[#1E2B17] sm:text-[40px] lg:text-[56px]">
+            {/* Cada frase em seu bloco, com quebras equilibradas */}
+            <span className="block [text-wrap:balance]">O conforto de uma casa.</span>
+            <span className="mt-1 block text-[#5B6B49] italic [text-wrap:balance]">
+              A liberdade de um apartamento.
+            </span>
           </h1>
           <p className="mt-5 max-w-md text-base leading-relaxed text-[#3F3F33] lg:text-lg">
             Vista de 300° das paisagens das Gêmeas do Iguaçu, no centro de
@@ -328,8 +332,18 @@ export default function MonVerdantLanding() {
                 rel="noopener noreferrer"
                 className="mt-2 w-fit text-xs font-bold tracking-widest text-[#C7D1B3] uppercase underline underline-offset-4"
               >
-                Ver no Maps
+                Abrir no Google Maps
               </a>
+            </div>
+            <div className="relative h-[320px] overflow-hidden rounded-lg border border-white/15 lg:col-span-2 lg:h-[420px]">
+              <iframe
+                title={`Mapa — ${contato.stand_endereco}, ${contato.stand_complemento}`}
+                src={`https://www.google.com/maps?q=${enderecoMaps}&output=embed`}
+                className="absolute inset-0 h-full w-full"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
@@ -448,7 +462,7 @@ export default function MonVerdantLanding() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <CarrosselCelular classeGrade="sm:grid sm:grid-cols-4 sm:gap-4" rotuloPontos="Ir para a foto">
             {AREA_SOCIAL_GALERIA.map((foto) => (
               <div
                 key={foto.src}
@@ -458,15 +472,17 @@ export default function MonVerdantLanding() {
                   src={foto.src}
                   alt={foto.label}
                   fill
-                  sizes="(max-width: 640px) 50vw, 25vw"
+                  // Quadro quadrado com render 4:3: pede uma versão um pouco mais larga.
+                  sizes="(max-width: 640px) 110vw, 34vw"
+                  quality={90}
                   className="object-cover"
                 />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1E2B17]/70 to-transparent px-3 py-2 text-center text-[10px] tracking-widest text-white uppercase">
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1E2B17]/70 to-transparent px-3 pt-6 pb-3 text-center text-xs tracking-widest text-white uppercase sm:pt-2 sm:pb-2 sm:text-[10px]">
                   {foto.label}
                 </span>
               </div>
             ))}
-          </div>
+          </CarrosselCelular>
         </div>
       </section>
 
@@ -532,7 +548,7 @@ export default function MonVerdantLanding() {
                 slug: "beos-grand-central",
                 nome: "Bëos Grand Central",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/beos/fachada-noturna.jpg",
+                foto: "/images/beos/fachada-noturna-hd.jpg",
               },
             ].map((p) => (
               <Link
@@ -569,7 +585,7 @@ export default function MonVerdantLanding() {
       </section>
 
       {/* Footer própria da landing */}
-      <footer className="bg-[#1E2B17] px-6 py-10 text-center lg:px-12">
+      <footer className="bg-[#4A5A3A] px-6 py-10 text-center lg:px-12">
         <Image
           src="/images/monverdant/logo-white-recortado.png"
           alt="Mon'Verdant"
@@ -579,14 +595,14 @@ export default function MonVerdantLanding() {
         />
         <Link
           href="/"
-          className="mt-4 inline-block text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white"
+          className="mt-4 inline-block text-xs tracking-widest text-white/80 uppercase transition-colors hover:text-white"
         >
           &larr; Voltar para a Conbrain
         </Link>
-        <p className="mt-6 text-xs text-white/30">
+        <p className="mt-6 text-xs text-white/65">
           Uma realização Conbrain Incorporadora
         </p>
-        <p className="mt-2 text-xs text-white/30">
+        <p className="mt-2 text-xs text-white/65">
           Incorporadora Conbrain LTDA · CNPJ 36.325.713/0001-72
         </p>
       </footer>

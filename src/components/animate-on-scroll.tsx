@@ -36,7 +36,9 @@ export function AnimateOnScroll({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.15 }
+      // 0.1: basta a ponta do cartão seguinte aparecer num carrossel horizontal
+      // para ele já surgir na borda, indicando que dá para arrastar.
+      { threshold: 0.1 }
     );
 
     observer.observe(el);

@@ -22,7 +22,7 @@ const text = Lato({
 export const metadata: Metadata = {
   title: "Residencial Ágave | Conbrain",
   description:
-    "Resistência e elegância inspiradas na natureza. Apartamentos de 84 a 126 m² na Av. João Pessoa, em Porto União — 100% vendido e entregue.",
+    "Inspirado em um farol, feito para ser referência. Apartamentos de 84 a 126 m² na Av. João Pessoa, em Porto União — 100% vendido e entregue.",
 };
 
 const waHref = (msg: string) =>
@@ -41,19 +41,16 @@ const INTERIORES = [
 
 const AREA_SOCIAL = [
   { src: "/images/agave/salao-gourmet.jpg", label: "Salão gourmet", alt: "Salão gourmet com ilha de mármore, banquetas de madeira e jardim vertical" },
-  { src: "/images/agave/lounge.jpg", label: "Lounge", alt: "Lounge com poltronas e acesso à academia" },
   { src: "/images/agave/academia.jpg", label: "Academia", alt: "Academia com esteira, elíptico e estação de musculação" },
   { src: "/images/agave/brinquedoteca.jpg", label: "Brinquedoteca", alt: "Brinquedoteca com casinha, escorregador e piscina de bolinhas" },
-  { src: "/images/agave/playground-academia.jpg", label: "Playground e academia externa", alt: "Playground com gramado e equipamentos de academia externa" },
+  { src: "/images/agave/playground-academia.jpg", label: "Playground", alt: "Playground com gramado, escorregador e brinquedos infantis" },
   { src: "/images/agave/praca-privativa.jpg", label: "Praça privativa", alt: "Praça privativa com bancos de madeira e árvores" },
-  { src: "/images/agave/terraco-vista.jpg", label: "Terraço · vista externa", alt: "Foto do terraço de lazer iluminado à noite" },
 ];
 
 const AREA_SOCIAL_ITENS = [
   "Salão gourmet",
   "Lounge",
   "Academia",
-  "Academia externa",
   "Brinquedoteca",
   "Playground",
   "Praça privativa",
@@ -79,13 +76,13 @@ const PROXIMOS = [
     slug: "beos-grand-central",
     nome: "Bëos Grand Central",
     status: "Em obras · Últimas unidades",
-    foto: "/images/beos/fachada-noturna.jpg",
+    foto: "/images/beos/fachada-noturna-hd.jpg",
   },
   {
     slug: "monverdant",
     nome: "Mon'Verdant",
     status: "Em obras · Últimas unidades",
-    foto: "/images/monverdant/fachada-02.webp",
+    foto: "/images/monverdant/fachada-mv.jpg",
   },
 ] as const;
 
@@ -113,9 +110,9 @@ export default function ResidencialAgaveLanding() {
               <span>Entregue em 2026 · 100% vendido</span>
             </div>
             <h1 className="font-[family-name:var(--font-display)] flex flex-col gap-3.5 text-4xl leading-[1.05] font-normal text-[#F4EFE6] lg:text-[60px]">
-              <span className="block">Resistência e elegância,</span>
+              <span className="block">Inspirado em um farol.</span>
               <span className="block text-[#C4A574] italic">
-                inspiradas na natureza.
+                Feito para ser referência.
               </span>
             </h1>
             <p className="max-w-[430px] text-lg leading-relaxed font-normal text-[#C9BFAE]">
@@ -153,10 +150,12 @@ export default function ResidencialAgaveLanding() {
         </div>
         <div className="relative order-2 min-h-[360px] overflow-hidden sm:order-none sm:col-start-2 sm:row-start-1 sm:row-span-2">
           <Image
-            src="/images/agave/hero-fachada-noturna.jpg"
+            src="/images/agave/hero-fachada-noturna-hd.jpg"
             alt="Fachada noturna do Residencial Ágave vista de drone"
             fill
-            sizes="(max-width: 640px) 100vw, 55vw"
+            // O quadro é quase quadrado e corta as laterais da foto: pede uma versão mais larga.
+            sizes="(max-width: 640px) 140vw, 80vw"
+            quality={90}
             className="object-cover"
             style={{ objectPosition: "50% 45%" }}
             priority
@@ -191,7 +190,7 @@ export default function ResidencialAgaveLanding() {
         </div>
         <div className="relative h-[320px] overflow-hidden sm:h-[440px] lg:h-[680px]">
           <Image
-            src="/images/agave/fachada-morro.jpg"
+            src="/images/agave/fachada-morro-hd.jpg"
             alt="Residencial Ágave iluminado à noite, com o morro ao fundo"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -261,10 +260,13 @@ export default function ResidencialAgaveLanding() {
         </div>
         <div className="relative min-h-[320px]">
           <Image
-            src="/images/agave/vista-aerea-esquina.jpg"
+            src="/images/agave/vista-aerea-esquina-hd.jpg"
             alt="Vista aérea do prédio na esquina, com as ruas do centro"
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            // A partir de 640px o quadro fica alto e estreito (~1100px de altura) e corta
+            // as laterais da foto 4:3; por isso pede sempre uma versão de ~1500px de largura.
+            sizes="(max-width: 640px) 100vw, 1500px"
+            quality={90}
             className="object-cover"
             style={{ objectPosition: "55% 55%" }}
           />
@@ -281,7 +283,7 @@ export default function ResidencialAgaveLanding() {
               <span className="h-px w-10 bg-[#C4A574]" />
             </div>
             <h2 className="font-[family-name:var(--font-display)] max-w-3xl text-3xl leading-[1.1] font-normal text-[#F4EFE6] sm:text-5xl sm:leading-[1.05] lg:text-[56px]">
-              O Ágave já está 100% entregue.{" "}
+              O Ágave já está 100% vendido.{" "}
               <span className="text-[#C4A574] italic">O próximo pode ser seu.</span>
             </h2>
             <p className="max-w-[560px] text-lg leading-relaxed font-normal text-[#C9BFAE]">
@@ -357,30 +359,33 @@ export default function ResidencialAgaveLanding() {
       <section className="hidden h-[460px] gap-1 bg-[#15130F] sm:grid sm:grid-cols-3">
         <div className="relative h-full">
           <Image
-            src="/images/agave/lateral-terraco.jpg"
+            src="/images/agave/lateral-terraco-hd.jpg"
             alt="Vista lateral do prédio com o terraço iluminado"
             fill
-            sizes="(max-width: 640px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, 45vw"
+            quality={90}
             className="object-cover"
             style={{ objectPosition: "45% 50%" }}
           />
         </div>
         <div className="relative h-full">
           <Image
-            src="/images/agave/fachada-morro.jpg"
+            src="/images/agave/fachada-morro-hd.jpg"
             alt="Fachada com o filete de luz dourada"
             fill
-            sizes="(max-width: 640px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, 45vw"
+            quality={90}
             className="object-cover"
             style={{ objectPosition: "45% 45%" }}
           />
         </div>
         <div className="relative h-full">
           <Image
-            src="/images/agave/fachada-avenida.jpg"
+            src="/images/agave/fachada-avenida-hd.jpg"
             alt="Prédio visto a partir da avenida"
             fill
-            sizes="(max-width: 640px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, 45vw"
+            quality={90}
             className="object-cover"
           />
         </div>
@@ -400,11 +405,6 @@ export default function ResidencialAgaveLanding() {
             Uma realização Conbrain Incorporadora
           </span>
         </div>
-        <p className="max-w-4xl text-[13px] leading-relaxed text-[#8F8676]">
-          Imagens dos interiores e áreas sociais meramente ilustrativas;
-          móveis e objetos de decoração não fazem parte do contrato.
-          Valores e disponibilidade sujeitos a alteração sem aviso prévio.
-        </p>
       </footer>
     </div>
   );

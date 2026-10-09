@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
 
+  images: {
+    // 90 é usado em fotos noturnas, onde a compressão padrão (75) deixa manchas.
+    qualities: [75, 90],
+  },
+
   // Endereços do site antigo (Wix) que já estão no Google ou em links por aí.
   async redirects() {
     return [

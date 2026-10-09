@@ -6,8 +6,10 @@ import { useState } from "react";
 export type Slide = { src: string; alt: string; label: string };
 
 function useCarousel(slides: Slide[]) {
-  const [index, setIndex] = useState(0);
+  const [posicao, setIndex] = useState(0);
   const n = slides.length;
+  // Mantém o índice válido se a lista de fotos diminuir com o carrossel aberto.
+  const index = posicao % n;
   const go = (i: number) => setIndex(((i % n) + n) % n);
   return {
     current: slides[index],
@@ -197,7 +199,7 @@ export function AreaSocialCarousel({
           ))}
         </div>
         <p className="text-[13px] text-[#A79D8D]">
-          Imagens ilustrativas, exceto a vista externa do terraço.
+          Imagens ilustrativas.
         </p>
       </div>
     </div>

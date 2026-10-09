@@ -22,14 +22,14 @@ const sourceSans = Lato({
 export const metadata: Metadata = {
   title: "Pier 225 | Conbrain",
   description:
-    "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 21 pavimentos no centro da cidade.",
+    "O primeiro hub corporativo de Porto União. Negócios, saúde e bem-estar reunidos em 20 pavimentos no centro da cidade.",
 };
 
 const waHref = (msg: string) =>
   `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(msg)}`;
 
 const NUMEROS = [
-  { valor: "21", label: "pavimentos" },
+  { valor: "20", label: "pavimentos" },
   { valor: "124", label: "vagas rotativas e privativas" },
   { valor: "3", label: "elevadores" },
   { valor: "40 m²", label: "salas a partir de, integráveis" },
@@ -38,7 +38,7 @@ const NUMEROS = [
 const PUBLICOS = [
   {
     titulo: "Profissionais da saúde",
-    desc: "Os 6 primeiros pavimentos são exclusivos para a saúde, com infraestrutura para consultórios e hospitais a menos de 5 minutos.",
+    desc: "Alguns pavimentos são exclusivos para profissionais da saúde, com infraestrutura para consultórios e hospitais a menos de 5 minutos.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9A5A2E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 3v6a4 4 0 0 0 8 0V3" />
@@ -49,7 +49,7 @@ const PUBLICOS = [
   },
   {
     titulo: "Empresas e escritórios",
-    desc: "Salas a partir de 40 m² que podem ser integradas, ou um andar inteiro para uma operação sob medida.",
+    desc: "Salas a partir de 40 m² que podem ser integradas para uma operação sob medida.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9A5A2E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="7" width="18" height="13" rx="1" />
@@ -60,7 +60,7 @@ const PUBLICOS = [
   },
   {
     titulo: "Investidores",
-    desc: "Localização central, um conceito inédito na cidade e unidades flexíveis que atendem a diferentes perfis de ocupação.",
+    desc: "Localização central e unidades flexíveis que atendem a diferentes perfis de ocupação.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9A5A2E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 20h18" />
@@ -91,12 +91,13 @@ export default function Pier225Landing() {
       <section className="relative flex flex-col bg-[#221A15] text-[#F5F2EE]">
         <div className="absolute inset-0">
           <Image
-            src="/images/pier225/hero-fachada-sem-texto.jpg"
-            alt="Detalhe da fachada do Pier 225 ao pôr do sol, com o rio ao fundo"
+            src="/images/pier225/hero-fachada-01-hd.jpg"
+            alt="Fachada do Pier 225 ao pôr do sol, com o letreiro Pier 225 Business e Care e o rio ao fundo"
             fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: "center 40%" }}
+            sizes="(max-width: 768px) 200vw, 110vw"
+            quality={90}
+            // No celular o recorte vai para a direita, mostrando o pôr do sol e o rio.
+            className="object-cover object-[78%_40%] md:object-[center_40%]"
             priority
           />
           <div className="absolute inset-0 bg-[#18120E]/62" />
@@ -127,7 +128,7 @@ export default function Pier225Landing() {
             O primeiro hub corporativo de Porto União.
           </h1>
           <p className="max-w-[600px] text-lg leading-relaxed text-[#E4DDD6] lg:text-xl">
-            Negócios, saúde e bem-estar reunidos em 21 pavimentos no centro
+            Negócios, saúde e bem-estar reunidos em 20 pavimentos no centro
             da cidade. Cadastre-se e receba as novidades antes de todo
             mundo.
           </p>
@@ -157,7 +158,7 @@ export default function Pier225Landing() {
             O CONCEITO
           </span>
           <h2 className="font-[family-name:var(--font-jost)] text-3xl leading-[1.12] font-normal lg:text-[48px]">
-            Mais que um prédio de salas. Um ponto de encontro.
+            Onde negócios e pessoas se conectam.
           </h2>
           <p className="text-lg leading-relaxed text-[#4F463F]">
             Inspirado na tradição portuária de Porto União e nos grandes
@@ -172,10 +173,11 @@ export default function Pier225Landing() {
         </div>
         <div className="relative h-[280px] overflow-hidden sm:h-[380px] lg:h-[520px]">
           <Image
-            src="/images/pier225/praca-privativa.jpg"
+            src="/images/pier225/praca-privativa-hd.jpg"
             alt="Praça privativa com deck de madeira, vegetação e área de convivência"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 900px"
+            quality={90}
             className="object-cover"
           />
         </div>
@@ -185,11 +187,13 @@ export default function Pier225Landing() {
       <section className="grid grid-cols-1 bg-[#221A15] text-[#F5F2EE] sm:grid-cols-2">
         <div className="relative min-h-[320px] sm:min-h-[520px]">
           <Image
-            src="/images/pier225/torre.jpg"
-            alt="Torre do Pier 225 com 21 pavimentos às margens do rio"
+            src="/images/pier225/torre-paisagem-hd.jpg"
+            alt="Torre do Pier 225 com 20 pavimentos às margens do rio"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
+            // Render 16:9 num quadro quase quadrado: pede versão mais larga.
+            sizes="(max-width: 768px) 160vw, 1300px"
+            quality={90}
+            className="object-cover object-[45%_center]"
           />
         </div>
         <div className="flex flex-col justify-center gap-12 px-8 py-16 lg:px-24 lg:py-24">
@@ -201,13 +205,13 @@ export default function Pier225Landing() {
               Estrutura para operar com excelência.
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:gap-10">
             {NUMEROS.map((item) => (
               <div
                 key={item.label}
                 className="flex flex-col gap-2 border-t border-[#F5F2EE]/25 pt-5"
               >
-                <span className="font-[family-name:var(--font-jost)] text-6xl leading-none font-light text-[#C5824B]">
+                <span className="font-[family-name:var(--font-jost)] text-[44px] leading-none font-light whitespace-nowrap text-[#C5824B] sm:text-5xl xl:text-6xl">
                   {item.valor}
                 </span>
                 <span className="text-lg text-[#D9D1C9]">{item.label}</span>
@@ -273,10 +277,11 @@ export default function Pier225Landing() {
           <figure className="flex flex-col gap-3.5">
             <div className="relative h-[280px] sm:h-[400px]">
               <Image
-                src="/images/pier225/auditorio.jpg"
+                src="/images/pier225/auditorio-hd.jpg"
                 alt="Auditório com poltronas verdes e iluminação indireta"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 700px"
+                quality={90}
                 className="object-cover"
               />
             </div>
@@ -287,10 +292,11 @@ export default function Pier225Landing() {
           <figure className="flex flex-col gap-3.5">
             <div className="relative h-[280px] sm:h-[400px]">
               <Image
-                src="/images/pier225/quiosque-cafe.jpg"
+                src="/images/pier225/quiosque-cafe-hd.jpg"
                 alt="Quiosque de café com mesas e jardim vertical"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 700px"
+                quality={90}
                 className="object-cover"
               />
             </div>
@@ -318,10 +324,11 @@ export default function Pier225Landing() {
       <section className="grid grid-cols-1 gap-12 px-8 py-16 sm:grid-cols-2 sm:items-center lg:gap-24 lg:px-24 lg:py-24">
         <div className="relative h-[280px] sm:h-[380px] lg:h-[480px]">
           <Image
-            src="/images/pier225/entrada-noturna.jpg"
-            alt="Entrada do Pier 225 iluminada ao anoitecer"
+            src="/images/pier225/entrada-pier-noite-hd.jpg"
+            alt="Entrada do Pier 225 à noite, com o letreiro iluminado na fachada"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 900px"
+            quality={90}
             className="object-cover"
           />
         </div>
@@ -414,7 +421,7 @@ export default function Pier225Landing() {
                 slug: "beos-grand-central",
                 nome: "Bëos Grand Central",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/beos/fachada-noturna.jpg",
+                foto: "/images/beos/fachada-noturna-hd.jpg",
               },
             ].map((p) => (
               <Link
@@ -458,11 +465,11 @@ export default function Pier225Landing() {
               REALIZAÇÃO
             </span>
             <Image
-              src="/images/logo/conbrain-logo.png"
+              src="/images/logo/conbrain-logo-2025.png"
               alt="Conbrain Incorporadora e Construtora"
               width={1600}
-              height={800}
-              className="-ml-2 h-20 w-auto self-start"
+              height={674}
+              className="h-14 w-auto self-start"
             />
             <p className="text-base leading-relaxed text-[#4F463F]">
               Empreendimentos guiados por relevância contextual, curadoria

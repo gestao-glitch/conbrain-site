@@ -64,6 +64,9 @@ No computador, `DENUNCIA_MODO_TESTE=1` no `.env.local` monta o e-mail sem enviar
 Endereços antigos do Wix (`/canaldedenuncias`, `/formulario`, `/taiji`…) são
 redirecionados em `next.config.ts`.
 
+É de **uso interno**: não aparece no rodapé, no sitemap nem no Google (`noindex`).
+O acesso é só pelo link direto, divulgado internamente.
+
 ## Pendências
 
 1. Ligar as páginas aos JSONs de `content/` (pré-requisito para qualquer CMS).

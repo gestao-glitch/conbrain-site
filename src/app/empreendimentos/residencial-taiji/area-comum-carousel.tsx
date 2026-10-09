@@ -6,8 +6,10 @@ import { useState } from "react";
 export type Slide = { src: string; alt: string; caption: string };
 
 export function AreaComumCarousel({ slides }: { slides: Slide[] }) {
-  const [index, setIndex] = useState(0);
+  const [posicao, setIndex] = useState(0);
   const n = slides.length;
+  // Mantém o índice válido se a lista de fotos diminuir com o carrossel aberto.
+  const index = posicao % n;
   const go = (i: number) => setIndex(((i % n) + n) % n);
   const current = slides[index];
 
@@ -49,7 +51,10 @@ export function AreaComumCarousel({ slides }: { slides: Slide[] }) {
           src={current.src}
           alt={current.alt}
           fill
-          sizes="(max-width: 1024px) 100vw, 1200px"
+          // O quadro chega a ~1300px de largura; as fotos verticais são cortadas
+          // e precisam vir na largura cheia para não ficarem esticadas.
+          sizes="(max-width: 1024px) 100vw, 1400px"
+          quality={90}
           className="object-cover"
         />
         <figcaption className="absolute bottom-6 left-6 rounded-full bg-[#14130F]/74 px-4.5 py-2.5 text-sm tracking-[0.06em] text-[#F4F1EB]">

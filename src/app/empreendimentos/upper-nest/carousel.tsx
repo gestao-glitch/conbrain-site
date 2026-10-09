@@ -45,6 +45,7 @@ export function Carousel({
                 alt={slide.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 1100px"
+                quality={90}
                 className="object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-6 pt-10 pb-5">

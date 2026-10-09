@@ -13,6 +13,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     })),
     { url: `${BASE}/politica-de-privacidade`, priority: 0.2 },
-    { url: `${BASE}/canal-de-denuncias`, priority: 0.3 },
   ];
 }

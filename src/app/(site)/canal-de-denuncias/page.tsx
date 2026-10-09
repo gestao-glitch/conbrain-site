@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "Canal de Denúncias | Conbrain",
   description:
     "Canal seguro e sigiloso para relatar condutas que violem o Código de Conduta, as políticas internas ou a legislação, conforme a Lei nº 14.457/22.",
+  // Uso interno: acesso só pelo link direto, fora do rodapé e do Google.
+  robots: { index: false, follow: false },
 };
 
 const GARANTIAS = [

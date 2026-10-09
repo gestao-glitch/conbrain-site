@@ -45,11 +45,12 @@ export default function Contato() {
       {/* Abertura */}
       <section className="relative flex h-[70svh] min-h-[540px] items-end overflow-hidden bg-[#1f1d22]">
         <Image
-          src="/images/contato/equipe-concretagem.jpg"
+          src="/images/contato/equipe-concretagem-hd.jpg"
           alt="Equipe da Conbrain durante a concretagem de uma laje do Upper Nest, com a cidade ao fundo"
           fill
           priority
           sizes="100vw"
+          quality={90}
           className="object-cover"
           style={{ objectPosition: "65% 55%" }}
         />

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ProjectNav } from "@/components/project-nav";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
+import { AndamentoObra } from "./andamento-obra";
+import { CarrosselCelular } from "@/components/carrossel-celular";
 import { ContactForm } from "./contact-form";
 
 const outfit = Lato({
@@ -22,8 +24,10 @@ const dmSans = Lato({
 export const metadata: Metadata = {
   title: "Bëos Grand Central | Conbrain",
   description:
-    "Studios, lofts e apartamentos de 1 a 3 dormitórios, com o pacote Ready to Rent para quem quer comprar e já colocar para alugar.",
+    "Studios, lofts e apartamentos de 1 a 3 dormitórios no centro de Porto União, para morar ou investir.",
 };
+
+const ENDERECO = "Av. Getúlio Vargas, 418 - Cidade Nova, Porto União - SC, 89400-000";
 
 const waHref = (msg: string) =>
   `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(msg)}`;
@@ -44,19 +48,6 @@ const CONCEITO_ITENS = [
   { titulo: "Flexibilidade", desc: "Diferentes tipologias e a possibilidade de integrar unidades." },
 ];
 
-const PROCESSO = [
-  { n: "01", titulo: "Compre", desc: "Adquira um studio compacto BËOS no centro de Porto União." },
-  { n: "02", titulo: "Receba pronto", desc: "O apartamento vem mobiliado, decorado e equipado." },
-  { n: "03", titulo: "Coloque para alugar", desc: "Sem começar do zero: anúncio e gestão com a Housi." },
-  { n: "04", titulo: "Rentabilize", desc: "Transforme o patrimônio em uma fonte potencial de renda." },
-];
-
-const NAO_PRECISA = [
-  "Escolher, comprar e montar os móveis",
-  "Contratar projeto de decoração",
-  "Equipar cozinha e eletrodomésticos",
-  "Preparar o imóvel para receber o primeiro hóspede",
-];
 
 export default function BeosGrandCentralLanding() {
   return (
@@ -91,9 +82,8 @@ export default function BeosGrandCentralLanding() {
               centro de tudo.
             </h1>
             <p className="max-w-[500px] text-lg leading-relaxed text-[#D9D4CF]">
-              Studios, lofts e apartamentos de 1 a 3 dormitórios, com o
-              pacote Ready to Rent para quem quer comprar e já colocar para
-              alugar.
+              Studios, lofts e apartamentos de 1 a 3 dormitórios no centro
+              de Porto União, para morar ou investir.
             </p>
             <div className="mt-2 flex flex-wrap gap-3.5">
               <a
@@ -109,7 +99,7 @@ export default function BeosGrandCentralLanding() {
               </a>
             </div>
             <div className="mt-5 flex flex-wrap gap-2.5">
-              {["1 a 3 dormitórios", "Pacote Ready to Rent", "Com ou sem vaga de garagem", "Smart Living"].map((tag) => (
+              {["1 a 3 dormitórios", "Com ou sem vaga de garagem", "Smart Living"].map((tag) => (
                 <span key={tag} className="rounded-full bg-white/10 px-4 py-2.5 text-sm">
                   {tag}
                 </span>
@@ -118,10 +108,13 @@ export default function BeosGrandCentralLanding() {
           </div>
           <div className="relative order-first min-h-[320px] md:order-none md:flex-1">
             <Image
-              src="/images/beos/fachada-noturna.jpg"
+              src="/images/beos/fachada-noturna-hd.jpg"
               alt="Fachada noturna do BËOS Grand Central"
               fill
-              sizes="(max-width: 768px) 100vw, 54vw"
+              // O quadro é quase quadrado (ou mais alto que largo) e corta as laterais
+              // do render 16:9; por isso pede sempre a versão de 1920px, a maior que existe.
+              sizes="(max-width: 768px) 200vw, 1920px"
+              quality={90}
               className="object-cover"
               style={{ objectPosition: "40% center" }}
               priority
@@ -147,7 +140,7 @@ export default function BeosGrandCentralLanding() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           <a
-            href="#investir"
+            href="#contato"
             className="flex flex-col gap-4.5 rounded-[20px] bg-[#4E4F4A] p-11 text-[#EAE5E1]"
           >
             <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-[#B5CF95]/16 text-[#B5CF95]">
@@ -158,11 +151,11 @@ export default function BeosGrandCentralLanding() {
             </div>
             <div className="font-[family-name:var(--font-outfit)] text-3xl font-normal">Quero investir</div>
             <p className="max-w-[480px] text-lg leading-relaxed text-[#D9D4CF]">
-              Studio mobiliado e preparado para locação. Você compra e ele
-              já está pronto para render.
+              Studios e lofts compactos no centro de Porto União, perto de
+              tudo o que o morador procura.
             </p>
             <div className="mt-1.5 text-base font-bold text-[#B5CF95]">
-              Conhecer o Ready to Rent &rarr;
+              Falar com um consultor &rarr;
             </div>
           </a>
           <a
@@ -192,10 +185,12 @@ export default function BeosGrandCentralLanding() {
       <section className="flex flex-col items-center gap-14 bg-[#F5F2EF] px-8 py-24 lg:flex-row lg:px-[72px]">
         <div className="h-[320px] w-full shrink-0 overflow-hidden rounded-[20px] lg:h-[440px] lg:w-[620px]">
           <Image
-            src="/images/beos/sala-estar.jpg"
-            alt="Sala de estar de um studio BËOS"
+            src="/images/beos/studio-sala.jpg"
+            alt="Sala de estar e cozinha de um studio decorado do BËOS"
             width={1000}
-            height={710}
+            height={667}
+            sizes="(max-width: 1024px) 100vw, 660px"
+            quality={90}
             className="h-full w-full object-cover"
           />
         </div>
@@ -218,125 +213,6 @@ export default function BeosGrandCentralLanding() {
         </div>
       </section>
 
-      {/* Ready to Rent */}
-      <section id="investir" className="flex flex-col gap-16 bg-[#4E4F4A] px-8 py-26 text-[#EAE5E1] lg:px-[72px]">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col gap-4.5">
-            <div className="text-[13px] font-normal tracking-[0.22em] text-[#B5CF95] uppercase">
-              Para o investidor
-            </div>
-            <h2 className="font-[family-name:var(--font-outfit)] text-5xl leading-[0.95] font-normal tracking-tight lg:text-7xl">
-              READY
-              <br />
-              <span className="text-[#B5CF95]">TO RENT</span>
-            </h2>
-          </div>
-          <p className="max-w-[620px] font-[family-name:var(--font-outfit)] text-2xl leading-snug font-normal lg:text-[30px]">
-            Você compra o imóvel e ele já está pronto para rentabilizar.
-            Você não compra só os metros quadrados: compra um imóvel
-            preparado para operar.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-          {PROCESSO.map((step) => (
-            <div key={step.n} className="flex flex-col gap-3.5 rounded-[18px] bg-white/[0.07] p-7">
-              <div className="font-[family-name:var(--font-outfit)] text-4xl font-light text-[#B5CF95]">
-                {step.n}
-              </div>
-              <div className="text-lg font-bold">{step.titulo}</div>
-              <div className="text-[15px] leading-relaxed text-[#D9D4CF]">{step.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch">
-          <div className="grid grid-cols-2 gap-4 lg:w-[700px] lg:shrink-0">
-            <div className="h-[260px] overflow-hidden rounded-[18px] lg:h-[400px]">
-              <Image
-                src="/images/beos/ready-to-rent/quarto.jpg"
-                alt="Quarto de studio Ready to Rent"
-                width={600}
-                height={800}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="h-[260px] overflow-hidden rounded-[18px] lg:h-[400px]">
-              <Image
-                src="/images/beos/ready-to-rent/studio-vista-superior.jpg"
-                alt="Vista superior de studio mobiliado"
-                width={600}
-                height={800}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col justify-center gap-6">
-            <h3 className="font-[family-name:var(--font-outfit)] text-[34px] leading-tight font-normal">
-              Olha o trabalho que você{" "}
-              <span className="font-bold text-[#B5CF95]">não</span> precisa
-              ter.
-            </h3>
-            <div className="flex flex-col gap-3.5 text-lg leading-snug">
-              {NAO_PRECISA.map((item) => (
-                <div key={item} className="flex items-start gap-3.5">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B5CF95" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
-                    <path d="M4 12l5 5L20 6" />
-                  </svg>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="text-[15px] text-[#D9D4CF]">
-              Mais praticidade · Mais agilidade · Mais tranquilidade
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div className="flex flex-col gap-4.5 rounded-[18px] bg-[#EAE5E1] p-8 text-[#2A2B28]">
-            <div className="text-[13px] font-bold tracking-[0.18em] text-[#4F6B34] uppercase">Kit 1</div>
-            <div className="font-[family-name:var(--font-outfit)] text-[22px] leading-snug font-bold">
-              Marcenaria + Marmoraria + Móveis
-            </div>
-            <div className="flex flex-col gap-2 text-[15px] leading-snug text-[#55564F]">
-              <span>Armários planejados sob medida</span>
-              <span>Bancadas e revestimentos em mármore/granito</span>
-              <span>Mobiliário essencial dos ambientes</span>
-            </div>
-            <a
-              href="#contato"
-              className="mt-auto flex items-center justify-between border-t border-[#CFC9C3] pt-4.5 font-[family-name:var(--font-outfit)] text-xl font-bold text-[#2A2B28]"
-            >
-              Consulte o valor com o time comercial{" "}
-              <span className="text-[#4F6B34]">&rarr;</span>
-            </a>
-          </div>
-          <div className="flex flex-col gap-4.5 rounded-[18px] bg-[#EAE5E1] p-8 text-[#2A2B28]">
-            <div className="text-[13px] font-bold tracking-[0.18em] text-[#4F6B34] uppercase">Kit 2 · Completo</div>
-            <div className="font-[family-name:var(--font-outfit)] text-[22px] leading-snug font-bold">
-              Kit 1 + Elétricos + Decoração + Acessórios
-            </div>
-            <div className="flex flex-col gap-2 text-[15px] leading-snug text-[#55564F]">
-              <span>Projeto de decoração completo</span>
-              <span>Acessórios de acabamento final</span>
-              <span>Eletrodomésticos das áreas comuns e unidades</span>
-            </div>
-            <a
-              href="#contato"
-              className="mt-auto flex items-center justify-between border-t border-[#CFC9C3] pt-4.5 font-[family-name:var(--font-outfit)] text-xl font-bold text-[#2A2B28]"
-            >
-              Consulte o valor com o time comercial{" "}
-              <span className="text-[#4F6B34]">&rarr;</span>
-            </a>
-          </div>
-        </div>
-        <p className="text-xs text-[#BDB8B2]">
-          A rentabilidade depende das condições de mercado e da operação de
-          locação, não sendo garantida.
-        </p>
-      </section>
-
       {/* Áreas sociais */}
       <section id="morar" className="flex flex-col gap-12 bg-[#2A2B28] px-8 py-26 text-[#EAE5E1] lg:px-[72px]">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -357,22 +233,27 @@ export default function BeosGrandCentralLanding() {
             ocasiões especiais. Também conta com Salão Gourmet.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-5 lg:grid-cols-3">
+        <CarrosselCelular
+          classeGrade="sm:grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+          rotuloPontos="Ir para a foto"
+          escuro
+          margem="-mx-8 px-8 scroll-px-8"
+        >
           {AREA_SOCIAL.map((item) => (
             <div key={item.src} className="flex flex-col gap-3.5">
-              <div className="relative h-[220px] overflow-hidden rounded-2xl lg:h-[290px]">
+              <div className="relative h-[300px] overflow-hidden rounded-2xl sm:h-[220px] lg:h-[290px]">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 33vw"
                   className="origin-top scale-[1.16] object-cover object-top"
                 />
               </div>
               <div className="text-[17px] font-bold">{item.titulo}</div>
             </div>
           ))}
-        </div>
+        </CarrosselCelular>
         <div className="text-[13px] text-[#BDB8B2]">
           Imagens meramente ilustrativas, sujeitas a alterações.
         </div>
@@ -396,21 +277,31 @@ export default function BeosGrandCentralLanding() {
               <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
               <circle cx="12" cy="9.5" r="2.5" />
             </svg>
-            <span>
-              {contato.endereco_linha1}, {contato.endereco_linha2}
-            </span>
+            <span>{ENDERECO}</span>
           </div>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ENDERECO)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-12 w-fit items-center gap-2 rounded-full border border-[#2A2B28]/25 px-6 text-[15px] font-bold text-[#2A2B28] transition-colors hover:border-[#4F6B34] hover:text-[#4F6B34]"
+          >
+            Abrir no Google Maps &rarr;
+          </a>
         </div>
         <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-[#C8C8BF] lg:ml-auto lg:h-[579px] lg:w-[600px] lg:shrink-0">
-          <Image
-            src="/images/beos/mapa-localizacao.png"
-            alt="Mapa da região central de Porto União com a localização do BËOS Grand Central"
-            fill
-            sizes="(max-width: 1024px) 100vw, 600px"
-            className="object-cover"
+          <iframe
+            title={`Mapa — ${ENDERECO}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(ENDERECO)}&output=embed`}
+            className="absolute inset-0 h-full w-full"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
       </section>
+
+      {/* Andamento da obra */}
+      <AndamentoObra />
 
       {/* Contato */}
       <section id="contato" className="flex flex-col gap-14 bg-[#EAE5E1] px-8 py-26 lg:flex-row lg:px-[72px]">
@@ -423,7 +314,7 @@ export default function BeosGrandCentralLanding() {
           </h2>
           <p className="text-lg leading-relaxed text-[#55564F]">
             Um consultor entra em contato para apresentar as unidades
-            disponíveis e tirar suas dúvidas sobre o Ready to Rent.
+            disponíveis e tirar suas dúvidas.
           </p>
           <a
             href={waHref("Olá! Tenho interesse no Bëos Grand Central.")}
@@ -465,7 +356,7 @@ export default function BeosGrandCentralLanding() {
                 slug: "monverdant",
                 nome: "Mon'Verdant",
                 status: "Em obras · Últimas unidades",
-                foto: "/images/monverdant/fachada-02.webp",
+                foto: "/images/monverdant/fachada-mv.jpg",
               },
             ].map((p) => (
               <Link
@@ -591,7 +482,7 @@ export default function BeosGrandCentralLanding() {
             &copy; {new Date().getFullYear()} Incorporadora Conbrain LTDA · CNPJ
             36.325.713/0001-72. Imagens meramente ilustrativas, sujeitas a
             alterações. Móveis e objetos de decoração não fazem parte do
-            imóvel, exceto nas unidades com pacote Ready to Rent contratado.
+            imóvel.
           </p>
           <div className="flex shrink-0 flex-wrap items-center gap-x-6 gap-y-2 font-bold text-[#EAE5E1]">
             <Link href="/politica-de-privacidade" className="hover:text-[#B5CF95]">

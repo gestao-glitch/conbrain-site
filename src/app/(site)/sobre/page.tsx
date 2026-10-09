@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
+import { CarrosselCelular } from "@/components/carrossel-celular";
 import { ClosingCta } from "@/components/closing-cta";
 import { sobre } from "@/content";
 import { HistoryTimeline } from "./history-timeline";
@@ -23,8 +24,6 @@ const VALORES = [
 
 const TEMAS_VALOR = [
   { card: "bg-[#333136] text-white", frase: "text-white/70" },
-  { card: "bg-[#a3c859] text-[#1f1d22]", frase: "text-[#1f1d22]/75" },
-  { card: "bg-white text-[#1f1d22]", frase: "text-[#5f5c64]" },
 ] as const;
 
 export default function Sobre() {
@@ -33,11 +32,12 @@ export default function Sobre() {
       {/* Abertura */}
       <section className="relative flex h-[78svh] min-h-[560px] items-end overflow-hidden bg-[#1f1d22]">
         <Image
-          src="/images/sobre/vista-aerea-rio-iguacu.jpg"
+          src="/images/sobre/vista-aerea-rio-iguacu-hd.jpg"
           alt="Vista aérea da ponte sobre o rio Iguaçu, que une Porto União e União da Vitória"
           fill
           priority
           sizes="100vw"
+          quality={90}
           className="object-cover"
         />
         <div
@@ -105,11 +105,13 @@ export default function Sobre() {
           <AnimateOnScroll className="w-full max-w-[340px] shrink-0 md:w-[300px] md:max-w-none lg:w-[480px]">
             <div className="relative h-[420px] w-full overflow-hidden rounded-[20px] md:h-[440px] lg:h-[600px]">
               <Image
-                src="/images/equipe/bruno-sucharski-fundador.jpg"
+                src="/images/equipe/bruno-sucharski-fundador-hd.jpg"
                 alt="Bruno Sucharski, fundador e diretor da Conbrain"
                 fill
                 sizes="(max-width: 768px) 340px, (max-width: 1024px) 300px, 480px"
+                quality={90}
                 className="object-cover"
+                style={{ objectPosition: "50% 15%" }}
               />
             </div>
           </AnimateOnScroll>
@@ -210,11 +212,11 @@ export default function Sobre() {
             </h2>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <CarrosselCelular classeGrade="sm:grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-4" rotuloPontos="Ir para o valor">
             {VALORES.map((v, i) => {
               const t = TEMAS_VALOR[i % TEMAS_VALOR.length];
               return (
-                <AnimateOnScroll key={v.nome} delay={(i % 4) * 80}>
+                <AnimateOnScroll key={v.nome} delay={(i % 4) * 80} className="h-full">
                   <div
                     className={`flex h-full min-h-[200px] flex-col justify-between gap-8 rounded-md p-7 ${t.card}`}
                   >
@@ -222,7 +224,7 @@ export default function Sobre() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="flex flex-col gap-2">
-                      <p className="font-heading text-xl font-bold">{v.nome}</p>
+                      <p className="font-heading text-xl font-bold text-[#a3c859]">{v.nome}</p>
                       <p className={`text-[15px] italic ${t.frase}`}>
                         &ldquo;{v.frase}&rdquo;
                       </p>
@@ -231,17 +233,17 @@ export default function Sobre() {
                 </AnimateOnScroll>
               );
             })}
-            <AnimateOnScroll delay={(VALORES.length % 4) * 80}>
-              <div className="flex h-full min-h-[200px] flex-col justify-end rounded-md border border-chumbo/20 p-7">
-                <p className="font-heading text-xl leading-snug font-normal text-chumbo">
+            <AnimateOnScroll delay={(VALORES.length % 4) * 80} className="h-full">
+              <div className="flex h-full min-h-[200px] flex-col justify-end rounded-md bg-[#333136] p-7">
+                <p className="font-heading text-xl leading-snug font-normal text-white">
                   Somos parte do todo e um pouco de{" "}
-                  <strong className="font-bold">
-                    tudo<span className="text-verde-dark">.</span>
+                  <strong className="font-bold text-[#a3c859]">
+                    tudo.
                   </strong>
                 </p>
               </div>
             </AnimateOnScroll>
-          </div>
+          </CarrosselCelular>
         </div>
       </section>
 
