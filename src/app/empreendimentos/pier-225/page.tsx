@@ -6,6 +6,7 @@ import { ProjectNav } from "@/components/project-nav";
 import { RodapeEmpreendimento } from "@/components/rodape-empreendimento";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { contato } from "@/content";
+import { GaleriaAmbientes } from "./galeria-ambientes";
 import { VipForm } from "./vip-form";
 
 const jost = Lato({
@@ -75,14 +76,8 @@ const PUBLICOS = [
   },
 ];
 
-const SERVICOS = [
-  "Coworking",
-  "Academia com vestiários",
-  "Espaço de podcast e reunião",
-  "Living externo",
-  "Mini-mercado",
-  "Refeitório com copa",
-];
+// Serviços que ainda não têm imagem na galeria da área social.
+const EXTRAS = ["vestiários na academia", "mini-mercado", "living externo"];
 
 export default function Pier225Landing() {
   return (
@@ -279,55 +274,17 @@ export default function Pier225Landing() {
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-[#4F463F]">
-            Tudo o que a sua rotina precisa, sem sair do prédio. Uma prévia
-            do que vem por aí:
+            Tudo o que a sua rotina precisa, sem sair do prédio. Escolha um
+            ambiente e conheça cada espaço:
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <figure className="flex flex-col gap-3.5">
-            <div className="relative h-[280px] sm:h-[400px]">
-              <Image
-                src="/images/pier225/auditorio-hd.jpg"
-                alt="Auditório com poltronas verdes e iluminação indireta"
-                fill
-                sizes="(max-width: 768px) 100vw, 700px"
-                quality={90}
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="font-[family-name:var(--font-jost)] text-[17px] tracking-wide">
-              Auditório
-            </figcaption>
-          </figure>
-          <figure className="flex flex-col gap-3.5">
-            <div className="relative h-[280px] sm:h-[400px]">
-              <Image
-                src="/images/pier225/quiosque-cafe-hd.jpg"
-                alt="Quiosque de café com mesas e jardim vertical"
-                fill
-                sizes="(max-width: 768px) 100vw, 700px"
-                quality={90}
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="font-[family-name:var(--font-jost)] text-[17px] tracking-wide">
-              Quiosque de café
-            </figcaption>
-          </figure>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          {SERVICOS.map((s) => (
-            <span
-              key={s}
-              className="border border-[#C9BFB6] px-5 py-2.5 text-[17px]"
-            >
-              {s}
-            </span>
-          ))}
-          <span className="font-[family-name:var(--font-jost)] px-2 py-2.5 text-[17px] text-[#9A5A2E]">
-            e mais a revelar no lançamento
+        <GaleriaAmbientes />
+        <p className="text-[17px] text-[#4F463F]">
+          Também no Pier 225: {EXTRAS.join(", ")}{" "}
+          <span className="font-[family-name:var(--font-jost)] text-[#9A5A2E]">
+            e mais a revelar no lançamento.
           </span>
-        </div>
+        </p>
       </section>
 
       {/* Localização */}
