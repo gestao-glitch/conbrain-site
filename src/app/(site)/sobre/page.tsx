@@ -130,15 +130,11 @@ export default function Sobre() {
                 Fundador e diretor da Conbrain
               </p>
             </div>
-            <p className="text-base leading-loose text-[#55525a] lg:text-lg">
-              Com formação pela Fundação Getulio Vargas e experiência em
-              projetos de engenharia, regularizações e prevenção contra
-              incêndio, Bruno fundou a empresa em 2015, em Porto União, ainda
-              com o nome Stanza. Da técnica para a construção, da construção
-              para a incorporação: hoje lidera mais de 80 edificadores e uma
-              empresa que desenvolve empreendimentos autorais em Porto União,
-              União da Vitória e região.
-            </p>
+            <div className="flex flex-col gap-4 text-base leading-relaxed text-[#55525a] lg:text-lg">
+              {[sobre.fundador_bio1, sobre.fundador_bio2, sobre.fundador_bio3].map((paragrafo) => (
+                <p key={paragrafo}>{paragrafo}</p>
+              ))}
+            </div>
             <blockquote className="border-l-2 border-verde py-1 pl-6 text-lg leading-relaxed font-normal text-chumbo/80 italic lg:text-xl">
               &ldquo;{sobre.fundador_quote}&rdquo;
             </blockquote>
