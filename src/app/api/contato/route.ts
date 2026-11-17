@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     ["Campanha (UTM)", texto(origem.utm, 500) || "—"],
   ];
 
-  const transporte = transporteEmail();
+  const transporte = transporteEmail("contato");
   if (!transporte) {
     console.error("[contato] envio de e-mail não configurado (SMTP_* ausentes) — contato não salvo:", formulario);
     return Response.json({ ok: false }, { status: 503 });
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 
   try {
     await transporte.sendMail({
-      from: `"Site Conbrain" <${remetente() ?? "teste@localhost"}>`,
+      from: `"Site Conbrain" <${remetente("contato") ?? "teste@localhost"}>`,
       to: process.env.CONTATO_EMAIL_DESTINO || DESTINO_PADRAO,
       replyTo: email || undefined,
       subject: `[Site] ${formulario} — ${nome}`,

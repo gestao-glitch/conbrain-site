@@ -52,14 +52,22 @@ alterações em português. Com eles:
 Todos os formulários de contato, além de abrir o WhatsApp, enviam o contato por
 e-mail em segundo plano (`src/app/api/contato/route.ts`), para nenhum contato se
 perder. O e-mail traz os campos, um link para chamar no WhatsApp, a página e por
-onde a pessoa chegou ao site (UTM/Instagram/Google). A configuração de envio é
-uma só para o site todo (`src/lib/email.ts`), no EasyPanel (aba Environment):
+onde a pessoa chegou ao site (UTM/Instagram/Google).
 
-- `SMTP_USUARIO` — conta Google Workspace que envia (ex.: site@conbrain.com.br)
-- `SMTP_SENHA` — "senha de app" dessa conta (Conta Google → Segurança →
-  Verificação em duas etapas → Senhas de app). Nunca commitar.
-- `CONTATO_EMAIL_DESTINO` — opcional; quem recebe os contatos (padrão
-  comercial@conbrain.com.br, vírgula para mais de um)
+Cada formulário envia pela **própria conta** (`src/lib/email.ts`), para nenhuma
+caixa ver os e-mails da outra. Configuração no EasyPanel (aba Environment):
+
+- Contatos → comercial:
+  - `SMTP_USUARIO`: conta que envia os contatos (comercial@conbrain.com.br)
+  - `SMTP_SENHA`: "senha de app" dessa conta (Conta Google → Segurança →
+    Verificação em duas etapas → Senhas de app). Nunca commitar.
+  - `CONTATO_EMAIL_DESTINO`: opcional; quem recebe (padrão
+    comercial@conbrain.com.br, vírgula para mais de um).
+- Canal de Denúncias → RH:
+  - `DENUNCIA_SMTP_USUARIO` e `DENUNCIA_SMTP_SENHA`: conta do RH, que envia os
+    relatos. **Nunca** cai na conta dos contatos: sem ela, o canal fica
+    "indisponível".
+  - `DENUNCIA_EMAIL_DESTINO`: quem recebe os relatos (o RH).
 
 Sem `SMTP_*`, o WhatsApp continua funcionando, mas os contatos não chegam por
 e-mail. No computador, `DENUNCIA_MODO_TESTE=1` (ou `EMAIL_MODO_TESTE=1`) no
@@ -89,7 +97,7 @@ senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
 
 Exigido pela Lei 14.457/22 e apurado pela CIPA. O formulário é **anônimo** e por
 isso **não** usa WhatsApp como os outros: envia por e-mail pelo servidor
-(`src/app/api/denuncia/route.ts`), com a mesma conta de envio acima (`SMTP_*`).
+(`src/app/api/denuncia/route.ts`), com a conta própria do RH (`DENUNCIA_SMTP_*`).
 Sem ela, ou sem a variável abaixo, o canal responde "temporariamente
 indisponível" — configure no EasyPanel antes de publicar:
 
@@ -106,5 +114,5 @@ O acesso é só pelo link direto, divulgado internamente.
 1. Ligar as páginas aos JSONs de `content/` (pré-requisito para qualquer CMS).
 2. Resolver o CMS para a equipe de marketing (provavelmente migrar para Decap).
 3. Apontar o domínio `conbrain.com.br` para `187.127.5.127`.
-4. Configurar `SMTP_*` no EasyPanel para os contatos chegarem por e-mail.
+4. Configurar `SMTP_*` (comercial) e `DENUNCIA_SMTP_*` + `DENUNCIA_EMAIL_DESTINO` (RH) no EasyPanel.
 5. Depois do domínio apontado: verificar `conbrain.com.br` no Gerenciador de Negócios da Meta.

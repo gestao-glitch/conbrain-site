@@ -5,7 +5,8 @@
 //
 // Configuração (variáveis de ambiente no EasyPanel):
 //   DENUNCIA_EMAIL_DESTINO   e-mail(s) que recebem os relatos, separados por vírgula
-//   A conta que envia é a mesma dos formulários: veja src/lib/email.ts (SMTP_*).
+//   DENUNCIA_SMTP_USUARIO / DENUNCIA_SMTP_SENHA  conta própria que envia os relatos
+//   (separada da dos formulários, por sigilo): veja src/lib/email.ts.
 
 import {
   ANEXOS,
@@ -132,12 +133,12 @@ ${linhas
 </div>`;
 
   const destino = process.env.DENUNCIA_EMAIL_DESTINO;
-  const usuario = remetente();
+  const usuario = remetente("denuncia");
   const modoTeste = emailModoTeste;
-  const transporte = transporteEmail();
+  const transporte = transporteEmail("denuncia");
 
   if (!transporte || (!modoTeste && !destino)) {
-    console.error("[canal-denuncias] envio não configurado (DENUNCIA_EMAIL_DESTINO ou SMTP_* ausentes)");
+    console.error("[canal-denuncias] envio não configurado (DENUNCIA_EMAIL_DESTINO ou DENUNCIA_SMTP_* ausentes)");
     return erro(
       "O canal está temporariamente indisponível. Tente novamente mais tarde.",
       503
