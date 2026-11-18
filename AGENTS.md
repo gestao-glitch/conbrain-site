@@ -92,6 +92,13 @@ senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
   Meta Pixel sozinha enquanto `PIXEL_ID` estiver preenchido (seção 6, `#cookies`).
 - A Meta ignora navegadores automáticos: para testar o Pixel com puppeteer, use
   `--disable-blink-features=AutomationControlled`.
+- Google Tag Manager (`GTM_ID` em `medicao-ids.ts`): componente oficial
+  `GoogleTagManager` de `@next/third-parties`, em `src/components/tag-manager.tsx`,
+  ligado no layout raiz. Segue as mesmas regras acima (aceite, domínio oficial,
+  nunca no Canal). As tags são configuradas no painel do GTM; os cliques em links
+  `wa.me` são usados lá como gatilho, então não mude esses links. Cuidado: se o
+  contêiner tiver uma tag do Google Analytics com o mesmo `GA_ID`, cada visita é
+  contada duas vezes (o site já carrega o Analytics por conta própria).
 
 ## Canal de Denúncias (`/canal-de-denuncias`)
 

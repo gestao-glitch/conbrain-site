@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import { AnotarOrigem } from "@/components/anotar-origem";
 import { MedicaoECookies } from "@/components/medicao-e-cookies";
+import { TagManager } from "@/components/tag-manager";
 import "./globals.css";
 
 const jost = Lato({
@@ -52,6 +53,7 @@ export default function RootLayout({
         <AnotarOrigem />
         {children}
         <MedicaoECookies />
+        <TagManager />
       </body>
     </html>
   );

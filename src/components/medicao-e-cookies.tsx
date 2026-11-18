@@ -18,7 +18,7 @@ export const EVENTO_ABRIR_COOKIES = "conbrain:abrir-cookies";
 const EVENTO_ESCOLHA = "conbrain:cookies-escolhidos";
 
 // A escolha fica guardada no navegador; no servidor ainda não se sabe qual é.
-function assinarEscolha(avisar: () => void) {
+export function assinarEscolha(avisar: () => void) {
   window.addEventListener(EVENTO_ESCOLHA, avisar);
   window.addEventListener("storage", avisar);
   return () => {
@@ -26,8 +26,8 @@ function assinarEscolha(avisar: () => void) {
     window.removeEventListener("storage", avisar);
   };
 }
-const escolhaAtual = () => lerConsentimento() ?? "nenhuma";
-const escolhaNoServidor = () => "servidor";
+export const escolhaAtual = () => lerConsentimento() ?? "nenhuma";
+export const escolhaNoServidor = () => "servidor";
 
 /* Aviso de cookies + medição. Fica no layout principal, então vale para o site
    todo, inclusive as páginas dos empreendimentos. */

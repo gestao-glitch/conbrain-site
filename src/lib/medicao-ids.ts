@@ -7,3 +7,6 @@ export const GA_ID = "G-FNFVJ32HCL";
 
 /** Meta Pixel — Gerenciador de Eventos → Configurações → ID do Pixel. Vazio = desligado. */
 export const PIXEL_ID = "528107979027134";
+
+/** Google Tag Manager — ID do contêiner (tagmanager.google.com). Vazio = desligado. */
+export const GTM_ID = "GTM-ML6LWDSK";
