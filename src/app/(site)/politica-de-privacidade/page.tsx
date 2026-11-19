@@ -53,7 +53,6 @@ const SECOES: { id?: string; titulo: string; texto: string[] }[] = [
         ? "Com a sua autorização, usamos o Google Analytics (Google) e o Meta Pixel (Meta, empresa do Facebook e do Instagram) para entender como o site é usado: quantas pessoas visitam, quais páginas acessam, de onde vieram e quantas entram em contato pelos formulários ou pelo WhatsApp. O Meta Pixel também nos ajuda a medir e direcionar os nossos anúncios no Facebook e no Instagram."
         : "Com a sua autorização, usamos o Google Analytics (Google) para entender como o site é usado: quantas pessoas visitam, quais páginas acessam, de onde vieram e quantas entram em contato pelos formulários ou pelo WhatsApp.",
       "Essas ferramentas usam cookies e identificadores do seu navegador e não recebem o seu nome, telefone ou e-mail. Elas só são ativadas se você clicar em “Aceitar” no aviso de cookies. Se recusar, o site funciona normalmente, sem nenhuma medição. Você pode mudar a sua escolha a qualquer momento pelo link “Preferências de cookies”, no rodapé de todas as páginas.",
-      "O Canal de Denúncias não tem nenhuma medição, para preservar o anonimato de quem o utiliza.",
       "Algumas páginas também exibem conteúdos de terceiros, como mapas do Google e o tour virtual de empreendimentos, que podem usar cookies próprios conforme as políticas dessas empresas.",
     ],
   },

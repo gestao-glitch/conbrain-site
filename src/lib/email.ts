@@ -1,44 +1,32 @@
-// Envio de e-mails do site. Cada formulário envia pela própria conta, para que
-// nenhuma veja os e-mails da outra:
+// Envio dos formulários de contato do site por e-mail (para o comercial).
 //
-//   Formulários de contato (vão para o comercial):
-//     SMTP_USUARIO            conta Google Workspace que envia (ex.: comercial@conbrain.com.br)
-//     SMTP_SENHA              "senha de app" dessa conta (não é a senha normal)
-//
-//   Canal de Denúncias (vai para o RH) — conta própria, por sigilo:
-//     DENUNCIA_SMTP_USUARIO   conta que envia os relatos (ex.: a do RH)
-//     DENUNCIA_SMTP_SENHA     "senha de app" dessa conta
-//   As denúncias nunca usam a conta dos contatos: sem DENUNCIA_SMTP_*, o canal
-//   fica "indisponível" em vez de deixar cópia dos relatos em outra caixa.
-//
-//   Opcionais para as duas: *_HOST (padrão smtp.gmail.com) e *_PORTA (padrão 465).
-// Para testar no computador sem enviar nada: EMAIL_MODO_TESTE=1 (ou DENUNCIA_MODO_TESTE=1).
+// Configuração (variáveis de ambiente no EasyPanel):
+//   SMTP_USUARIO   conta Google Workspace que envia (comercial@conbrain.com.br)
+//   SMTP_SENHA     "senha de app" dessa conta (não é a senha normal)
+//   SMTP_HOST      opcional, padrão smtp.gmail.com
+//   SMTP_PORTA     opcional, padrão 465
+// Para testar no computador sem enviar nada: EMAIL_MODO_TESTE=1.
 
 import nodemailer from "nodemailer";
 
-export type ContaEmail = "contato" | "denuncia";
+const env = (nome: string) => process.env[`SMTP_${nome}`];
 
-const PREFIXO: Record<ContaEmail, string> = { contato: "SMTP_", denuncia: "DENUNCIA_SMTP_" };
+export const emailModoTeste = process.env.EMAIL_MODO_TESTE === "1";
 
-const env = (conta: ContaEmail, nome: string) => process.env[`${PREFIXO[conta]}${nome}`];
-
-export const emailModoTeste =
-  process.env.EMAIL_MODO_TESTE === "1" || process.env.DENUNCIA_MODO_TESTE === "1";
-
-/** Endereço que aparece como remetente dos e-mails dessa conta. */
-export function remetente(conta: ContaEmail) {
-  return env(conta, "USUARIO");
+/** Endereço que aparece como remetente. */
+export function remetente() {
+  return env("USUARIO");
 }
 
-/** Devolve o transporte de e-mail da conta, ou null se ela não estiver configurada. */
-export function transporteEmail(conta: ContaEmail) {
+/** Devolve o transporte de e-mail, ou null se o envio não estiver configurado. */
+export function transporteEmail() {
   if (emailModoTeste) return nodemailer.createTransport({ jsonTransport: true });
-  const usuario = env(conta, "USUARIO");
-  const senha = env(conta, "SENHA");
+  const usuario = env("USUARIO");
+  const senha = env("SENHA");
   if (!usuario || !senha) return null;
-  const porta = Number(env(conta, "PORTA") || 465);
+  const porta = Number(env("PORTA") || 465);
   return nodemailer.createTransport({
-    host: env(conta, "HOST") || "smtp.gmail.com",
+    host: env("HOST") || "smtp.gmail.com",
     port: porta,
     secure: porta === 465,
     auth: { user: usuario, pass: senha },

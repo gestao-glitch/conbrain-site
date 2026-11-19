@@ -79,8 +79,8 @@ export function MedicaoECookies() {
     // Quem recusa depois de ter aceitado: a medição para na próxima página carregada.
   }
 
-  // Primeira visita (ainda sem escolha) ou pedido pelo rodapé. No Canal de
-  // Denúncias, que é anônimo e não tem medição, o aviso não aparece.
+  // Primeira visita (ainda sem escolha) ou pedido pelo rodapé. Nas páginas sem
+  // medição o aviso não aparece.
   const aberto = reaberto || escolha === "nenhuma";
   if (!aberto || paginaSemMedicao(caminho)) return null;
 

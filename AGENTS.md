@@ -47,30 +47,24 @@ alterações em português. Com eles:
 - Tina CMS bloqueado: o TinaCloud não indexa a branch `main`, então `/admin` dá 404 em
   produção. Alternativa a avaliar: Decap CMS (git-based, sem serviço externo).
 
-## E-mail do site (formulários e Canal de Denúncias)
+## E-mail do site (formulários de contato)
 
 Todos os formulários de contato, além de abrir o WhatsApp, enviam o contato por
-e-mail em segundo plano (`src/app/api/contato/route.ts`), para nenhum contato se
-perder. O e-mail traz os campos, um link para chamar no WhatsApp, a página e por
-onde a pessoa chegou ao site (UTM/Instagram/Google).
+e-mail em segundo plano (`src/app/api/contato/route.ts`) para o comercial, para
+nenhum contato se perder. O e-mail traz os campos, um link para chamar no
+WhatsApp, a página e por onde a pessoa chegou ao site (UTM/Instagram/Google).
+Configuração no EasyPanel (aba Environment), lida em `src/lib/email.ts`:
 
-Cada formulário envia pela **própria conta** (`src/lib/email.ts`), para nenhuma
-caixa ver os e-mails da outra. Configuração no EasyPanel (aba Environment):
-
-- Contatos → comercial:
-  - `SMTP_USUARIO`: conta que envia os contatos (comercial@conbrain.com.br)
-  - `SMTP_SENHA`: "senha de app" dessa conta (Conta Google → Segurança →
-    Verificação em duas etapas → Senhas de app). Nunca commitar.
-  - `CONTATO_EMAIL_DESTINO`: opcional; quem recebe (padrão
-    comercial@conbrain.com.br, vírgula para mais de um).
-- Canal de Denúncias → RH:
-  - `DENUNCIA_SMTP_USUARIO` e `DENUNCIA_SMTP_SENHA`: conta do RH, que envia os
-    relatos. **Nunca** cai na conta dos contatos: sem ela, o canal fica
-    "indisponível".
-  - `DENUNCIA_EMAIL_DESTINO`: quem recebe os relatos (o RH).
+- `SMTP_USUARIO`: conta que envia (comercial@conbrain.com.br)
+- `SMTP_SENHA`: "senha de app" dessa conta, de 16 letras (Conta Google →
+  myaccount.google.com/apppasswords). A senha normal da conta é recusada pelo
+  Google. Nunca commitar.
+- `CONTATO_EMAIL_DESTINO`: opcional; quem recebe (padrão
+  comercial@conbrain.com.br, vírgula para mais de um).
 
 Sem `SMTP_*`, o WhatsApp continua funcionando, mas os contatos não chegam por
-e-mail. No computador, `DENUNCIA_MODO_TESTE=1` (ou `EMAIL_MODO_TESTE=1`) no
+e-mail. Falhas de envio aparecem nos logs do serviço no EasyPanel
+(`[contato] falha ao enviar e-mail: ...`). No computador, `EMAIL_MODO_TESTE=1` no
 `.env.local` monta os e-mails e mostra no terminal sem enviar.
 
 ## Medição de resultados (Google Analytics e Meta Pixel)
@@ -83,7 +77,6 @@ senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
   endereço provisório do servidor nada é medido (os eventos aparecem no console).
 - Só liga depois que a pessoa clica em "Aceitar" no aviso de cookies (LGPD). A
   escolha pode ser mudada em "Preferências de cookies", nos rodapés.
-- O Canal de Denúncias nunca é medido e não mostra o aviso.
 - Conversões: `generate_lead` (formulário enviado, via `registrarContato`),
   `contato_whatsapp` e `contato_email` (cliques em links wa.me/mailto). No Pixel:
   `Lead` e `Contact`.
@@ -94,33 +87,23 @@ senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
   `--disable-blink-features=AutomationControlled`.
 - Google Tag Manager (`GTM_ID` em `medicao-ids.ts`): componente oficial
   `GoogleTagManager` de `@next/third-parties`, em `src/components/tag-manager.tsx`,
-  ligado no layout raiz. Segue as mesmas regras acima (aceite, domínio oficial,
-  nunca no Canal). As tags são configuradas no painel do GTM; os cliques em links
+  ligado no layout raiz. Segue as mesmas regras acima (aceite e domínio oficial). As tags são configuradas no painel do GTM; os cliques em links
   `wa.me` são usados lá como gatilho, então não mude esses links. Testado em
   18/11/2026: o contêiner também carrega o gtag do mesmo `GA_ID`, mas cada página
   continua gerando um só `page_view`. O envio paralelo para `www.google.com/g/collect`
   é normal do GA4 e não duplica visitas.
 
-## Canal de Denúncias (`/canal-de-denuncias`)
+## Canal de Denúncias
 
-Exigido pela Lei 14.457/22 e apurado pela CIPA. O formulário é **anônimo** e por
-isso **não** usa WhatsApp como os outros: envia por e-mail pelo servidor
-(`src/app/api/denuncia/route.ts`), com a conta própria do RH (`DENUNCIA_SMTP_*`).
-Sem ela, ou sem a variável abaixo, o canal responde "temporariamente
-indisponível" — configure no EasyPanel antes de publicar:
-
-- `DENUNCIA_EMAIL_DESTINO` — quem recebe os relatos (vírgula para mais de um)
-
-Endereços antigos do Wix (`/canaldedenuncias`, `/formulario`, `/taiji`…) são
-redirecionados em `next.config.ts`.
-
-É de **uso interno**: não aparece no rodapé, no sitemap nem no Google (`noindex`).
-O acesso é só pelo link direto, divulgado internamente.
+Não fica mais neste site, que é só comercial: em 19/11/2026 o canal foi migrado
+para um Google Forms à parte, mantido pelo RH. A página, a rota de envio e os
+redirecionamentos antigos (`/canal-de-denuncias`, `/canaldedenuncias`,
+`/formulario`) foram removidos. Não recrie.
 
 ## Pendências
 
 1. Ligar as páginas aos JSONs de `content/` (pré-requisito para qualquer CMS).
 2. Resolver o CMS para a equipe de marketing (provavelmente migrar para Decap).
 3. Apontar o domínio `conbrain.com.br` para `187.127.5.127`.
-4. Configurar `SMTP_*` (comercial) e `DENUNCIA_SMTP_*` + `DENUNCIA_EMAIL_DESTINO` (RH) no EasyPanel.
+4. Configurar `SMTP_*` (comercial, com senha de app) no EasyPanel.
 5. Depois do domínio apontado: verificar `conbrain.com.br` no Gerenciador de Negócios da Meta.

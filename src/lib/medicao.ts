@@ -5,14 +5,14 @@
    - Só liga no domínio oficial (conbrain.com.br): testes no computador e o
      endereço provisório do servidor não entram nas estatísticas.
    - Só liga depois que a pessoa aceita os cookies no aviso (LGPD).
-   - Nunca mede o Canal de Denúncias, que precisa ser anônimo.
+   - Páginas listadas em PAGINAS_SEM_MEDICAO nunca são medidas (nenhuma hoje).
 
    Os códigos (Analytics e Pixel) ficam em ./medicao-ids.ts. */
 
 import { GA_ID, PIXEL_ID } from "./medicao-ids";
 
 const DOMINIOS_OFICIAIS = ["conbrain.com.br", "www.conbrain.com.br"];
-const PAGINAS_SEM_MEDICAO = ["/canal-de-denuncias"];
+const PAGINAS_SEM_MEDICAO: string[] = [];
 
 const CHAVE_CONSENTIMENTO = "conbrain-cookies";
 export type Consentimento = "aceito" | "recusado";

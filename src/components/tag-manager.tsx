@@ -11,7 +11,7 @@ import { assinarEscolha, escolhaAtual, escolhaNoServidor } from "./medicao-e-coo
    todas as páginas. Segue as mesmas regras do Analytics e do Pixel:
    - só carrega depois que a pessoa clica em "Aceitar" no aviso de cookies (LGPD);
    - só no domínio oficial (conbrain.com.br), nunca em testes;
-   - nunca no Canal de Denúncias, que precisa ser anônimo.
+   - nunca nas páginas sem medição (PAGINAS_SEM_MEDICAO em src/lib/medicao.ts).
    As tags em si (o que medir, como os cliques em links wa.me) são configuradas
    no painel do Tag Manager, não aqui. */
 export function TagManager() {

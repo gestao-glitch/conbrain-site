@@ -16,8 +16,6 @@ const nextConfig: NextConfig = {
       { source: "/beosgc", destination: "/empreendimentos/beos-grand-central", permanent: true },
       { source: "/monverdant", destination: "/empreendimentos/monverdant", permanent: true },
       { source: "/uppernest", destination: "/empreendimentos/upper-nest", permanent: true },
-      { source: "/canaldedenuncias", destination: "/canal-de-denuncias", permanent: true },
-      { source: "/formulario", destination: "/canal-de-denuncias#relato", permanent: true },
     ];
   },
 };
