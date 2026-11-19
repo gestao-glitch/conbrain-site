@@ -645,7 +645,7 @@ export default function UpperNestLanding() {
         frase={"Simplifique. Conecte-se. Viva."}
         tema={{ fundo: "#4E4C48", texto: "#D8D3C4", forte: "#F5F2E9", destaque: "#E39A6B", borda: "rgba(255,255,255,0.12)", faixa: "#45433F" }}
         mensagemWhatsApp={"Olá! Tenho interesse no Upper Nest."}
-        aviso={"Imagens meramente ilustrativas, sujeitas a alterações. Condições de financiamento sujeitas à análise e aprovação da instituição financeira."}
+        aviso={"Registro de Incorporação: R.4-20.357 · Patrimônio de Afetação: AV.6-20.357. Imagens meramente ilustrativas, sujeitas a alterações. Condições de financiamento sujeitas à análise e aprovação da instituição financeira."}
       />
 
       <WhatsAppButton mensagem="Olá! Tenho interesse no Upper Nest." cor="#AE5D32" />

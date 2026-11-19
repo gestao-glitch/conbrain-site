@@ -96,9 +96,10 @@ senhas). A lógica está em `src/lib/medicao.ts` e o aviso de cookies em
   `GoogleTagManager` de `@next/third-parties`, em `src/components/tag-manager.tsx`,
   ligado no layout raiz. Segue as mesmas regras acima (aceite, domínio oficial,
   nunca no Canal). As tags são configuradas no painel do GTM; os cliques em links
-  `wa.me` são usados lá como gatilho, então não mude esses links. Cuidado: se o
-  contêiner tiver uma tag do Google Analytics com o mesmo `GA_ID`, cada visita é
-  contada duas vezes (o site já carrega o Analytics por conta própria).
+  `wa.me` são usados lá como gatilho, então não mude esses links. Testado em
+  18/11/2026: o contêiner também carrega o gtag do mesmo `GA_ID`, mas cada página
+  continua gerando um só `page_view`. O envio paralelo para `www.google.com/g/collect`
+  é normal do GA4 e não duplica visitas.
 
 ## Canal de Denúncias (`/canal-de-denuncias`)
 
